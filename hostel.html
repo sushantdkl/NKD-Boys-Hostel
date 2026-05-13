@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NKD Boys Hostel — Kathmandu's Most Beloved Student Home</title>
+<meta name="description" content="NKD Boys Hostel Kathmandu — 4+ years of trust, 3 meals daily, WiFi, CCTV, spacious rooms. Starting NPR 12,000/month. Book now!"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --bg:#080c10;
+  --surface:#0e1318;
+  --surface2:#141b22;
+  --gold:#d4a843;
+  --gold2:#f0c96a;
+  --gold3:#a07825;
+  --teal:#1aa896;
+  --teal2:#0dd4bc;
+  --red:#e05252;
+  --text:#f0ece4;
+  --muted:#7a8492;
+  --border:rgba(212,168,67,.15);
+  --glow:rgba(212,168,67,.25);
+  --r:20px;
+  --shadow:0 24px 80px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--gold);color:#000}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+
+/* ─── UTILS ─── */
+.section-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-tag::before,.section-tag::after{content:'';flex:0 0 24px;height:1px;background:var(--gold)}
+h2.sh{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em}
+.wrap{max-width:1220px;margin:0 auto;padding:0 5vw}
+.reveal{opacity:0;transform:translateY(48px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.stagger-1{transition-delay:.1s}
+.stagger-2{transition-delay:.2s}
+.stagger-3{transition-delay:.3s}
+.stagger-4{transition-delay:.4s}
+
+/* ─── NOISE OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.022;background-size:200px;
+}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(8,12,16,.7);
+  backdrop-filter:blur(24px) saturate(1.6);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--gold);letter-spacing:-.02em}
+.nav-logo span{color:var(--text)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:600;color:var(--muted);transition:color .2s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--gold2)}
+.nav-cta{
+  padding:.6rem 1.5rem;border-radius:50px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000!important;font-weight:700!important;font-size:.85rem!important;
+  box-shadow:0 4px 20px var(--glow);transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--glow)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:910}
+.ham span{display:block;width:26px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.mob-nav{display:none;position:fixed;inset:70px 0 0;z-index:899;background:rgba(8,12,16,.98);padding:2rem 5vw;flex-direction:column;gap:1.2rem;backdrop-filter:blur(20px)}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:1.1rem;font-weight:600;color:var(--muted);padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+
+/* ─── HERO ─── */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding-top:70px;
+}
+/* ── 3D canvas BG ── */
+#hero-canvas{position:absolute;inset:0;z-index:0}
+.hero-mesh{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -10%,rgba(212,168,67,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 60%,rgba(26,168,150,.14) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 50% at 10% 80%,rgba(212,168,67,.08) 0%,transparent 60%),
+    linear-gradient(170deg,#060a0d 0%,#0b1318 50%,#071210 100%);
+}
+.hero-grid3d{
+  position:absolute;inset:-40px;transform-style:preserve-3d;
+  background-image:
+    linear-gradient(rgba(212,168,67,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,168,67,.07) 1px,transparent 1px);
+  background-size:60px 60px;
+  transform:perspective(600px) rotateX(55deg) translateY(40%);
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 80%,black 20%,transparent 70%);
+  animation:gridMove 12s linear infinite;
+}
+@keyframes gridMove{from{background-position:0 0}to{background-position:0 60px}}
+
+/* floating 3D blobs */
+.blob{
+  position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;
+  animation:blobFloat 8s ease-in-out infinite;
+}
+.blob1{width:400px;height:400px;background:rgba(212,168,67,.12);top:-100px;left:-100px;animation-delay:0s}
+.blob2{width:300px;height:300px;background:rgba(26,168,150,.1);bottom:100px;right:0;animation-delay:-3s}
+.blob3{width:200px;height:200px;background:rgba(212,168,67,.08);top:50%;right:20%;animation-delay:-5s}
+@keyframes blobFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.05)}}
+
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 5vw}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.45rem 1.1rem;margin-bottom:2rem;
+  background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);
+  border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold2);
+  animation:fadeUp .8s ease both;
+}
+.hero-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold2);animation:ping 2s infinite}
+@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.4}}
+h1.ht{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(3rem,9vw,7.5rem);line-height:.9;letter-spacing:-.04em;
+  color:var(--text);animation:fadeUp .8s .12s ease both;
+}
+h1.ht em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 40%,var(--gold2) 70%,#ffe09a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.18rem);color:rgba(240,236,228,.55);
+  max-width:580px;margin:1.6rem auto 0;font-weight:300;line-height:1.75;
+  animation:fadeUp .8s .22s ease both;
+}
+.hero-btns{
+  margin-top:2.6rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .8s .35s ease both;
+}
+.btn-g{
+  padding:.9rem 2.2rem;border-radius:50px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;font-weight:700;font-size:.95rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  box-shadow:0 8px 32px var(--glow);transition:transform .2s,box-shadow .2s;
+  cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-g:hover{transform:translateY(-3px);box-shadow:0 16px 48px var(--glow)}
+.btn-out{
+  padding:.9rem 2.2rem;border-radius:50px;
+  border:1.5px solid rgba(240,236,228,.2);color:rgba(240,236,228,.8);
+  font-weight:600;font-size:.95rem;background:rgba(255,255,255,.03);
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:border-color .2s,background .2s,color .2s;
+}
+.btn-out:hover{border-color:var(--gold);color:var(--gold2);background:rgba(212,168,67,.07)}
+
+/* hero stats */
+.hstats{
+  margin-top:4rem;display:flex;gap:0;justify-content:center;flex-wrap:wrap;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:20px;overflow:hidden;
+  animation:fadeUp .8s .5s ease both;
+  backdrop-filter:blur(12px);
+}
+.hs{
+  padding:1.5rem 2.5rem;text-align:center;flex:1;min-width:140px;
+  border-right:1px solid var(--border);transition:background .3s;
+}
+.hs:last-child{border-right:none}
+.hs:hover{background:rgba(212,168,67,.07)}
+.hs-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1}
+.hs-l{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
+
+/* floating badges */
+.hero-badges{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hb{
+  position:absolute;
+  background:rgba(14,19,24,.85);backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:16px;
+  padding:.8rem 1.1rem;display:flex;align-items:center;gap:.7rem;
+  color:var(--text);font-size:.8rem;font-weight:600;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  animation:hbFloat 5s ease-in-out infinite;
+}
+.hb:nth-child(2){animation-delay:-1.8s}
+.hb:nth-child(3){animation-delay:-3.5s}
+@keyframes hbFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+.hb-icon{font-size:1.6rem}
+.hb1{top:20%;left:4%}
+.hb2{top:60%;right:4%}
+.hb3{bottom:22%;left:9%}
+@media(max-width:900px){.hero-badges{display:none}}
+
+.scroll-cue{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  animation:fadeUp 1s .9s ease both;
+}
+.sc-line{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:scAnim 1.8s ease-in-out infinite}
+@keyframes scAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+
+/* ─── TRUST BAR ─── */
+#trustbar{
+  background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:1.4rem 5vw;
+  display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.tb-item{display:flex;align-items:center;gap:.6rem;font-size:.83rem;font-weight:600;color:var(--muted)}
+.tb-item span:first-child{font-size:1.1rem}
+.tb-item strong{color:var(--text)}
+
+/* ─── ABOUT ─── */
+#about{padding:9rem 0;background:var(--bg);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
+.about-3d{
+  position:relative;perspective:800px;
+}
+.about-card-wrap{
+  transform-style:preserve-3d;
+  animation:card3d 6s ease-in-out infinite;
+}
+@keyframes card3d{
+  0%,100%{transform:rotateY(-5deg) rotateX(3deg)}
+  50%{transform:rotateY(5deg) rotateX(-3deg)}
+}
+.about-main-card{
+  border-radius:24px;overflow:hidden;aspect-ratio:4/3;
+  background:linear-gradient(135deg,#1a2a1a,#0d1a1a,#1a1500);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+  box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px var(--border);
+  position:relative;
+}
+.about-main-card::before{
+  content:'NKD';position:absolute;bottom:-20px;right:-10px;
+  font-family:'Playfair Display',serif;font-size:8rem;font-weight:900;
+  color:rgba(212,168,67,.04);line-height:1;pointer-events:none;
+}
+.about-float1{
+  position:absolute;bottom:-28px;right:-28px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;border-radius:20px;padding:1.2rem 1.5rem;
+  font-weight:800;font-size:1rem;box-shadow:0 16px 40px var(--glow);
+  transform:translateZ(40px);
+}
+.about-float1 span{display:block;font-size:2.2rem;font-family:'Playfair Display',serif;line-height:1}
+.about-float2{
+  position:absolute;top:-20px;left:-20px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:16px;padding:1rem 1.2rem;
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.82rem;font-weight:600;
+  box-shadow:0 12px 32px rgba(0,0,0,.4);
+  transform:translateZ(30px);
+}
+.abt-text .sh{margin-bottom:1.4rem}
+.abt-text p{color:rgba(240,236,228,.55);line-height:1.85;font-size:1rem;margin-bottom:1rem;font-weight:300}
+.abt-badges{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.7rem}
+.abt-badge{
+  padding:.5rem 1rem;border-radius:50px;
+  border:1px solid var(--border);font-size:.8rem;font-weight:600;
+  color:var(--gold2);background:rgba(212,168,67,.06);
+  display:flex;align-items:center;gap:.4rem;
+}
+
+/* ─── ROOMS ─── */
+#rooms{padding:9rem 0;background:var(--surface)}
+.rooms-header{text-align:center;margin-bottom:5rem}
+.rooms-header p{color:var(--muted);margin-top:.8rem;max-width:500px;margin-left:auto;margin-right:auto}
+.rooms-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+/* 3D card */
+.room-card{
+  background:var(--surface2);border:1px solid var(--border);border-radius:24px;
+  overflow:hidden;perspective:1000px;
+  transition:transform .1s,box-shadow .3s;
+  cursor:default;
+  position:relative;
+}
+.room-card-inner{
+  transform-style:preserve-3d;transition:transform .4s ease;
+}
+.room-card:hover .room-card-inner{
+  /* JS handles tilt */
+}
+.room-img{
+  height:220px;display:flex;align-items:center;justify-content:center;
+  font-size:4rem;position:relative;overflow:hidden;
+}
+.room-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,var(--surface2) 0%,transparent 50%);
+}
+.ri1{background:linear-gradient(135deg,#0f2030,#1a3040,#203040)}
+.ri2{background:linear-gradient(135deg,#201008,#301810,#402010)}
+.ri3{background:linear-gradient(135deg,#102020,#183030,#102818)}
+.ri4{background:linear-gradient(135deg,#15102a,#201540,#2a1a30)}
+.room-badge{
+  position:absolute;top:14px;right:14px;z-index:2;
+  padding:.3rem .9rem;border-radius:50px;
+  font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+}
+.rb-hot{background:var(--red);color:#fff}
+.rb-best{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000}
+.rb-premium{background:var(--teal);color:#fff}
+.rb-new{background:rgba(212,168,67,.2);color:var(--gold2);border:1px solid var(--gold3)}
+.room-body{padding:1.8rem}
+.room-title{font-family:'Playfair Display',serif;font-weight:800;font-size:1.3rem;margin-bottom:.4rem;color:var(--text)}
+.room-sub{color:var(--muted);font-size:.85rem;margin-bottom:1.2rem;line-height:1.5}
+.room-feats{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.rf{
+  font-size:.74rem;font-weight:600;padding:.3rem .7rem;border-radius:50px;
+  background:rgba(26,168,150,.08);color:var(--teal2);border:1px solid rgba(26,168,150,.2);
+}
+.room-price-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.rp{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
+.rp sub{font-size:.9rem;font-weight:400;font-family:'Plus Jakarta Sans',sans-serif;color:var(--muted)}
+.rp small{display:block;font-size:.75rem;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;margin-top:.2rem}
+.room-book{
+  padding:.55rem 1.2rem;border-radius:50px;
+  background:rgba(212,168,67,.12);border:1px solid var(--gold3);
+  color:var(--gold2);font-size:.8rem;font-weight:700;
+  transition:background .2s,color .2s;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.room-book:hover{background:var(--gold);color:#000}
+
+/* occupancy bar */
+.occ-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:1rem;overflow:hidden}
+.occ-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
+
+/* ─── FACILITIES ─── */
+#facilities{padding:9rem 0;background:var(--bg)}
+.fac-intro{max-width:600px;margin:0 auto 5rem;text-align:center}
+.fac-intro p{color:var(--muted);margin-top:.8rem}
+.fac-bento{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:auto auto;
+  gap:1.2rem;
+}
+.fc{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:2rem;position:relative;overflow:hidden;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  cursor:default;
+}
+.fc::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,168,67,.06),transparent 70%);
+  opacity:0;transition:opacity .3s;
+}
+.fc:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(212,168,67,.3);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.fc:hover::before{opacity:1}
+.fc-wide{grid-column:span 2}
+.fc-tall{grid-row:span 2}
+.fci{font-size:2.4rem;margin-bottom:1.1rem;display:block}
+.fct{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:.5rem}
+.fcd{color:var(--muted);font-size:.85rem;line-height:1.6}
+.fc-big-num{
+  font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;
+  color:rgba(212,168,67,.12);position:absolute;bottom:-10px;right:10px;
+  line-height:1;pointer-events:none;
+}
+.fc-emoji-bg{
+  position:absolute;right:-10px;bottom:-10px;font-size:6rem;opacity:.06;
+  transform:rotate(-15deg);pointer-events:none;
+}
+
+/* fun meter */
+.fun-meter{margin-top:1rem}
+.fm-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.fm-bar{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.fm-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--teal2))}
+
+/* ─── REVIEWS ─── */
+#reviews{padding:9rem 0;background:var(--surface);overflow:hidden}
+.rev-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:2rem}
+.rev-score{
+  display:flex;align-items:center;gap:1.5rem;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:20px;padding:1.4rem 2rem;
+}
+.rs-num{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:var(--gold);line-height:1}
+.rs-stars{font-size:1.3rem;color:var(--gold);letter-spacing:.05em}
+.rs-label{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+.rs-right{display:flex;flex-direction:column;gap:.4rem}
+.rs-bar-row{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted)}
+.rs-bar-wrap{width:80px;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.rs-bar-fill{height:100%;border-radius:3px;background:var(--gold)}
+
+/* marquee */
+.marquee-wrap{overflow:hidden;position:relative;margin-bottom:1.5rem}
+.marquee-wrap::before,.marquee-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;z-index:2;width:120px;pointer-events:none;
+}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--surface),transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--surface),transparent)}
+.marquee-track{display:flex;gap:1.4rem;width:max-content;animation:marqueeX 30s linear infinite;padding:8px 0}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track2{animation-direction:reverse;animation-duration:36s}
+@keyframes marqueeX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rev-card{
+  width:300px;flex-shrink:0;
+  background:var(--surface2);border:1px solid var(--border);border-radius:18px;
+  padding:1.5rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+.rev-card:hover{border-color:rgba(212,168,67,.3);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.rev-stars{color:var(--gold);font-size:.85rem;margin-bottom:.7rem}
+.rev-text{color:rgba(240,236,228,.65);font-size:.85rem;line-height:1.65;margin-bottom:1.1rem}
+.rev-author{display:flex;align-items:center;gap:.8rem}
+.rev-av{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.85rem;color:#000;flex-shrink:0;
+}
+.rev-name{font-weight:700;font-size:.85rem}
+.rev-date{font-size:.73rem;color:var(--muted)}
+.rev-source{
+  margin-left:auto;font-size:.7rem;color:var(--muted);
+  background:rgba(255,255,255,.05);padding:.2rem .5rem;border-radius:6px;
+}
+
+/* ─── LOCATION ─── */
+#location{padding:9rem 0;background:var(--bg)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.loc-info h2{margin-bottom:1.2rem}
+.loc-info p{color:var(--muted);line-height:1.8;margin-bottom:2rem;font-size:.97rem}
+.loc-cards{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2.5rem}
+.lc{
+  display:flex;align-items:flex-start;gap:1rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:1rem 1.2rem;transition:border-color .2s;
+}
+.lc:hover{border-color:rgba(212,168,67,.3)}
+.lc-icon{font-size:1.3rem;flex-shrink:0;margin-top:.05rem}
+.lc-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.lc-value{font-weight:600;font-size:.9rem;color:var(--text);margin-top:.15rem}
+.map-wrap{
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.map-wrap iframe{display:block;width:100%;height:450px;border:0}
+
+/* ─── INQUIRY FORM ─── */
+#contact{padding:9rem 0;background:var(--surface);position:relative;overflow:hidden}
+#contact::before{
+  content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,168,150,.12),transparent 70%);
+  pointer-events:none;
+}
+.contact-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.contact-inner h2{text-align:center;margin-bottom:.8rem}
+.contact-inner>.subtitle{text-align:center;color:var(--muted);margin-bottom:3rem;font-size:.97rem}
+.cform{
+  background:var(--surface2);border:1px solid var(--border);border-radius:28px;
+  padding:3rem;
+}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.cf-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.4rem}
+.cf-group label{
+  font-size:.74rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+.cf-group input,.cf-group select,.cf-group textarea{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:.9rem 1.1rem;
+  color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;
+  outline:none;transition:border-color .2s,background .2s;
+  -webkit-appearance:none;
+}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{
+  border-color:var(--gold);background:rgba(212,168,67,.04);
+}
+.cf-group select option{background:#141b22}
+.cf-group textarea{resize:vertical;min-height:100px}
+.cf-submit{
+  width:100%;padding:1rem;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold2));
+  color:#000;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;
+  cursor:pointer;letter-spacing:.02em;
+  box-shadow:0 8px 32px var(--glow);
+  transition:transform .2s,box-shadow .2s;
+}
+.cf-submit:hover{transform:translateY(-2px);box-shadow:0 16px 48px var(--glow)}
+.cf-note{text-align:center;margin-top:1rem;font-size:.78rem;color:var(--muted)}
+.cf-contacts{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;
+}
+.cc{
+  background:var(--surface2);border:1px solid var(--border);border-radius:16px;
+  padding:1.4rem 1rem;text-align:center;text-decoration:none;color:var(--text);
+  transition:border-color .2s,transform .2s;
+}
+.cc:hover{border-color:rgba(212,168,67,.35);transform:translateY(-3px)}
+.cc-icon{font-size:1.8rem;display:block;margin-bottom:.5rem}
+.cc-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.cc-val{font-weight:700;font-size:.88rem;margin-top:.2rem}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#040608;
+  border-top:1px solid var(--border);
+  padding:4rem 5vw 2.5rem;
+}
+.footer-grid{
+  max-width:1220px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+  padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05);
+}
+.fb-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:1rem;display:block}
+.fb-logo span{color:var(--text)}
+.fb p{color:rgba(240,236,228,.3);font-size:.85rem;line-height:1.7;max-width:260px}
+.fsocial{display:flex;gap:.7rem;margin-top:1.5rem}
+.fsa{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.85rem;transition:background .2s,color .2s;
+}
+.fsa:hover{background:rgba(212,168,67,.15);color:var(--gold2)}
+.fc2 h4{font-family:'Playfair Display',serif;font-weight:800;font-size:.95rem;color:rgba(240,236,228,.7);margin-bottom:1.2rem}
+.fc2 ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.fc2 a{color:rgba(240,236,228,.3);font-size:.85rem;transition:color .2s}
+.fc2 a:hover{color:var(--gold2)}
+.footer-bottom{
+  max-width:1220px;margin:2rem auto 0;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;
+  color:rgba(240,236,228,.2);font-size:.78rem;
+}
+.fb-badge{
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(212,168,67,.07);border:1px solid var(--border);
+  border-radius:50px;padding:.3rem .8rem;font-size:.72rem;color:var(--gold);
+}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;z-index:9999;
+  background:var(--teal);color:#fff;
+  padding:1rem 1.6rem;border-radius:14px;font-weight:700;font-size:.92rem;
+  box-shadow:0 10px 40px rgba(26,168,150,.4);
+  transform:translateY(80px);opacity:0;transition:transform .4s,opacity .4s;
+}
+.toast.show{transform:none;opacity:1}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .nav-links{display:none}.ham{display:flex}
+  .about-grid,.loc-grid{grid-template-columns:1fr;gap:3.5rem}
+  .fac-bento{grid-template-columns:1fr 1fr}
+  .fc-wide,.fc-tall{grid-column:auto;grid-row:auto}
+  .rooms-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .cf-row{grid-template-columns:1fr}
+  .cf-contacts{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .fac-bento{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .hstats{flex-direction:column}
+  .hs{border-right:none;border-bottom:1px solid var(--border)}
+  .hs:last-child{border-bottom:none}
+  .rev-top{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">NKD <span>Boys Hostel</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#facilities">Amenities</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="ham" id="ham" onclick="this.classList.toggle('open');document.getElementById('mn').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<nav class="mob-nav" id="mn">
+  <a href="#about" onclick="document.getElementById('mn').classList.remove('open')">About</a>
+  <a href="#rooms" onclick="document.getElementById('mn').classList.remove('open')">Rooms & Pricing</a>
+  <a href="#facilities" onclick="document.getElementById('mn').classList.remove('open')">Amenities</a>
+  <a href="#reviews" onclick="document.getElementById('mn').classList.remove('open')">Reviews</a>
+  <a href="#location" onclick="document.getElementById('mn').classList.remove('open')">Location</a>
+  <a href="#contact" onclick="document.getElementById('mn').classList.remove('open')" style="color:var(--gold)">📋 Book Now</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid3d"></div>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="hero-badges">
+    <div class="hb hb1">
+      <span class="hb-icon">🍛</span>
+      <div><strong style="display:block">Dal-Bhat Daily</strong><span style="color:var(--muted);font-weight:400">Chef-cooked, 3× a day</span></div>
+    </div>
+    <div class="hb hb2">
+      <span class="hb-icon">🌟</span>
+      <div><strong style="display:block">4.8★ Google</strong><span style="color:var(--muted);font-weight:400">100+ Happy residents</span></div>
+    </div>
+    <div class="hb hb3">
+      <span class="hb-icon">🅿️</span>
+      <div><strong style="display:block">Free Parking</strong><span style="color:var(--muted);font-weight:400">Spacious & Secure</span></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-pill">📍 Kathmandu, Nepal — 4+ Years of Trust</div>
+    <h1 class="ht">Where Students<br><em>Thrive,</em><br>Not Just Live</h1>
+    <p class="hero-sub">NKD Boys Hostel — clean rooms, legendary food, tight security, and a community that feels like family. From NPR 12,000/month.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-g">🏠 Book a Room Today</a>
+      <a href="#rooms" class="btn-out">💰 See Room Prices</a>
+    </div>
+    <div class="hstats">
+      <div class="hs"><div class="hs-n" data-target="4.8" data-suffix="★">4.8★</div><div class="hs-l">Google Rating</div></div>
+      <div class="hs"><div class="hs-n" data-target="4" data-suffix="+">4+</div><div class="hs-l">Years Operating</div></div>
+      <div class="hs"><div class="hs-n" data-target="3" data-suffix="×">3×</div><div class="hs-l">Meals Daily</div></div>
+      <div class="hs"><div class="hs-n" data-target="200" data-suffix="+">200+</div><div class="hs-l">Alumni</div></div>
+      <div class="hs"><div class="hs-n" data-target="24" data-suffix="/7">24/7</div><div class="hs-l">Security</div></div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Explore<div class="sc-line"></div></div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div id="trustbar">
+  <div class="tb-item"><span>✅</span><span><strong>Verified</strong> Google Business</span></div>
+  <div class="tb-item"><span>🏆</span><span>HAN <strong>Standard</strong> Compliant</span></div>
+  <div class="tb-item"><span>📶</span><span><strong>Free</strong> High-Speed WiFi</span></div>
+  <div class="tb-item"><span>🔒</span><span><strong>CCTV</strong> 24/7 Monitored</span></div>
+  <div class="tb-item"><span>🚿</span><span><strong>Hot</strong> Water Always</span></div>
+  <div class="tb-item"><span>🅿️</span><span><strong>Decent</strong> Parking Space</span></div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-3d reveal">
+        <div class="about-card-wrap">
+          <div class="about-main-card">
+            <span style="font-size:6rem;filter:drop-shadow(0 0 40px rgba(212,168,67,.4))">🏠</span>
+          </div>
+          <div class="about-float1">
+            <span>4+</span>
+            Years of<br>Excellence
+          </div>
+          <div class="about-float2">
+            <span style="font-size:1.4rem">⭐</span>
+            <div>
+              <strong style="color:var(--gold);font-size:1.1rem">4.8 / 5.0</strong><br>
+              <span style="color:var(--muted);font-size:.75rem">Google Maps Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="abt-text reveal stagger-2">
+        <div class="section-tag">Our Story</div>
+        <h2 class="sh">The Hostel That Became <em style="font-style:italic;color:var(--gold)">Home</em></h2>
+        <p>For over 4 years, NKD Boys Hostel has been the most beloved student residence in Kathmandu. We started with one simple belief: students deserve more than just a bed — they deserve a thriving environment.</p>
+        <p>Our experienced wardens treat residents like family. Our chef has been cooking the same legendary dal-bhat for years (residents refuse to let him change the recipe 😄). From multiple entrances to spacious parking, everything is designed for your comfort.</p>
+        <div class="abt-badges">
+          <span class="abt-badge">🏡 Open from Every Side</span>
+          <span class="abt-badge">🅿️ Spacious Parking</span>
+          <span class="abt-badge">🍽️ Legendary Dal-Bhat</span>
+          <span class="abt-badge">👮 24/7 Warden On-Site</span>
+          <span class="abt-badge">🔆 Well-Lit Rooms</span>
+          <span class="abt-badge">🏊 Big Courtyard</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ROOMS ─── -->
+<section id="rooms">
+  <div class="wrap">
+    <div class="rooms-header reveal">
+      <div class="section-tag">Accommodation</div>
+      <h2 class="sh">Pick Your Perfect Room</h2>
+      <p>All rooms include 3 meals daily, WiFi, hot water, laundry & 24/7 security. Prices are per person per month — fair, transparent, no hidden charges.</p>
+    </div>
+
+    <div class="rooms-grid">
+
+      <!-- Room 1: 3-Bed -->
+      <div class="room-card reveal" onmousemove="tilt3d(this,event)" onmouseleave="resetTilt(this)">
+        <div class="room-card-inner">
+          <div class="room-img ri1">
+            <span>🛏️🛏️🛏️</span>
+            <div class="room-badge rb-hot">Most Popular</div>
+          </div>
+          <div class="room-body">
+            <div class="room-title">3-Bedroom Room</div>
+            <div class="room-sub">Ideal for students who love a social vibe! Shared triple room with ample space, natural light, and your own study desk.</div>
+            <div class="room-feats">
+              <span class="rf">3 Beds</span>
+              <span class="rf">Study Desks</span>
+              <span class="rf">Wardrobe</span>
+              <span class="rf">WiFi</span>
+              <span class="rf">Shared Washroom</span>
+              <span class="rf">Hot Water</span>
+            </div>
+            <div class="room-price-row">
+              <div class="rp">NPR 12,000<sub>/person/mo</sub><small>All meals included</small></div>
+              <button class="room-book" onclick="prefillRoom('3-Bedroom Shared Room')">Enquire</button>
+            </div>
+            <div class="occ-bar"><div class="occ-fill" style="width:75%"></div></div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem">🔥 75% Occupied — Limited Spots!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2: 3-Bed x3 rooms -->
+      <div class="room-card reveal stagger-1" onmousemove="tilt3d(this,event)" onmouseleave="resetTilt(this)">
+        <div class="room-card-inner">
+          <div class="room-img ri2">
+            <span>🏠</span>
+            <div class="room-badge rb-best">Best Value</div>
+          </div>
+          <div class="room-body">
+            <div class="room-title">2-Bedroom Room</div>
+            <div class="room-sub">Cozy 2-person room — perfect for close friends. Extra privacy, less noise, more focus. 1 room available.</div>
+            <div class="room-feats">
+              <span class="rf">2 Beds</span>
+              <span class="rf">2 Study Desks</span>
+              <span class="rf">Shared Wardrobe</span>
+              <span class="rf">WiFi</span>
+              <span class="rf">Shared Washroom</span>
+            </div>
+            <div class="room-price-row">
+              <div class="rp">Contact Us<sub></sub><small>Competitive 2026 rates</small></div>
+              <button class="room-book" onclick="prefillRoom('2-Bedroom Shared Room')">Enquire</button>
+            </div>
+            <div class="occ-bar"><div class="occ-fill" style="width:60%"></div></div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem">✅ 1 Room Available</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3: 4-bed attached washroom -->
+      <div class="room-card reveal stagger-2" onmousemove="tilt3d(this,event)" onmouseleave="resetTilt(this)">
+        <div class="room-card-inner">
+          <div class="room-img ri3">
+            <span>🚿🛏️</span>
+            <div class="room-badge rb-premium">Premium</div>
+          </div>
+          <div class="room-body">
+            <div class="room-title">4-Bed + Attached Washroom</div>
+            <div class="room-sub">Our only room with a private attached bathroom — for those who value extra comfort & privacy. 1 room, limited spots.</div>
+            <div class="room-feats">
+              <span class="rf">4 Beds</span>
+              <span class="rf">Attached Washroom</span>
+              <span class="rf">Hot Water</span>
+              <span class="rf">Study Desks</span>
+              <span class="rf">WiFi</span>
+              <span class="rf">Premium Pick</span>
+            </div>
+            <div class="room-price-row">
+              <div class="rp">Contact Us<sub></sub><small>HAN 2026 premium rate</small></div>
+              <button class="room-book" onclick="prefillRoom('4-Bedroom Room with Attached Washroom')">Enquire</button>
+            </div>
+            <div class="occ-bar"><div class="occ-fill" style="width:90%;background:linear-gradient(90deg,var(--red),#ff7a7a)"></div></div>
+            <div style="font-size:.72rem;color:var(--red);margin-top:.4rem">🚨 Almost Full — Book Fast!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 4: 4-bed standard x3 -->
+      <div class="room-card reveal stagger-3" onmousemove="tilt3d(this,event)" onmouseleave="resetTilt(this)">
+        <div class="room-card-inner">
+          <div class="room-img ri4">
+            <span>🛏️🛏️🛏️🛏️</span>
+            <div class="room-badge rb-new">3 Rooms</div>
+          </div>
+          <div class="room-body">
+            <div class="room-title">4-Bedroom Standard Room</div>
+            <div class="room-sub">Great for groups of 4! Multiple rooms available. Spacious shared room with all essentials and the famous NKD community vibe.</div>
+            <div class="room-feats">
+              <span class="rf">4 Beds</span>
+              <span class="rf">Shared Washroom</span>
+              <span class="rf">Study Desks</span>
+              <span class="rf">Wardrobe</span>
+              <span class="rf">WiFi</span>
+              <span class="rf">3 Rooms Available</span>
+            </div>
+            <div class="room-price-row">
+              <div class="rp">Contact Us<sub></sub><small>Group-friendly rates</small></div>
+              <button class="room-book" onclick="prefillRoom('4-Bedroom Standard Room')">Enquire</button>
+            </div>
+            <div class="occ-bar"><div class="occ-fill" style="width:50%"></div></div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem">✅ 3 Rooms Available — Most Space!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pricing note -->
+    <div style="margin-top:2.5rem;padding:1.5rem 2rem;background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.2);border-radius:16px;display:flex;align-items:center;gap:1rem" class="reveal">
+      <span style="font-size:1.6rem">💡</span>
+      <div>
+        <strong style="color:var(--gold2)">Pricing Note (2026):</strong>
+        <span style="color:var(--muted);font-size:.9rem;margin-left:.4rem">3-bed rooms start from NPR 12,000/person/month (all meals included). Rates for other room types are competitive with HAN 2026 Kathmandu standards. All prices include 3 meals/day, WiFi, laundry & security. Call us for exact quotes — no hidden fees, ever.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FACILITIES ─── -->
+<section id="facilities">
+  <div class="wrap">
+    <div class="fac-intro reveal">
+      <div class="section-tag">Why You'll Love It Here</div>
+      <h2 class="sh">Amenities That Actually Slap 🔥</h2>
+      <p>We don't just provide a roof — we provide an experience. Here's what makes NKD the clear choice.</p>
+    </div>
+
+    <div class="fac-bento reveal">
+      <!-- BIG: 3 meals -->
+      <div class="fc fc-wide" style="background:linear-gradient(135deg,rgba(212,168,67,.08),rgba(212,168,67,.02))">
+        <span class="fac-emoji-bg">🍛</span>
+        <span class="fci">🍛</span>
+        <div class="fct">Legendary 3-Meal Service</div>
+        <div class="fcd">Breakfast, lunch & dinner — every. single. day. Our chef has been perfecting the dal-bhat recipe for 4+ years. Residents literally come back just for the food (true story 🤭).</div>
+        <div class="fun-meter">
+          <div class="fm-label">Food Rating by Residents</div>
+          <div class="fm-bar"><div class="fm-fill" style="width:97%"></div></div>
+        </div>
+        <div class="fc-big-num">3×</div>
+      </div>
+
+      <!-- WiFi -->
+      <div class="fc">
+        <span class="fci">📶</span>
+        <div class="fct">Free High-Speed WiFi</div>
+        <div class="fcd">Stream, study, zoom — all covered. Available throughout the hostel premises.</div>
+        <div class="fun-meter">
+          <div class="fm-label">Connection Reliability</div>
+          <div class="fm-bar"><div class="fm-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="fc">
+        <span class="fci">🛡️</span>
+        <div class="fct">Fort-Level Security</div>
+        <div class="fcd">CCTV cameras everywhere, night warden on-site, secure entry. Sleep like a baby 👶.</div>
+        <div class="fun-meter">
+          <div class="fm-label">Safety Score</div>
+          <div class="fm-bar"><div class="fm-fill" style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <!-- Parking - TALL -->
+      <div class="fc fc-tall">
+        <span class="fci">🅿️</span>
+        <div class="fct">Decent Parking Space</div>
+        <div class="fcd">Spacious parking available for bikes and vehicles. Open from every side — easy in, easy out. No more parking nightmares in Kathmandu traffic 🙏</div>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(212,168,67,.06);border-radius:12px;font-size:.8rem;color:var(--muted)">
+          🚗 2-wheelers<br>🏍️ Motorcycles<br>🚲 Bicycles<br>All welcome!
+        </div>
+        <div class="fc-big-num">🅿️</div>
+      </div>
+
+      <!-- Open sides -->
+      <div class="fc">
+        <span class="fci">🚪</span>
+        <div class="fct">Open from Every Side</div>
+        <div class="fcd">Multiple entry and exit points — no bottlenecks, no queues, no drama.</div>
+      </div>
+
+      <!-- Laundry -->
+      <div class="fc">
+        <span class="fci">🧺</span>
+        <div class="fct">Laundry Service</div>
+        <div class="fcd">Because who has time to do laundry during exam week? We've got you 💪</div>
+      </div>
+
+      <!-- Power backup -->
+      <div class="fc">
+        <span class="fci">⚡</span>
+        <div class="fct">Power Backup</div>
+        <div class="fcd">Uninterrupted power supply. Study during load-shedding like a pro ⚡</div>
+      </div>
+
+      <!-- Hot Water -->
+      <div class="fc">
+        <span class="fci">🚿</span>
+        <div class="fct">Hot Water 24/7</div>
+        <div class="fcd">Cold Kathmandu mornings? Not your problem. Hot showers always available.</div>
+      </div>
+
+      <!-- Study space - WIDE -->
+      <div class="fc fc-wide" style="background:linear-gradient(135deg,rgba(26,168,150,.07),rgba(26,168,150,.02))">
+        <span class="fac-emoji-bg">📚</span>
+        <span class="fci">📚</span>
+        <div class="fct">Study-Optimized Environment</div>
+        <div class="fcd">Well-lit rooms, quiet hours, study desks in every room. Whether it's board exam season or just another Wednesday, your focus comes first. Our residents have a 90%+ pass rate — the dal-bhat energy is real.</div>
+        <div class="fc-big-num">📚</div>
+      </div>
+
+      <!-- Grounds -->
+      <div class="fc">
+        <span class="fci">🏃</span>
+        <div class="fct">Spacious Grounds</div>
+        <div class="fcd">Large courtyard for cricket, badminton, or just vibing after class. Big grounds = big energy.</div>
+      </div>
+
+      <!-- Medical support -->
+      <div class="fc">
+        <span class="fci">🏥</span>
+        <div class="fct">First-Aid Support</div>
+        <div class="fcd">Warden trained in basic first-aid. For bigger issues, we help you get to the nearest clinic fast.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div>
+        <div class="section-tag">What Residents Say</div>
+        <h2 class="sh">Don't Take Our Word<br>for It 😏</h2>
+      </div>
+      <div class="rev-score">
+        <div class="rs-num">4.8</div>
+        <div>
+          <div class="rs-stars">★★★★★</div>
+          <div class="rs-label">Google Maps Rating</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.3rem">Verified Reviews</div>
+        </div>
+        <div class="rs-right">
+          <div class="rs-bar-row">★★★★★ <div class="rs-bar-wrap"><div class="rs-bar-fill" style="width:88%"></div></div></div>
+          <div class="rs-bar-row">★★★★☆ <div class="rs-bar-wrap"><div class="rs-bar-fill" style="width:10%"></div></div></div>
+          <div class="rs-bar-row">★★★☆☆ <div class="rs-bar-wrap"><div class="rs-bar-fill" style="width:2%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="mt1">
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Really good hostel... everything is well managed. Food quality is too good. All you need is well facilitated here. Highest recommendation!" 👏</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#d4a843,#f0c96a)">R</div><div><div class="rev-name">Rohan Shrestha</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Good food, good place, good environment. The rooms are well-lit and spacious. Stayed here all my bachelor's — zero regrets! 🎓"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#1aa896,#0dd4bc)">A</div><div><div class="rev-name">Aakash Tamang</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The warden is exceptional and the food is incredible. Feels like home — I've been here 2 years and have absolutely zero complaints! 🙌"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#8b5cf6,#c084fc)">S</div><div><div class="rev-name">Suraj KC</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Best facility in budget. Clean rooms, amazing food, friendly staff. My cook uncle remembered my allergy after one week 😭❤️"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#ef4444,#fb7185)">B</div><div><div class="rev-name">Bikash Poudel</div><div class="rev-date">Google Review · 2023</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Everything is well managed — food quality, room cleanliness, security. Good ambience for study too. The dal-bhat alone is worth the rent 🍛"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">N</div><div><div class="rev-name">Nischal Rai</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Affordable and pleasant. Spacious grounds, excellent overall management. WiFi could be a bit faster but honestly at this price? Absolute steal! 💎"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#06b6d4,#67e8f9)">P</div><div><div class="rev-name">Pratik Gurung</div><div class="rev-date">Google Review · 2023</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Really good hostel... everything is well managed. Food quality is too good. All you need is well facilitated here. Highest recommendation!" 👏</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#d4a843,#f0c96a)">R</div><div><div class="rev-name">Rohan Shrestha</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Good food, good place, good environment. The rooms are well-lit and spacious. Stayed here all my bachelor's — zero regrets! 🎓"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#1aa896,#0dd4bc)">A</div><div><div class="rev-name">Aakash Tamang</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The warden is exceptional and the food is incredible. Feels like home — I've been here 2 years and have absolutely zero complaints! 🙌"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#8b5cf6,#c084fc)">S</div><div><div class="rev-name">Suraj KC</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Best facility in budget. Clean rooms, amazing food, friendly staff. My cook uncle remembered my allergy after one week 😭❤️"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#ef4444,#fb7185)">B</div><div><div class="rev-name">Bikash Poudel</div><div class="rev-date">Google Review · 2023</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Everything is well managed — food quality, room cleanliness, security. Good ambience for study too. The dal-bhat alone is worth the rent 🍛"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">N</div><div><div class="rev-name">Nischal Rai</div><div class="rev-date">Google Review · 2024</div></div><span class="rev-source">Google</span></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Affordable and pleasant. Spacious grounds, excellent overall management. WiFi could be a bit faster but honestly at this price? Absolute steal! 💎"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#06b6d4,#67e8f9)">P</div><div><div class="rev-name">Pratik Gurung</div><div class="rev-date">Google Review · 2023</div></div><span class="rev-source">Google</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 - reverse -->
+  <div class="marquee-wrap" style="margin-top:1.4rem">
+    <div class="marquee-track marquee-track2">
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"I changed 3 hostels in 2 years. NKD is where I finally stayed for good. Cook uncle's khichdi during exam week = ultimate comfort food 🙏"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#10b981,#34d399)">M</div><div><div class="rev-name">Manish Thapa</div><div class="rev-date">Google Review · 2024</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The grounds are massive! We play cricket every evening. First hostel where I actually felt like I was having fun, not just surviving college 😂🏏"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#f97316,#fdba74)">K</div><div><div class="rev-name">Kamal Bhandari</div><div class="rev-date">Google Review · 2024</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Parking is so convenient — I bring my bike and never worry. Easy access from all sides. Perfect location for Kathmandu commute! 🏍️"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#6366f1,#818cf8)">D</div><div><div class="rev-name">Dipendra Maharjan</div><div class="rev-date">Google Review · 2025</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"4+ years and still going strong. The consistency is unmatched. Same great food, same reliable security, same warm community. NKD for life! 💛"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#ec4899,#f9a8d4)">R</div><div><div class="rev-name">Rajesh Yadav</div><div class="rev-date">Google Review · 2025</div></div></div>
+      </div>
+      <!-- duplicates -->
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"I changed 3 hostels in 2 years. NKD is where I finally stayed for good. Cook uncle's khichdi during exam week = ultimate comfort food 🙏"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#10b981,#34d399)">M</div><div><div class="rev-name">Manish Thapa</div><div class="rev-date">Google Review · 2024</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The grounds are massive! We play cricket every evening. First hostel where I actually felt like I was having fun, not just surviving college 😂🏏"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#f97316,#fdba74)">K</div><div><div class="rev-name">Kamal Bhandari</div><div class="rev-date">Google Review · 2024</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Parking is so convenient — I bring my bike and never worry. Easy access from all sides. Perfect location for Kathmandu commute! 🏍️"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#6366f1,#818cf8)">D</div><div><div class="rev-name">Dipendra Maharjan</div><div class="rev-date">Google Review · 2025</div></div></div>
+      </div>
+      <div class="review-card rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"4+ years and still going strong. The consistency is unmatched. Same great food, same reliable security, same warm community. NKD for life! 💛"</div>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#ec4899,#f9a8d4)">R</div><div><div class="rev-name">Rajesh Yadav</div><div class="rev-date">Google Review · 2025</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOCATION ─── -->
+<section id="location">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="loc-info reveal">
+        <div class="section-tag">Find Us</div>
+        <h2 class="sh">Right Where<br>You Need to Be</h2>
+        <p>Centrally located in Kathmandu with multiple entry/exit points and decent parking. Easy access to colleges, hospitals, markets & transport hubs — the city at your fingertips.</p>
+        <div class="loc-cards">
+          <div class="lc">
+            <span class="lc-icon">📍</span>
+            <div><div class="lc-label">Address</div><div class="lc-value">NKD Boys Hostel, Kathmandu, Bagmati Province, Nepal</div></div>
+          </div>
+          <div class="lc">
+            <span class="lc-icon">🚪</span>
+            <div><div class="lc-label">Access</div><div class="lc-value">Open from every side — multiple entry points</div></div>
+          </div>
+          <div class="lc">
+            <span class="lc-icon">🅿️</span>
+            <div><div class="lc-label">Parking</div><div class="lc-value">Decent parking space for bikes & vehicles</div></div>
+          </div>
+          <div class="lc">
+            <span class="lc-icon">🕐</span>
+            <div><div class="lc-label">Office Hours</div><div class="lc-value">Every Day — 7:00 AM to 9:00 PM</div></div>
+          </div>
+          <div class="lc">
+            <span class="lc-icon">🚌</span>
+            <div><div class="lc-label">Transport</div><div class="lc-value">Easy access to buses, micros & taxis citywide</div></div>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=27.6912888,85.3358165" target="_blank" class="btn-g" style="display:inline-flex">🗺️ Open in Google Maps</a>
+      </div>
+
+      <div class="map-wrap reveal stagger-2">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395.3703660843752!2d85.33574015342397!3d27.691296265624985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb196427129baf%3A0x8b3318bc1a99b4e1!2sNKD%20Boys%20Hostel!5e1!3m2!1sen!2snp!4v1778655496062!5m2!1sen!2snp"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INQUIRY / CONTACT ─── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="section-tag" style="justify-content:center" class="reveal">Book Your Spot</div>
+      <h2 class="sh reveal" style="text-align:center">Ready to Join the<br><em style="font-style:italic;color:var(--gold)">NKD Family?</em></h2>
+      <p class="subtitle reveal">Fill the form below and we'll get back to you within 24 hours. Or just call us — we're friendly people 😊</p>
+
+      <div class="cf-contacts reveal">
+        <a href="tel:+9779800000000" class="cc">
+          <span class="cc-icon">📞</span>
+          <div class="cc-label">Call Us</div>
+          <div class="cc-val">+977 98XXXXXXXX</div>
+        </a>
+        <a href="https://wa.me/9779800000000" class="cc" target="_blank">
+          <span class="cc-icon">💬</span>
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-val">Message Us</div>
+        </a>
+        <a href="mailto:info@nkdhostel.com" class="cc">
+          <span class="cc-icon">✉️</span>
+          <div class="cc-label">Email</div>
+          <div class="cc-val">info@nkdhostel.com</div>
+        </a>
+      </div>
+
+      <div class="cform reveal">
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>Full Name *</label>
+            <input type="text" id="cf-name" placeholder="Ramesh Sharma" required/>
+          </div>
+          <div class="cf-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="cf-phone" placeholder="+977 98XXXXXXXX" required/>
+          </div>
+        </div>
+        <div class="cf-group">
+          <label>Email Address</label>
+          <input type="email" id="cf-email" placeholder="you@email.com"/>
+        </div>
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>Room Type *</label>
+            <select id="cf-room" required>
+              <option value="">Select room type...</option>
+              <option>3-Bedroom Shared Room (from NPR 12,000/person)</option>
+              <option>2-Bedroom Shared Room</option>
+              <option>4-Bedroom Room with Attached Washroom (Premium)</option>
+              <option>4-Bedroom Standard Room</option>
+            </select>
+          </div>
+          <div class="cf-group">
+            <label>Move-In Date</label>
+            <input type="date" id="cf-date"/>
+          </div>
+        </div>
+        <div class="cf-group">
+          <label>College / Institution</label>
+          <input type="text" id="cf-college" placeholder="Tribhuvan University, IOE..."/>
+        </div>
+        <div class="cf-group">
+          <label>Any Questions or Special Requirements?</label>
+          <textarea id="cf-msg" placeholder="e.g. I need parking space for my bike, I have a dietary preference, etc."></textarea>
+        </div>
+        <button class="cf-submit" onclick="submitInquiry()">
+          🏠 Send Inquiry — We'll Reply Within 24 Hours!
+        </button>
+        <p class="cf-note">📧 Your inquiry will be sent to our management team. No spam, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="fb">
+      <a href="#" class="fb-logo">NKD <span>Boys Hostel</span></a>
+      <p>Kathmandu's most trusted student residence for 4+ years. A place where education meets community, and dal-bhat meets destiny.</p>
+      <div class="fsocial">
+        <a href="#" class="fsa">f</a>
+        <a href="#" class="fsa">in</a>
+        <a href="#" class="fsa">📷</a>
+        <a href="https://maps.google.com/?q=27.6912888,85.3358165" target="_blank" class="fsa">🗺️</a>
+      </div>
+    </div>
+    <div class="fc2">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About NKD</a></li>
+        <li><a href="#rooms">Room Types</a></li>
+        <li><a href="#facilities">Amenities</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Book a Room</a></li>
+      </ul>
+    </div>
+    <div class="fc2">
+      <h4>Amenities</h4>
+      <ul>
+        <li><a href="#">3× Daily Meals</a></li>
+        <li><a href="#">Free WiFi</a></li>
+        <li><a href="#">CCTV Security</a></li>
+        <li><a href="#">Hot Water</a></li>
+        <li><a href="#">Laundry Service</a></li>
+        <li><a href="#">Parking Space</a></li>
+      </ul>
+    </div>
+    <div class="fc2">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Kathmandu, Nepal</a></li>
+        <li><a href="tel:+977980000000">+977 98XXXXXXXX</a></li>
+        <li><a href="mailto:info@nkdhostel.com">info@nkdhostel.com</a></li>
+        <li><a href="https://maps.google.com/?q=27.6912888,85.3358165" target="_blank">Google Maps</a></li>
+        <li><a href="#">Daily: 7AM – 9PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NKD Boys Hostel. All rights reserved.</span>
+    <div class="fb-badge">🏆 HAN Standard Compliant 2026</div>
+    <span>Made with ❤️ for students of Kathmandu</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✅ Inquiry sent! We'll contact you within 24 hours. Namaste! 🙏</div>
+
+<script>
+/* ── Scroll Reveal ── */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── Nav scroll ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.background=
+    scrollY>50?'rgba(8,12,16,.97)':'rgba(8,12,16,.7)';
+});
+
+/* ── 3D Tilt ── */
+function tilt3d(card,e){
+  const r=card.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5;
+  const y=(e.clientY-r.top)/r.height-.5;
+  card.style.transform=`perspective(900px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`;
+  card.style.boxShadow=`${-x*20}px ${-y*20}px 60px rgba(0,0,0,.5), 0 0 40px rgba(212,168,67,.${Math.abs(Math.round(x*10+y*10))})`;
+}
+function resetTilt(card){
+  card.style.transform='';card.style.boxShadow='';
+}
+
+/* ── About 3D mouse parallax ── */
+document.querySelector('.about-3d')?.addEventListener('mousemove',e=>{
+  const r=e.currentTarget.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5;
+  const y=(e.clientY-r.top)/r.height-.5;
+  document.querySelector('.about-card-wrap').style.transform=
+    `perspective(800px) rotateY(${x*12}deg) rotateX(${-y*12}deg)`;
+});
+document.querySelector('.about-3d')?.addEventListener('mouseleave',()=>{
+  document.querySelector('.about-card-wrap').style.transform='';
+});
+
+/* ── Facility card tilt ── */
+document.querySelectorAll('.fc').forEach(fc=>{
+  fc.addEventListener('mousemove',e=>{
+    const r=fc.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    fc.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px) scale(1.01)`;
+  });
+  fc.addEventListener('mouseleave',()=>{fc.style.transform=''});
+});
+
+/* ── Prefill room ── */
+function prefillRoom(name){
+  document.getElementById('cf-room').value=name||'';
+  document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>document.getElementById('cf-name').focus(),600);
+}
+
+/* ── Submit ── */
+function submitInquiry(){
+  const name=document.getElementById('cf-name').value.trim();
+  const phone=document.getElementById('cf-phone').value.trim();
+  const room=document.getElementById('cf-room').value;
+  if(!name){alert('Please enter your full name 😊');return}
+  if(!phone){alert('Please enter your phone number so we can call you!');return}
+  if(!room){alert('Please select a room type');return}
+
+  // Build mailto link
+  const email='info@nkdhostel.com'; // ← replace with real email
+  const subject=encodeURIComponent(`Room Inquiry: ${room} — ${name}`);
+  const date=document.getElementById('cf-date').value;
+  const college=document.getElementById('cf-college').value;
+  const msg=document.getElementById('cf-msg').value;
+  const body=encodeURIComponent(
+`New Room Inquiry from NKD Website
+=====================================
+Name: ${name}
+Phone: ${phone}
+Email: ${document.getElementById('cf-email').value||'Not provided'}
+Room Type: ${room}
+Move-In Date: ${date||'Not specified'}
+College/Institution: ${college||'Not specified'}
+
+Message / Requirements:
+${msg||'None'}
+
+=====================================
+Sent via nkdhostel.com contact form`
+  );
+  window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),4500);
+}
+
+/* ── Animated number counter ── */
+const numObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const els=e.target.querySelectorAll('.hs-n[data-target]');
+    els.forEach(el=>{
+      const target=parseFloat(el.dataset.target);
+      const suffix=el.dataset.suffix||'';
+      const isFloat=String(target).includes('.');
+      let cur=0;const steps=50;const inc=target/steps;
+      const t=setInterval(()=>{
+        cur=Math.min(cur+inc,target);
+        el.textContent=(isFloat?cur.toFixed(1):Math.floor(cur))+suffix;
+        if(cur>=target)clearInterval(t);
+      },30);
+    });
+    numObs.unobserve(e.target);
+  });
+},{threshold:.5});
+const statsEl=document.querySelector('.hstats');
+if(statsEl)numObs.observe(statsEl);
+
+/* ── Hero grid mouse parallax ── */
+document.addEventListener('mousemove',e=>{
+  const x=e.clientX/window.innerWidth-.5;
+  const y=e.clientY/window.innerHeight-.5;
+  document.querySelector('.hero-grid3d').style.transform=
+    `perspective(600px) rotateX(55deg) translateY(40%) translateX(${x*20}px)`;
+  document.querySelectorAll('.blob').forEach((b,i)=>{
+    const f=(i+1)*15;
+    b.style.transform=`translate(${x*f}px,${y*f}px)`;
+  });
+});
+</script>
+</body>
+</html>
