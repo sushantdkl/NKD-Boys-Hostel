@@ -1,18 +1,65 @@
-# React + Vite
+# NKD Boys Hostel & HEAN Network (Next.js 15)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive Next.js 15 application featuring the **NKD Boys Hostel Landing Page**, a **Luxury Dark-Themed Showcase**, the **Hostel Association Nepal (HEAN) Public Website**, and a complete **HEAN Admin & Management Portal**.
 
-Currently, two official plugins are available:
+## 🚀 Routes Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. NKD Boys Hostel
+- **`/`** — Main NKD Boys Hostel Landing Page (Framer Motion, Clean Aesthetics, Booking Inquiry)
+- **`/hostel`** — Luxury Dark-Themed Showcase with interactive 3D particle canvas and bento grid
 
-## React Compiler
+### 2. Public Website (HEAN Network)
+- **`/home`** — Public Website Home Page
+- **`/about`** — About the Association, mission, and pillars
+- **`/hostels`** — Searchable Hostels Directory (with district & type filters)
+- **`/committee`** — Executive Committee & Office Bearers
+- **`/gallery`** — Photo Gallery & Event Albums
+- **`/notices`** — Notice Board & Official Announcements
+- **`/contact`** — Secretariat Contact & Feedback Form
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### 3. HEAN Admin Portal
+- **`/admin`** — Admin Dashboard with live Chart.js charts (Monthly Registrations, Type Distributions, Status & Revenue)
+- **`/admin/registrations`** — Applications & Registrations Management
+- **`/admin/inspections`** — Hostel Safety & Hygiene Inspection Logs
+- **`/admin/hostels`** — Hostels Directory & Operations Management
+- **`/admin/committee`** — Committee Member Roles & Terms
+- **`/admin/invoices`** — Membership Billing & Invoices
+- **`/admin/payments`** — Transaction Logs & Payment Verification
+- **`/admin/receipts`** — Fiscal Receipt Issuance
+- **`/admin/certificate`** — Affiliation Certificate Generator & Preview
+- **`/admin/cms`** — Public Site Content Management
+- **`/admin/import`** — CSV / Excel Batch Hostel Data Import
+- **`/admin/reports`** — Regional Demographics & Statistical Analytics
+- **`/admin/settings`** — Secretariat & Site Configuration
+- **`/admin/gallery`** — Event Album Management
+- **`/admin/notices`** — Circulars & Notice Publication
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Framework**: Next.js 15 (App Router)
+- **React**: React 19
+- **Styling**: Tailwind CSS v4 & Custom CSS Design System
+- **Animations**: Framer Motion
+- **Data Visualizations**: Chart.js & react-chartjs-2
+- **Icons**: Font Awesome 6 & Custom SVG glyphs
+- **Typography**: Inter, Plus Jakarta Sans, Playfair Display, Noto Sans Devanagari
+
+---
+
+## 💻 Getting Started
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run the development server
+npm run dev
+
+# 3. Build for production
+npm run build
+
+# 4. Start production server
+npm run start
+```
