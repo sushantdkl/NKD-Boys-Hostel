@@ -1,0 +1,935 @@
+<html lang="en" style="--navbar-height: 140px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>About - HEAN</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <link rel="modulepreload" as="script"
+        href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js">
+    <link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ====== NAVBAR ====== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .navbar-brand a {
+            display: inline-block;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Menu */
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #0EA5E9;
+        }
+
+        /* Actions */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .auth-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-links a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .auth-links a:hover {
+            color: #0EA5E9;
+            background: rgba(14, 165, 233, 0.08);
+        }
+
+        .auth-links .register-link {
+            background: #0EA5E9;
+            color: #fff !important;
+            padding: 6px 16px;
+            border-radius: 50px;
+        }
+
+        .auth-links .register-link:hover {
+            background: #0284C7;
+            color: #fff !important;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .language-switcher a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .language-switcher a.active {
+            background: rgba(14, 165, 233, 0.12);
+            color: #0EA5E9;
+        }
+
+        .language-switcher .divider {
+            color: #cbd5e1;
+        }
+
+        .btn-primary-sm {
+            padding: 8px 22px;
+            border-radius: 50px;
+            background: #0EA5E9;
+            color: #fff !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-primary-sm:hover {
+            background: #0284C7;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile toggle */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #0f172a;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 992px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 24px 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                border-radius: 0 0 16px 16px;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .nav-links li a {
+                font-size: 1rem;
+            }
+
+            .navbar-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 16px;
+                gap: 12px;
+            }
+
+            .auth-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+            }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #preloader .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(14, 165, 233, 0.2);
+            border-top-color: #0EA5E9;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #preloader .text {
+            margin-top: 16px;
+            color: #f8fafc;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        /* Scroll progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0EA5E9, #10B981);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* ====== FOOTER STYLES ====== */
+        .footer a {
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #0EA5E9 !important;
+        }
+
+        /* Footer bottom row: copyright left, tech partner right */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom .copyright {
+            color: #94a3b8;
+            text-align: left;
+        }
+
+        .footer-bottom .copyright a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .footer-bottom .copyright a:hover {
+            color: #0EA5E9;
+        }
+
+        .footer-bottom .tech-partner {
+            color: #94a3b8;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .footer-bottom .tech-partner a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom .copyright {
+                text-align: center;
+            }
+
+            .footer-bottom .tech-partner {
+                text-align: center;
+            }
+        }
+
+        :root {
+            --navbar-height: 80px;
+            /* पछि JS ले यसलाई ओभरराइड गर्छ */
+        }
+
+        main {
+            padding-top: var(--navbar-height);
+        }
+
+        body.homepage main {
+            padding-top: 0;
+        }
+    </style>
+</head>
+
+<body class="">
+    <!-- Preloader -->
+    <div id="preloader" class="hide">
+        <div class="spinner"></div>
+        <div class="text">Welcome to HEAN</div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-brand" style="display:flex; flex-wrap:wrap; align-items:center; gap:12px;">
+                <a href="https://hean-production-ahfot4.laravel.cloud">
+                    <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN"
+                        style="height:auto; max-height:75px; width:auto; max-width:100%;">
+                </a>
+                <div style="display:flex; flex-direction:column; line-height:1.2; max-width:100%;">
+                    <span style="font-size:14px; font-weight:700; color:#0b2b4a;">होस्टल व्यवसायी संघ</span>
+                    <span style="font-size:10px; font-weight:600; color:#1e5f8e;">Hostel Entrepreneur Association of
+                        Nepal (HEAN)</span>
+                </div>
+            </div>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <ul class="nav-links">
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud" class="">Home</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/about" class="active">About</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/hostels" class="">Hostels</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/committee" class="">Committee</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/notices" class="">Notices</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/gallery" class="">Gallery</a></li>
+                    <li><a href="https://hean-production-ahfot4.laravel.cloud/contact" class="">Contact</a></li>
+                </ul>
+
+                <div class="navbar-actions">
+                    <div class="auth-links">
+                        <a href="https://hean-production-ahfot4.laravel.cloud/admin"
+                            style="color:#0EA5E9;">Dashboard</a>
+                        <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST"
+                            style="display:inline;">
+                            <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                autocomplete="off"> <button type="submit"
+                                style="background:none; border:none; color:#1e293b; font-weight:500; cursor:pointer; font-size:0.9rem; padding:6px 12px;">Logout</button>
+                        </form>
+                    </div>
+
+                    <div class="language-switcher">
+                        <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" class="active">EN</a>
+                        <span class="divider">|</span>
+                        <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" class="">नेपाली</a>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main>
+
+        <!-- ===== HERO BANNER ===== -->
+        <section
+            style="padding-top:120px; background: linear-gradient(135deg, #0EA5E9, #3B82F6); color: white; text-align: center; padding-bottom:60px;">
+            <div class="container">
+                <h1 style="font-size:3.5rem; font-weight:800; margin-bottom:16px;">
+                    Who We Are
+                </h1>
+                <p style="font-size:1.2rem; opacity:0.9; max-width:700px; margin:0 auto;">
+                    Uniting hostel entrepreneurs, students, and communities to elevate standards, foster growth, and
+                    build the future of student housing.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <section style="padding:60px 0; background:#ffffff;">
+            <div class="container">
+
+                <!-- ===== INTRO WITH IMAGE (LEFT) ===== -->
+                <div style="display:flex; flex-wrap:wrap; align-items:center; gap:40px; margin-bottom:60px;">
+                    <div style="flex:1; min-width:300px;">
+                        <img src="https://hean-production-ahfot4.laravel.cloud/images/about.jpg" alt="About HEAN"
+                            style="width:100%; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.08);">
+                    </div>
+                    <div style="flex:1; min-width:300px;">
+                        <span class="section-badge"
+                            style="display:inline-block; background:rgba(14,165,233,0.12); color:#0EA5E9; padding:6px 18px; border-radius:50px; font-size:0.8rem; font-weight:600; margin-bottom:15px;">
+                            About
+                        </span>
+                        <h2 style="font-size:2.5rem; font-weight:700; color:#0f172a; margin-bottom:20px;">
+                            Who We Are
+                        </h2>
+                        <p style="color:#475569; line-height:1.8; font-size:1.05rem;">
+                            The Hostel Entrepreneur Association of Nepal (HEAN) was founded in 2079 with the mission to
+                            unite hostel owners and entrepreneurs throughout Nepal. As a collective, we are dedicated to
+                            improving the standards of hostels, ensuring that they meet the evolving needs of students,
+                            professionals, and travelers alike. Our association provides a platform for collaboration,
+                            support, and shared growth, empowering our members to enhance their businesses and
+                            contribute to the hostel industry’s development. At HEAN, we believe that hostels play a
+                            crucial role in offering affordable and safe accommodations across the country. We work to
+                            establish best practices, ethical guidelines, and high service standards, helping hostel
+                            owners create environments where guests feel comfortable and at home. By fostering a spirit
+                            of innovation and continuous learning, we aim to uplift the entire sector.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+                            <div style="display:flex; align-items:center; gap:10px; font-weight:500; color:#1e293b;">
+                                <span style="color:#0EA5E9; font-size:1.2rem;">✅</span>
+                                ✅ Standardization of Hostels
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; font-weight:500; color:#1e293b;">
+                                <span style="color:#0EA5E9; font-size:1.2rem;">✅</span>
+                                ✅ Student Welfare Programs
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; font-weight:500; color:#1e293b;">
+                                <span style="color:#0EA5E9; font-size:1.2rem;">✅</span>
+                                ✅ Entrepreneur Training
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; font-weight:500; color:#1e293b;">
+                                <span style="color:#0EA5E9; font-size:1.2rem;">✅</span>
+                                ✅ Policy Advocacy
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== VISION & MISSION ===== -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div style="background:#f8fafc; border-radius:20px; padding:35px; border-left:6px solid #0EA5E9;">
+                        <h3 style="font-size:1.8rem; font-weight:700; color:#0f172a; margin-bottom:16px;">
+                            <i class="fas fa-eye" style="color:#0EA5E9; margin-right:10px;"></i> Our Vision
+                        </h3>
+                        <p style="color:#475569; line-height:1.8; font-size:1rem;">
+                            Our vision is to create a unified network of hostels across Nepal that embody the highest
+                            standards of safety, hospitality, and comfort. We envision a future where every hostel under
+                            our association is recognized for offering a home-like environment, ensuring peace of mind
+                            for students, travelers, and long-term residents alike. Our goal is to make Nepal a
+                            preferred destination for travelers, particularly students and budget-conscious visitors, by
+                            providing reliable, affordable, and welcoming hostel accommodations. We strive to elevate
+                            the image of the hostel industry in Nepal, ensuring that hostels are not just places of
+                            shelter but spaces that foster community and cultural exchange. By promoting industry best
+                            practices and advocating for improved standards, our vision is to see every hostel in Nepal
+                            meet international expectations in terms of cleanliness, security, and service.
+                        </p>
+                    </div>
+                    <div style="background:#f8fafc; border-radius:20px; padding:35px; border-left:6px solid #22C55E;">
+                        <h3 style="font-size:1.8rem; font-weight:700; color:#0f172a; margin-bottom:16px;">
+                            <i class="fas fa-bullseye" style="color:#22C55E; margin-right:10px;"></i> Our Mission
+                        </h3>
+                        <p style="color:#475569; line-height:1.8; font-size:1rem;">
+                            The mission of Hostel Association Nepal is to empower hostel owners by providing the tools,
+                            resources, and support they need to excel in the competitive hospitality industry. We are
+                            dedicated to representing the interests of hostel owners, ensuring their voices are heard at
+                            both governmental and institutional levels. Through active advocacy, we aim to influence
+                            policy and create favorable conditions that help hostels thrive in an ever-evolving
+                            marketplace. Our mission is to foster a culture of continuous improvement within the hostel
+                            industry. We provide hostel owners with access to training, workshops, and educational
+                            resources to help them enhance their management skills, implement best practices, and
+                            deliver exceptional service to their guests. We are committed to ensuring that all hostels
+                            under our association uphold the highest standards of cleanliness, security, and customer
+                            satisfaction. In addition, we work to bridge the gap between hostel owners and the wider
+                            tourism and education sectors by establishing partnerships with local universities, tourism
+                            boards, and international travel agencies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===== GOALS ===== -->
+                <div style="margin-bottom:60px;">
+                    <h3 style="font-size:2rem; font-weight:700; color:#0f172a; text-align:center; margin-bottom:30px;">
+                        <i class="fas fa-flag-checkered" style="color:#8B5CF6; margin-right:12px;"></i> Our Goals
+                    </h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:25px;">
+                        <div
+                            style="background:#f8fafc; border-radius:16px; padding:25px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+                            <div style="font-size:2.5rem; margin-bottom:12px;">🤝</div>
+                            <h5 style="font-weight:700; color:#0f172a; margin-bottom:8px;">Unite hostel entrepreneurs
+                                across Nepal, creating a network that supports the sharing of knowledge and resources.
+                            </h5>
+                        </div>
+                        <div
+                            style="background:#f8fafc; border-radius:16px; padding:25px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+                            <div style="font-size:2.5rem; margin-bottom:12px;">🏆</div>
+                            <h5 style="font-weight:700; color:#0f172a; margin-bottom:8px;">Promote the development of
+                                well-managed, high-quality hostels that meet the needs of different demographics.</h5>
+                        </div>
+                        <div
+                            style="background:#f8fafc; border-radius:16px; padding:25px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+                            <div style="font-size:2.5rem; margin-bottom:12px;">📚</div>
+                            <h5 style="font-weight:700; color:#0f172a; margin-bottom:8px;">Provide training, guidance,
+                                and resources to help hostel owners improve their management, marketing, and operational
+                                skills.</h5>
+                        </div>
+                        <div
+                            style="background:#f8fafc; border-radius:16px; padding:25px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+                            <div style="font-size:2.5rem; margin-bottom:12px;">📢</div>
+                            <h5 style="font-weight:700; color:#0f172a; margin-bottom:8px;">Advocate for the interests of
+                                hostel entrepreneurs at both the local and national levels, ensuring their voices are
+                                heard in policies affecting the industry.</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== FOUNDING + STATS + PRESIDENT ===== -->
+                <div
+                    style="background:linear-gradient(135deg, #0f172a, #1e293b); border-radius:20px; padding:40px; color:#f8fafc; text-align:center;">
+                    <h3 style="font-size:1.8rem; font-weight:700; margin-bottom:12px;">
+                        <i class="fas fa-calendar-alt" style="color:#0EA5E9; margin-right:12px;"></i>
+                        Founded in 2079 BS
+                    </h3>
+                    <p style="opacity:0.9; max-width:700px; margin:0 auto 20px; line-height:1.8;">
+                        HEAN was established to unite hostel owners and entrepreneurs throughout Nepal, dedicated to
+                        improving standards and fostering growth in the hostel industry.
+                    </p>
+
+                    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:25px;">
+                        <span
+                            style="background:rgba(255,255,255,0.06); padding:8px 20px; border-radius:50px; font-weight:500;">
+                            👥 Members
+                        </span>
+                        <span
+                            style="background:rgba(255,255,255,0.06); padding:8px 20px; border-radius:50px; font-weight:500;">
+                            🏆 5+ Years of Excellence
+                        </span>
+                        <span
+                            style="background:rgba(255,255,255,0.06); padding:8px 20px; border-radius:50px; font-weight:500;">
+                            🌍 Districts
+                        </span>
+                    </div>
+
+                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:25px;">
+                        <h4 style="color:#0EA5E9; font-weight:600; margin-bottom:8px;">Message from President</h4>
+                        <p style="opacity:0.9; max-width:600px; margin:0 auto; font-style:italic;">
+                            Our leadership team is committed to the growth and sustainability of the hostel industry in
+                            Nepal. Through various initiatives, events, and outreach programs, we aim to make a positive
+                            impact, not just for hostel owners but for the communities they serve. Join us as we strive
+                            to create a stronger, more vibrant hostel community that benefits all.
+                        </p>
+                        <p style="margin-top:12px; font-weight:600;">
+                            — Kiran Sharma <span style="opacity:0.7; font-weight:400;">(President, HEAN)</span>
+                        </p>
+                    </div>
+                </div>
+
+
+                <section class="qr-payment-section" style="padding:50px 0; background:#f8fafc;">
+                    <div class="container">
+                        <div
+                            style="display:grid; grid-template-columns:1fr 1fr; gap:30px; max-width:1000px; margin:0 auto;">
+
+
+                            <div
+                                style="background:#fff; padding:30px; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.06); text-align:center;">
+                                <span
+                                    style="display:inline-block; background:#0EA5E9; color:#fff; padding:6px 18px; border-radius:50px; font-size:0.8rem; font-weight:600; margin-bottom:12px; letter-spacing:0.03em;">
+                                    <i class="fas fa-qrcode me-2"></i> QR Code for Registration
+                                </span>
+                                <h3 style="font-size:1.5rem; font-weight:700; color:#0f172a; margin-bottom:8px;">Scan to
+                                    register your hostel</h3>
+                                <p style="color:#64748b; font-size:0.95rem; max-width:350px; margin:0 auto 20px;">Use
+                                    your mobile camera or QR scanner to register your hostel on HEAN.</p>
+
+                                <div
+                                    style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:20px;">
+
+                                    <div style="background:#f8fafc; padding:15px; border-radius:12px;">
+                                        <img src="https://hean-production-ahfot4.laravel.cloud/images/qrcode.png"
+                                            alt="Register QR" style="width:120px; height:120px; display:block;">
+                                    </div>
+
+                                    <span style="color:#94a3b8; font-weight:600;">OR</span>
+
+
+                                    <a href="https://hean-production-ahfot4.laravel.cloud/register-hostel"
+                                        style="background:#0EA5E9; color:#fff; padding:12px 28px; border-radius:50px; font-weight:600; text-decoration:none; display:inline-block; transition:0.3s; font-size:0.9rem; box-shadow:0 4px 15px rgba(14,165,233,0.3);">
+                                        <i class="fas fa-pen me-2"></i> Register via Form
+                                    </a>
+                                </div>
+
+                                <p style="color:#94a3b8; font-size:0.8rem; margin-top:12px;">
+                                    <i class="fas fa-camera me-1"></i> After scanning, the registration form will open.
+                                </p>
+                            </div>
+
+
+                            <div
+                                style="background:#fff; padding:30px; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.06); text-align:center; border:2px solid rgba(16,185,129,0.15);">
+                                <span
+                                    style="display:inline-block; background:#10B981; color:#fff; padding:6px 18px; border-radius:50px; font-size:0.8rem; font-weight:600; margin-bottom:12px; letter-spacing:0.03em;">
+                                    <i class="fas fa-credit-card me-2"></i> Make a Payment
+                                </span>
+                                <h3 style="font-size:1.5rem; font-weight:700; color:#0f172a; margin-bottom:8px;">Pay
+                                    Your Fees Online</h3>
+                                <p style="color:#64748b; font-size:0.95rem; max-width:350px; margin:0 auto 20px;">Scan
+                                    the QR code or click below to pay registration, renewal, or membership fees directly
+                                    to HEAN bank account.</p>
+
+                                <div
+                                    style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:20px;">
+
+                                    <div style="background:#f8fafc; padding:15px; border-radius:12px;">
+                                        <img src="https://hean-production-ahfot4.laravel.cloud/images/payment-qr.png"
+                                            alt="Payment QR" style="width:120px; height:120px; display:block;">
+                                    </div>
+
+                                    <span style="color:#94a3b8; font-weight:600;">OR</span>
+
+
+                                    <a href="https://hean-production-ahfot4.laravel.cloud/payment"
+                                        style="background:#10B981; color:#fff; padding:12px 28px; border-radius:50px; font-weight:600; text-decoration:none; display:inline-block; transition:0.3s; font-size:0.9rem; box-shadow:0 4px 15px rgba(16,185,129,0.3);">
+                                        <i class="fas fa-arrow-right me-2"></i> Pay Now
+                                    </a>
+                                </div>
+
+                                <p style="color:#94a3b8; font-size:0.8rem; margin-top:12px;">
+                                    <i class="fas fa-shield-alt me-1"></i> Secure payment via bank transfer
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- ===== CTA – बटन परिवर्तन गरियो ===== -->
+                <section
+                    style="padding:60px 0; background:linear-gradient(135deg, #0EA5E9, #10B981); color:#fff; text-align:center;">
+                    <div class="container">
+                        <h2 style="font-size:2.2rem; font-weight:700; margin-bottom:12px;">Ready to Join HEAN?</h2>
+                        <p style="opacity:0.9; max-width:500px; margin:0 auto 25px;">Become a member today and be part
+                            of the largest hostel network in Nepal.</p>
+                        <a href="https://hean-production-ahfot4.laravel.cloud/hostels" class="btn btn-white"
+                            style="background:#fff; color:#0EA5E9; padding:14px 40px; border-radius:50px; font-weight:600; text-decoration:none; display:inline-block; transition:0.3s; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                            <i class="fas fa-hotel me-2"></i> Explore Network
+                        </a>
+                    </div>
+                </section>
+
+                <style>
+                    .section-badge {
+                        display: inline-block;
+                        background: rgba(14, 165, 233, 0.12);
+                        color: #0EA5E9;
+                        padding: 6px 18px;
+                        border-radius: 50px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        margin-bottom: 15px;
+                    }
+
+                    .btn-white:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+                    }
+                </style>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer" style="background:#0f172a; color:#94a3b8; padding:60px 0 30px; margin-top:0;">
+        <div class="container">
+
+            <!-- Footer Grid -->
+            <div class="footer-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Column -->
+                <div>
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                        <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN Logo"
+                            style="height:80px; width:auto; max-width:100%;">
+                        <div style="display:flex; flex-direction:column; line-height:1.2;">
+                            <span style="font-size:12px; font-weight:700; color:#ffffff;">होस्टल व्यवसायी संघ</span>
+                            <span style="font-size:9px; font-weight:600; color:#94a3b8;">Hostel Entrepreneur Association
+                                of Nepal (HEAN)</span>
+                        </div>
+                    </div>
+                    <p style="margin-top:12px; font-size:0.95rem; line-height:1.7;">HEAN is a non-profit organization
+                        working to uplift hostel entrepreneurs and student communities across Nepal.</p>
+                    <!-- Social Icons (पहिले जस्तै) -->
+                    <div style="display:flex; gap:14px; margin-top:20px;">
+                        <a href="https://www.facebook.com/hostelentrepreneurassociationofnepalHEAN" target="_blank"
+                            rel="noopener"
+                            style="color:#94a3b8; background:rgba(255,255,255,0.06); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:0.3s;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="color:#94a3b8; background:rgba(255,255,255,0.06); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:0.3s;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            style="color:#94a3b8; background:rgba(255,255,255,0.06); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:0.3s;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            style="color:#94a3b8; background:rgba(255,255,255,0.06); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:0.3s;"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 style="color:#f8fafc; font-weight:600; margin-bottom:20px;">Quick Links</h4>
+                    <ul style="list-style:none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">Home</a></li>
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud/about"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">About</a></li>
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud/hostels"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">Hostels</a></li>
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud/committee"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">Committee</a></li>
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud/notices"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">Notices</a></li>
+                        <li style="margin-bottom:10px;"><a href="https://hean-production-ahfot4.laravel.cloud/gallery"
+                                style="color:#94a3b8; text-decoration:none; transition:0.2s;">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 style="color:#f8fafc; font-weight:600; margin-bottom:20px;">Contact Us</h4>
+                    <ul style="list-style:none; padding:0;">
+                        <li style="margin-bottom:10px;"><i class="fas fa-map-marker-alt"
+                                style="color:#0EA5E9; width:20px;"></i> Kathmandu-10, Nepal</li>
+                        <li style="margin-bottom:10px;"><i class="fas fa-phone" style="color:#0EA5E9; width:20px;"></i>
+                            01-5921615</li>
+                        <li style="margin-bottom:10px;"><i class="fas fa-envelope"
+                                style="color:#0EA5E9; width:20px;"></i> hostelsangh@gmail.com</li>
+                        <li style="margin-bottom:10px;"><i class="fas fa-clock" style="color:#0EA5E9; width:20px;"></i>
+                            Office Hours: Sun – Fri: 9:00 AM – 5:00 PM</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div>
+                    <h4 style="color:#f8fafc; font-weight:600; margin-bottom:20px;">Newsletter</h4>
+                    <p style="font-size:0.9rem; margin-bottom:15px;">Subscribe to get updates.</p>
+                    <form>
+                        <input type="email" placeholder="Your email"
+                            style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; margin-bottom:10px;">
+                        <button type="submit"
+                            style="background:#0EA5E9; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:600; cursor:pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ====== FOOTER BOTTOM ROW ====== -->
+            <!-- Copyright (left) | Technology Partner (right, white) -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2026 HEAN. All rights reserved. &nbsp;|&nbsp;
+                    <a href="#">Privacy Policy</a>
+                    &nbsp;|&nbsp;
+                    <a href="#">Terms of Service</a>
+                </div>
+
+                <div class="tech-partner">
+                    Technology Partner: <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                        🏨 HostelHub Nepal
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navbarMenu');
+            if (menu) {
+                menu.classList.toggle('active');
+            }
+        }
+    </script>
+
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(function () {
+                    preloader.classList.add('hide');
+                }, 600);
+            }
+        });
+
+        // Navbar toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('navbarToggle');
+            const menu = document.getElementById('navbarMenu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', function () {
+                    menu.classList.toggle('active');
+                });
+                document.addEventListener('click', function (e) {
+                    if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Scroll progress
+        window.addEventListener('scroll', function () {
+            const progress = document.getElementById('scroll-progress');
+            if (progress) {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = (scrollTop / docHeight) * 100;
+                progress.style.width = percent + '%';
+            }
+        });
+    </script>
+    <script>
+        (function () {
+            function setNavbarHeight() {
+                const navbar = document.querySelector('.navbar');
+                if (!navbar) return;
+                const height = navbar.offsetHeight;
+                document.documentElement.style.setProperty('--navbar-height', height + 'px');
+            }
+
+            document.addEventListener('DOMContentLoaded', setNavbarHeight);
+            window.addEventListener('resize', setNavbarHeight);
+        })();
+    </script>
+
+    <div id="lightbox"
+        style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;">
+        <img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div>
+    <div class="glasp-extension-toaster"
+        style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
+        <template shadowrootmode="open">
+            <div class="glasp-extension" style="font-family: inherit;"></div>
+        </template></div>
+</body>
+<div class="glasp-extension"
+    style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
+    <div class="glasp-extension" style="font-family: inherit;"></div>
+</div>
+
+</html>

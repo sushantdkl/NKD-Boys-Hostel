@@ -1,0 +1,2222 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>Inspections - HEAN Admin</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <link rel="modulepreload" as="script"
+        href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js">
+    <link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>
+    <style>
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .pagination-wrapper .pagination {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link {
+            padding: 8px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            color: #1e293b;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link:hover {
+            background: #f1f5f9;
+            border-color: #8B5CF6;
+        }
+
+        .pagination-wrapper .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            border-color: #8B5CF6;
+            color: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item.disabled .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+
+    <style>
+        .dashboard-body {
+            cursor: default !important;
+        }
+
+        .sidebar .nav-item {
+            cursor: pointer;
+        }
+
+        .sidebar .logout button {
+            cursor: pointer;
+        }
+
+        .dashboard-body * {
+            cursor: default;
+        }
+
+        .sidebar .nav-item,
+        .sidebar .logout button,
+        .btn,
+        a,
+        button,
+        [role="button"] {
+            cursor: pointer !important;
+        }
+
+        .admin-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6a7e96;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .admin-footer a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .admin-footer a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+
+        .admin-footer .brand-line {
+            margin-bottom: 4px;
+            color: #0b2b4a;
+            font-weight: 600;
+        }
+
+        .admin-footer .brand-line span {
+            color: #6a7e96;
+            font-weight: 300;
+        }
+
+        .admin-footer .tech-partner {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+
+        .admin-footer .tech-partner a {
+            color: #1e5f8e;
+            font-weight: 600;
+        }
+
+        .admin-footer .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+
+        .admin-footer .copyright {
+            font-size: 0.65rem;
+            color: #b0c4d8;
+            margin-top: 8px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .language-switcher a:hover {
+            opacity: 0.7;
+        }
+
+        .language-switcher .divider {
+            color: #e2e8f0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN" style="height:40px;">
+            </div>
+            <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+
+        <nav id="sidebarNav">
+            <!-- ===== MAIN ===== -->
+            <div class="nav-section">Main</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin" class="nav-item ">
+                <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+            </a>
+
+            <!-- ===== ADMIN-ONLY LINKS ===== -->
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" class="nav-item ">
+                <i class="fas fa-file-alt"></i> <span>Applications</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections" class="nav-item active">
+                <i class="fas fa-clipboard-list"></i> <span>Inspections</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/hostels" class="nav-item ">
+                <i class="fas fa-hotel"></i> <span>Hostels</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee" class="nav-item ">
+                <i class="fas fa-users"></i> <span>Committee</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/notices" class="nav-item ">
+                <i class="fas fa-bullhorn"></i> <span>Notices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/gallery" class="nav-item ">
+                <i class="fas fa-images"></i> <span>Gallery</span>
+            </a>
+
+            <!-- ===== FINANCE ===== -->
+            <div class="nav-section">Finance</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices" class="nav-item ">
+                <i class="fas fa-file-invoice"></i> <span>Invoices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" class="nav-item ">
+                <i class="fas fa-credit-card"></i> <span>Payments</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/receipts" class="nav-item ">
+                <i class="fas fa-receipt"></i> <span>Receipts</span>
+            </a>
+
+            <!-- ===== SETTINGS ===== -->
+            <div class="nav-section">Settings</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/settings" class="nav-item ">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/reports" class="nav-item ">
+                <i class="fas fa-chart-bar"></i> <span>Reports</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" class="nav-item ">
+                <i class="fas fa-certificate"></i> <span>Certificate</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/cms" class="nav-item ">
+                <i class="fas fa-edit"></i> <span>CMS</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/import" class="nav-item ">
+                <i class="fas fa-upload"></i> <span>Import</span>
+            </a>
+
+            <!-- ===== OWNER-ONLY LINKS ===== -->
+
+            <!-- ===== LOGOUT ===== -->
+            <div class="logout">
+                <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST">
+                    <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                        autocomplete="off"> <button type="submit" class="nav-item"
+                        style="background:none; border:none; width:100%; text-align:left; cursor:pointer !important;">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main-content" style="overflow-x: hidden; width: 100%;">
+        <div class="topbar">
+            <div class="left-section">
+                <div class="page-title">Inspections - HEAN Admin</div>
+
+
+                <a href="https://hean-production-ahfot4.laravel.cloud" class="btn btn-home"
+                    style="background:#0EA5E9; color:#fff; padding:4px 14px; border-radius:50px; text-decoration:none; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition:0.3s; margin-left:12px;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <div class="language-switcher">
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" style="color:#64748b;">EN</a>
+                    <span class="divider">|</span>
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" style="color:#64748b;">नेपाली</a>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="name">HEAN Admin</span>
+                <span class="role">Admin</span>
+                <div class="avatar">H</div>
+            </div>
+        </div>
+
+
+
+        <div
+            style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px; margin-bottom:24px;">
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#8B5CF6; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-clipboard-list" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Total Inspections</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#22C55E; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-check-circle" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Completed</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#F59E0B; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-clock" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Scheduled</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#EF4444; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-times-circle" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Cancelled</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; margin-bottom:24px;">
+            <form action="https://hean-production-ahfot4.laravel.cloud/admin/inspections" method="GET" id="filterForm">
+
+                <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;">
+
+                    <div style="flex:2; min-width:200px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">
+                            <i class="fas fa-search" style="color:#8B5CF6;"></i> Search
+                        </label>
+                        <input type="text" name="search" value="" placeholder="होस्टल नाम, दर्ता नम्बर, निरीक्षक नाम..."
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; transition:0.2s;">
+                    </div>
+
+
+                    <div style="flex:1; min-width:140px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Status</label>
+                        <select name="status"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="">All</option>
+                            <option value="completed">Completed</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+
+                    <div style="flex:1; min-width:130px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Sort
+                            by:</label>
+                        <select name="sort"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="latest">Latest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="status_asc">Status (A-Z)</option>
+                            <option value="status_desc">Status (Z-A)</option>
+                            <option value="date_asc">Date (Oldest First)</option>
+                        </select>
+                    </div>
+
+
+                    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                        <button type="submit"
+                            style="background:linear-gradient(135deg, #8B5CF6, #6366F1); color:#fff; border:none; padding:10px 22px; border-radius:50px; font-weight:600; font-size:0.85rem; cursor:pointer; transition:0.3s; box-shadow:0 4px 15px rgba(139,92,246,0.25);">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                        <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections"
+                            style="background:#e2e8f0; color:#1e293b; padding:10px 18px; border-radius:50px; text-decoration:none; font-weight:500; font-size:0.85rem; transition:0.2s; display:inline-flex; align-items:center; gap:6px;">
+                            <i class="fas fa-undo"></i> Reset
+                        </a>
+                        <button type="button"
+                            onclick="document.getElementById('advancedFilters').style.display = (document.getElementById('advancedFilters').style.display === 'none' ? 'block' : 'none')"
+                            style="background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; padding:10px 16px; border-radius:50px; font-weight:500; font-size:0.85rem; cursor:pointer; transition:0.2s;">
+                            <i class="fas fa-sliders-h"></i> Advanced
+                        </button>
+                    </div>
+                </div>
+
+
+                <div id="advancedFilters"
+                    style="display: none; margin-top:16px; padding-top:16px; border-top:1px solid #e2e8f0;">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:12px;">
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Inspector</label>
+                            <select name="inspector_id"
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Registration</label>
+                            <select name="registration_id"
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                                <option value="">All</option>
+                                <option value="517">
+                                    HEAN-2026-000517 - aashreya girls hostel
+                                </option>
+                                <option value="518">
+                                    HEAN-2026-000518 - aplws boys hostel
+                                </option>
+                                <option value="2">
+                                    HEAN-2026-000002 - Durbar Boys Hostel ( Sold )
+                                </option>
+                                <option value="184">
+                                    HEAN-2026-000184 - Florence Modern Girls Hostel
+                                </option>
+                                <option value="533">
+                                    HEAN-2026-000533 - GNG boys hostel
+                                </option>
+                                <option value="372">
+                                    HEAN-2026-000372 - Jalpa Girls Hostel
+                                </option>
+                                <option value="532">
+                                    HEAN-2026-000532 - kathmandu shiva sakti boys
+                                </option>
+                                <option value="270">
+                                    HEAN-2026-000270 - New A.B.C Girls Hostel
+                                </option>
+                                <option value="311">
+                                    HEAN-2026-000311 - om greentara boys hostel
+                                </option>
+                                <option value="21">
+                                    HEAN-2026-000021 - Parential Boys hostel
+                                </option>
+                                <option value="524">
+                                    HEAN-2026-000524 - RN New Dreams girls hostel
+                                </option>
+                                <option value="529">
+                                    HEAN-2026-000529 - Rudra Boys Hostel
+                                </option>
+                                <option value="519">
+                                    HEAN-2026-000519 - sainur girls hostel
+                                </option>
+                                <option value="1">
+                                    HEAN-2026-000001 - santoshi girls hostel
+                                </option>
+                                <option value="534">
+                                    HEAN-2026-000534 - SAPPHIRE GIRLS HOSTEL
+                                </option>
+                                <option value="269">
+                                    HEAN-2026-000269 - shirya girl hostel
+                                </option>
+                                <option value="520">
+                                    HEAN-2026-000520 - shree grahau kalika boys hostel
+                                </option>
+                                <option value="548">
+                                    - Suchana Hostel
+                                </option>
+                                <option value="547">
+                                    - Suchana Hostel
+                                </option>
+                                <option value="549">
+                                    - Suchana Hostel
+                                </option>
+                                <option value="550">
+                                    HEAN-2026-000546 - Suchana Hostel
+                                </option>
+                                <option value="551">
+                                    HEAN-2026-000547 - TEst
+                                </option>
+                                <option value="530">
+                                    HEAN-2026-000530 - the comfort cove girls
+                                </option>
+                                <option value="531">
+                                    HEAN-2026-000531 - the hangout boys hostel
+                                </option>
+                                <option value="55">
+                                    HEAN-2026-000055 - Ujjyalo Girls Hostel
+                                </option>
+                                <option value="453">
+                                    HEAN-2026-000453 - Umapati Boys Hostel
+                                </option>
+                                <option value="420">
+                                    HEAN-2026-000420 - अग्रजिता गर्ल्स होस्टल
+                                </option>
+                                <option value="75">
+                                    HEAN-2026-000075 - अदिती गर्ल्स होस्टेल
+                                </option>
+                                <option value="443">
+                                    HEAN-2026-000443 - अनिता गर्ल्स होस्टल
+                                </option>
+                                <option value="433">
+                                    HEAN-2026-000433 - अनुग्रह गर्ल्स होस्टल
+                                </option>
+                                <option value="299">
+                                    HEAN-2026-000299 - अनुज्ञा गर्ल्स होस्टल
+                                </option>
+                                <option value="440">
+                                    HEAN-2026-000440 - अनुशा गर्ल्स होस्टल
+                                </option>
+                                <option value="45">
+                                    HEAN-2026-000045 - अनुश्री गर्ल्स होस्टेल
+                                </option>
+                                <option value="163">
+                                    HEAN-2026-000163 - अन्नपुर्ण गर्ल्स होस्टेल
+                                </option>
+                                <option value="104">
+                                    HEAN-2026-000104 - अन्नपुर्ण ब्वाइज होस्टेल
+                                </option>
+                                <option value="203">
+                                    HEAN-2026-000203 - अपेक्षा गर्ल्स होस्टेल
+                                </option>
+                                <option value="460">
+                                    HEAN-2026-000460 - अरुण व्वाईज होस्टल
+                                </option>
+                                <option value="365">
+                                    HEAN-2026-000365 - अरुणा गर्ल्स होस्टेल
+                                </option>
+                                <option value="415">
+                                    HEAN-2026-000415 - अर्नम व्वाईज होस्टल
+                                </option>
+                                <option value="232">
+                                    HEAN-2026-000232 - अर्ल्ट ब्वाइज होस्टेल
+                                </option>
+                                <option value="434">
+                                    HEAN-2026-000434 - अर्वन ओसिस व्वाईज होस्टल
+                                </option>
+                                <option value="328">
+                                    HEAN-2026-000328 - आइ भि वाइ रेसिडेन्स गर्ल्स होस्टल
+                                </option>
+                                <option value="341">
+                                    HEAN-2026-000341 - आइडियल छात्रावास
+                                </option>
+                                <option value="123">
+                                    HEAN-2026-000123 - आइन्सटाईन ब्वाइज होस्टेल
+                                </option>
+                                <option value="403">
+                                    HEAN-2026-000403 - आनन्द व्वाईज हृस्टल
+                                </option>
+                                <option value="417">
+                                    HEAN-2026-000417 - आयान व्वाईज व्वाईज होस्टल
+                                </option>
+                                <option value="364">
+                                    HEAN-2026-000364 - आयुष ब्वाइज होस्टेल
+                                </option>
+                                <option value="99">
+                                    HEAN-2026-000099 - आयुषा गर्ल्स होस्टेल
+                                </option>
+                                <option value="66">
+                                    HEAN-2026-000066 - आर आर ब्वाइज होस्टेल
+                                </option>
+                                <option value="245">
+                                    HEAN-2026-000245 - आर एंड आर मिथिलांचल ब्वाइज होस्टेल
+                                </option>
+                                <option value="475">
+                                    HEAN-2026-000475 - आरभ्या गर्ल्स होस्टल
+                                </option>
+                                <option value="356">
+                                    HEAN-2026-000356 - आरम्भ ब्वाइज होस्टेल
+                                </option>
+                                <option value="274">
+                                    HEAN-2026-000274 - आरव ब्वाइज होस्टेल
+                                </option>
+                                <option value="80">
+                                    HEAN-2026-000080 - आर्दश गर्ल्स होस्टेल
+                                </option>
+                                <option value="46">
+                                    HEAN-2026-000046 - आर्या गर्ल्स होस्टेल
+                                </option>
+                                <option value="4">
+                                    HEAN-2026-000004 - आवाश ब्वाइज होस्टेल
+                                </option>
+                                <option value="133">
+                                    HEAN-2026-000133 - आहा ब्वाइज होस्टेल
+                                </option>
+                                <option value="487">
+                                    HEAN-2026-000487 - आहाना लुम्बिनी गर्ल्स होस्टल
+                                </option>
+                                <option value="421">
+                                    HEAN-2026-000421 - इनद्रवती छात्रावास प्रा लि
+                                </option>
+                                <option value="62">
+                                    HEAN-2026-000062 - इन्नोभेटिब ब्वाइज होस्टेल
+                                </option>
+                                <option value="300">
+                                    HEAN-2026-000300 - इन्स गर्ल्स होस्टेल
+                                </option>
+                                <option value="164">
+                                    HEAN-2026-000164 - इलाइट गर्ल्स होस्टेल
+                                </option>
+                                <option value="7">
+                                    HEAN-2026-000007 - इलामि गर्ल्स होस्टेल
+                                </option>
+                                <option value="426">
+                                    HEAN-2026-000426 - इशानी गर्ल्स होस्टल
+                                </option>
+                                <option value="69">
+                                    HEAN-2026-000069 - उग्रतारा ब्वाइज होस्टेल
+                                </option>
+                                <option value="226">
+                                    HEAN-2026-000226 - उज्यालो ब्वाइज होस्टेल
+                                </option>
+                                <option value="96">
+                                    HEAN-2026-000096 - उज्यालोसिजा गर्ल्स होस्टेल
+                                </option>
+                                <option value="485">
+                                    HEAN-2026-000485 - उदयदेव र्व्वाईज हास्टल
+                                </option>
+                                <option value="221">
+                                    HEAN-2026-000221 - ए पि गल्स होस्टेल
+                                </option>
+                                <option value="266">
+                                    HEAN-2026-000266 - ए पि ब्वाइज होस्टेल
+                                </option>
+                                <option value="31">
+                                    HEAN-2026-000031 - ए लेभल गर्ल्स होस्टल
+                                </option>
+                                <option value="265">
+                                    HEAN-2026-000265 - ए वान एम गर्ल्स होस्टेल
+                                </option>
+                                <option value="305">
+                                    HEAN-2026-000305 - ए वि स गर्ल्स होस्टेल
+                                </option>
+                                <option value="82">
+                                    HEAN-2026-000082 - ए सी इ ब्वाइज होस्टेल
+                                </option>
+                                <option value="115">
+                                    HEAN-2026-000115 - एकता गर्ल्स होस्टेल
+                                </option>
+                                <option value="179">
+                                    HEAN-2026-000179 - एडिज व्वाइज होस्टल
+                                </option>
+                                <option value="294">
+                                    HEAN-2026-000294 - एन के डी ब्वाइज होस्टेल
+                                </option>
+                                <option value="429">
+                                    HEAN-2026-000429 - एभर ग्रिन व्वाईज होस्टल
+                                </option>
+                                <option value="107">
+                                    HEAN-2026-000107 - एभर ग्रीन गर्ल्स होस्टेल
+                                </option>
+                                <option value="88">
+                                    HEAN-2026-000088 - एम पि ए ब्वाइज होस्टेल
+                                </option>
+                                <option value="447">
+                                    HEAN-2026-000447 - एमाजोन व्वाइज होस्टल
+                                </option>
+                                <option value="6">
+                                    HEAN-2026-000006 - एस एस गर्ल्स होस्टेल
+                                </option>
+                                <option value="332">
+                                    HEAN-2026-000332 - ओएसिस गर्ल्स होस्टल
+                                </option>
+                                <option value="190">
+                                    HEAN-2026-000190 - ओम काठमांडू ब्वाइज होस्टेल
+                                </option>
+                                <option value="310">
+                                    HEAN-2026-000310 - ओम केदारेश्वर ब्वाइज होस्टेल
+                                </option>
+                                <option value="189">
+                                    HEAN-2026-000189 - ओम गर्ल्स होस्टेल
+                                </option>
+                                <option value="19">
+                                    HEAN-2026-000019 - ओम ब्वाइज होस्टेल
+                                </option>
+                                <option value="237">
+                                    HEAN-2026-000237 - ओम ब्वाइज होस्टेल
+                                </option>
+                                <option value="438">
+                                    HEAN-2026-000438 - ओम महालक्ष्मी व्वाईज होस्टल
+                                </option>
+                                <option value="488">
+                                    HEAN-2026-000488 - ओम श्री गर्ल्स होस्टल
+                                </option>
+                                <option value="323">
+                                    HEAN-2026-000323 - ओसियन गर्ल्स होस्टेल
+                                </option>
+                                <option value="345">
+                                    HEAN-2026-000345 - ओसियन ब्वाइज होस्टेल
+                                </option>
+                                <option value="204">
+                                    HEAN-2026-000204 - कन्काई ब्वाइज होस्टेल
+                                </option>
+                                <option value="254">
+                                    HEAN-2026-000254 - कन्चन गर्ल्स होस्टेल
+                                </option>
+                                <option value="401">
+                                    HEAN-2026-000401 - कन्चनजंघा व्वाईज हाृस्टल
+                                </option>
+                                <option value="40">
+                                    HEAN-2026-000040 - कन्पिफ्डेन्स ब्वाइज होस्टेल
+                                </option>
+                                <option value="148">
+                                    HEAN-2026-000148 - कन्या छात्रा वास
+                                </option>
+                                <option value="100">
+                                    HEAN-2026-000100 - कमला लेडीज होस्टेल
+                                </option>
+                                <option value="287">
+                                    HEAN-2026-000287 - कम्पर्फ्ट जोन ब्वाइज होस्टेल
+                                </option>
+                                <option value="477">
+                                    HEAN-2026-000477 - कस्मीक गर्ल्स होस्टल
+                                </option>
+                                <option value="304">
+                                    HEAN-2026-000304 - काक्बेिहार ब्वाइज होस्टेल
+                                </option>
+                                <option value="335">
+                                    HEAN-2026-000335 - काठमांडू कोजी स्टे
+                                </option>
+                                <option value="35">
+                                    HEAN-2026-000035 - काठमांडू गर्ल्स होस्टेल
+                                </option>
+                                <option value="394">
+                                    HEAN-2026-000394 - काठमाडौ होम व्वाईज होस्टल
+                                </option>
+                                <option value="387">
+                                    HEAN-2026-000387 - काठमाण्डौ सेन्ट्रर गर्ल्स
+                                </option>
+                                <option value="484">
+                                    HEAN-2026-000484 - काब्या गर्ल्स होस्टल
+                                </option>
+                                <option value="483">
+                                    HEAN-2026-000483 - कामख्या गर्ल्स होस्टल
+                                </option>
+                                <option value="478">
+                                    HEAN-2026-000478 - कामना गर्ल्स होस्टल
+                                </option>
+                                <option value="250">
+                                    HEAN-2026-000250 - कामना ब्वाइज होस्टेल
+                                </option>
+                                <option value="413">
+                                    HEAN-2026-000413 - कामन्ता गर्ल्स होस्टल
+                                </option>
+                                <option value="286">
+                                    HEAN-2026-000286 - कामाख्या ब्वाइज होस्टेल
+                                </option>
+                                <option value="32">
+                                    HEAN-2026-000032 - कार्की ब्वाइज होस्टेल
+                                </option>
+                                <option value="185">
+                                    HEAN-2026-000185 - कालिगण्डकी गर्ल्स होस्टेल
+                                </option>
+                                <option value="212">
+                                    HEAN-2026-000212 - कासा होम प्रिमियम ब्वाइज होस्टेल
+                                </option>
+                                <option value="223">
+                                    HEAN-2026-000223 - कास्या गर्ल्स होस्टेल
+                                </option>
+                                <option value="112">
+                                    HEAN-2026-000112 - किंग ब्वाइज होस्टेल
+                                </option>
+                                <option value="120">
+                                    HEAN-2026-000120 - कुन्ता देवी गर्ल्स होस्टेल
+                                </option>
+                                <option value="437">
+                                    HEAN-2026-000437 - कुमुदिनी गर्ल्स होम
+                                </option>
+                                <option value="199">
+                                    HEAN-2026-000199 - कृष्ण गर्ल्स होस्टेल
+                                </option>
+                                <option value="152">
+                                    HEAN-2026-000152 - कैलाश ब्वाइज होस्टेल
+                                </option>
+                                <option value="25">
+                                    HEAN-2026-000025 - कोजी गर्ल्स होस्टेल
+                                </option>
+                                <option value="22">
+                                    HEAN-2026-000022 - कोजी होम गर्ल्स होस्टेल
+                                </option>
+                                <option value="480">
+                                    HEAN-2026-000480 - कोजी होम्स व्वाईज होस्टल
+                                </option>
+                                <option value="459">
+                                    HEAN-2026-000459 - क्यापिटल गर्ल्स होम प्रा।लि
+                                </option>
+                                <option value="58">
+                                    HEAN-2026-000058 - क्यापिटल ब्वाइज होस्टेल
+                                </option>
+                                <option value="116">
+                                    HEAN-2026-000116 - क्यापिटल ब्वाइज होस्टेल
+                                </option>
+                                <option value="206">
+                                    HEAN-2026-000206 - क्लासिक ब्वाइज होस्टेल
+                                </option>
+                                <option value="288">
+                                    HEAN-2026-000288 - क्लासिकल गर्ल्स होस्टेल
+                                </option>
+                                <option value="349">
+                                    HEAN-2026-000349 - क्लोम्वस ब्वाइज होस्टेल
+                                </option>
+                                <option value="16">
+                                    HEAN-2026-000016 - क्वालिटी ब्वाइज होस्टेल
+                                </option>
+                                <option value="224">
+                                    HEAN-2026-000224 - खुसि एन खुसि गर्ल्स होस्टेल
+                                </option>
+                                <option value="301">
+                                    HEAN-2026-000301 - ख्वापा होस्टेल
+                                </option>
+                                <option value="336">
+                                    HEAN-2026-000336 - गंगा ब्वाइज होस्टेल
+                                </option>
+                                <option value="213">
+                                    HEAN-2026-000213 - गण्डकी गर्ल्स होस्टेल
+                                </option>
+                                <option value="382">
+                                    HEAN-2026-000382 - गन्तब्य गर्ल्स होस्टेल
+                                </option>
+                                <option value="210">
+                                    HEAN-2026-000210 - गरुण ब्वाइज होस्टेल
+                                </option>
+                                <option value="357">
+                                    HEAN-2026-000357 - गाउले ब्वाइज होस्टेल
+                                </option>
+                                <option value="376">
+                                    HEAN-2026-000376 - गायत्री गर्ल्स होस्टल
+                                </option>
+                                <option value="275">
+                                    HEAN-2026-000275 - गार्गि गर्ल्स होस्टल
+                                </option>
+                                <option value="144">
+                                    HEAN-2026-000144 - गाविटी ब्वाइज होस्टेल
+                                </option>
+                                <option value="155">
+                                    HEAN-2026-000155 - गुड केयर गर्ल्स होस्टेल
+                                </option>
+                                <option value="280">
+                                    HEAN-2026-000280 - गृहम ब्वाइज होस्टेल
+                                </option>
+                                <option value="374">
+                                    HEAN-2026-000374 - गृहम व्वाईज होस्टल
+                                </option>
+                                <option value="465">
+                                    HEAN-2026-000465 - गौतम व्वाईज होस्टल
+                                </option>
+                                <option value="168">
+                                    HEAN-2026-000168 - गौरिशङखर ब्वाइज होस्टेल
+                                </option>
+                                <option value="347">
+                                    HEAN-2026-000347 - ग्राविटी ब्वाइज होस्टेल
+                                </option>
+                                <option value="165">
+                                    HEAN-2026-000165 - ग्रीन क्यासल गर्ल्स होस्टल
+                                </option>
+                                <option value="222">
+                                    HEAN-2026-000222 - ग्रीन सिटी ब्वाइज होस्टेल
+                                </option>
+                                <option value="243">
+                                    HEAN-2026-000243 - ग्रेटवाल ब्वाइज होस्टेल
+                                </option>
+                                <option value="227">
+                                    HEAN-2026-000227 - ग्रेस गर्ल्स होस्टेल
+                                </option>
+                                <option value="303">
+                                    HEAN-2026-000303 - घुम्ती ब्वाइज होस्टेल
+                                </option>
+                                <option value="473">
+                                    HEAN-2026-000473 - चिमजोङ्ग व्वाइैज होस्टल
+                                </option>
+                                <option value="41">
+                                    HEAN-2026-000041 - चुरियामाइ ब्वाइज होस्टेल
+                                </option>
+                                <option value="124">
+                                    HEAN-2026-000124 - जय बागेश्वरी गर्ल्स होस्टेल
+                                </option>
+                                <option value="454">
+                                    HEAN-2026-000454 - जय श्री राम व्वाईज होस्टल
+                                </option>
+                                <option value="95">
+                                    HEAN-2026-000095 - जलजला ब्वाइज होस्टेल
+                                </option>
+                                <option value="450">
+                                    HEAN-2026-000450 - जि।वाई छात्रावास व्वाईज होस्टल
+                                </option>
+                                <option value="93">
+                                    HEAN-2026-000093 - जुपिटर ब्वाइज होस्टेल
+                                </option>
+                                <option value="340">
+                                    HEAN-2026-000340 - जे एन रोयल गर्ल्स होस्टेल
+                                </option>
+                                <option value="284">
+                                    HEAN-2026-000284 - जेनेरेशन व्वाईज होस्टल
+                                </option>
+                                <option value="327">
+                                    HEAN-2026-000327 - डाइमन्ड पिस ब्वाइज होस्टेल
+                                </option>
+                                <option value="153">
+                                    HEAN-2026-000153 - डालीमा गर्ल्स होस्टेल
+                                </option>
+                                <option value="425">
+                                    HEAN-2026-000425 - डि आर व्वाईज होस्टल
+                                </option>
+                                <option value="468">
+                                    HEAN-2026-000468 - डिभाईन गर्ल्स होस्टल छात्रावास
+                                </option>
+                                <option value="449">
+                                    HEAN-2026-000449 - डिभाईन व्वार्ईज होस्टल
+                                </option>
+                                <option value="309">
+                                    HEAN-2026-000309 - डिलाइट गर्ल्स होस्टेल
+                                </option>
+                                <option value="33">
+                                    HEAN-2026-000033 - डी एन डी गर्ल्स होस्टेल
+                                </option>
+                                <option value="321">
+                                    HEAN-2026-000321 - डेपफेडिल ब्वाइज होस्टेल
+                                </option>
+                                <option value="247">
+                                    HEAN-2026-000247 - डेस्टिनि गर्ल्स होस्टेल
+                                </option>
+                                <option value="171">
+                                    HEAN-2026-000171 - ड्रिम्स गर्ल्स होस्टेल
+                                </option>
+                                <option value="166">
+                                    HEAN-2026-000166 - णवौ िलअक्षअगर्ल्स होस्टेल
+                                </option>
+                                <option value="225">
+                                    HEAN-2026-000225 - तण्दुकर ब्वाइज होस्टेल
+                                </option>
+                                <option value="74">
+                                    HEAN-2026-000074 - तराई ब्वाइज होस्टेल
+                                </option>
+                                <option value="219">
+                                    HEAN-2026-000219 - ताराकुञ्ज गर्ल्स होस्टेल
+                                </option>
+                                <option value="234">
+                                    HEAN-2026-000234 - तिरुपति गर्ल्स होस्टेल
+                                </option>
+                                <option value="384">
+                                    HEAN-2026-000384 - तिलिचो व्वाईज होस्टल
+                                </option>
+                                <option value="469">
+                                    HEAN-2026-000469 - तुपफन व्वाईज होस्टल
+                                </option>
+                                <option value="493">
+                                    HEAN-2026-000493 - तुलशी गर्ल्स होस्टल
+                                </option>
+                                <option value="431">
+                                    HEAN-2026-000431 - तेजस व्वाईज होस्टल
+                                </option>
+                                <option value="350">
+                                    HEAN-2026-000350 - तेजस्वी गर्ल्स होम प्रा लि
+                                </option>
+                                <option value="435">
+                                    HEAN-2026-000435 - तोषित व्वाईज होस्टल
+                                </option>
+                                <option value="502">
+                                    HEAN-2026-000502 - त्जभ ब्ललबउगचलब दयथक जयकतभ
+                                </option>
+                                <option value="312">
+                                    HEAN-2026-000312 - त्रिदेव ब्वाइज होस्टेल
+                                </option>
+                                <option value="84">
+                                    HEAN-2026-000084 - त्रिपुरा गर्ल्स होस्टेल
+                                </option>
+                                <option value="314">
+                                    HEAN-2026-000314 - त्रिफ्पि होमे गर्ल्स होस्टेल
+                                </option>
+                                <option value="291">
+                                    HEAN-2026-000291 - त्रिमूर्ति ब्वाइज होस्टेल
+                                </option>
+                                <option value="494">
+                                    HEAN-2026-000494 - त्रिशक्ति गर्ल्स होस्टल
+                                </option>
+                                <option value="281">
+                                    HEAN-2026-000281 - थकाली गर्ल्स होस्टेल
+                                </option>
+                                <option value="145">
+                                    HEAN-2026-000145 - थड आइज ब्वाइज होस्टेल
+                                </option>
+                                <option value="50">
+                                    HEAN-2026-000050 - थ्री ब्रोदर्स ब्वाइज होस्टेल
+                                </option>
+                                <option value="466">
+                                    HEAN-2026-000466 - द अउरा गर्ल्स होस्टल
+                                </option>
+                                <option value="337">
+                                    HEAN-2026-000337 - द और गर्ल्स होस्टेल
+                                </option>
+                                <option value="125">
+                                    HEAN-2026-000125 - द क्यापिटल ब्वाइज होस्टेल
+                                </option>
+                                <option value="464">
+                                    HEAN-2026-000464 - द थ्रि आर गर्ल्स होस्टल
+                                </option>
+                                <option value="54">
+                                    HEAN-2026-000054 - द न्यु अदिती गर्ल्स होस्टेल
+                                </option>
+                                <option value="432">
+                                    HEAN-2026-000432 - द ब्रदर्श व्वाईज होस्टल
+                                </option>
+                                <option value="110">
+                                    HEAN-2026-000110 - द सूर्य किरण ब्वाइज होस्टेल
+                                </option>
+                                <option value="49">
+                                    HEAN-2026-000049 - द सेकेन्ड होम होस्टेल
+                                </option>
+                                <option value="151">
+                                    HEAN-2026-000151 - द हाम्रो ब्वाइज होस्टेल
+                                </option>
+                                <option value="458">
+                                    HEAN-2026-000458 - दर्पन व्वाईज हाृस्टल
+                                </option>
+                                <option value="105">
+                                    HEAN-2026-000105 - दर्शन ब्वाइज होस्टेल
+                                </option>
+                                <option value="448">
+                                    HEAN-2026-000448 - दास्तान व्वाईज होस्टल
+                                </option>
+                                <option value="23">
+                                    HEAN-2026-000023 - दिपांशी होस्टेल
+                                </option>
+                                <option value="159">
+                                    HEAN-2026-000159 - दिप्सिखर ब्वाइज होस्टेल
+                                </option>
+                                <option value="136">
+                                    HEAN-2026-000136 - दिप्सिखा गर्ल्स होस्टेल
+                                </option>
+                                <option value="106">
+                                    HEAN-2026-000106 - दिब्य दुर्गा ब्वाइज होस्टेल
+                                </option>
+                                <option value="308">
+                                    HEAN-2026-000308 - दियालो गर्ल्स होस्टेल
+                                </option>
+                                <option value="428">
+                                    HEAN-2026-000428 - दिर्घायु व्वाईज होस्टल
+                                </option>
+                                <option value="371">
+                                    HEAN-2026-000371 - दीप्सिखा गर्ल्स होस्टल
+                                </option>
+                                <option value="361">
+                                    HEAN-2026-000361 - दुर्गा लक्ष्मी गर्ल्स होमे
+                                </option>
+                                <option value="381">
+                                    HEAN-2026-000381 - दुर्गा लक्ष्मी गर्ल्स होस्टल
+                                </option>
+                                <option value="523">
+                                    HEAN-2026-000523 - देउती ब्वाइज होस्टल
+                                </option>
+                                <option value="452">
+                                    HEAN-2026-000452 - देवी पाथिभरा गर्ल्स होस्टल
+                                </option>
+                                <option value="486">
+                                    HEAN-2026-000486 - द्दण्(द्दण् व्वाईज होस्टल
+                                </option>
+                                <option value="404">
+                                    HEAN-2026-000404 - नभनिका गर्ल्स होस्टल
+                                </option>
+                                <option value="325">
+                                    HEAN-2026-000325 - नमन ब्वाइज होस्टेल
+                                </option>
+                                <option value="334">
+                                    HEAN-2026-000334 - नयाँ ब्वाइज होस्टेल
+                                </option>
+                                <option value="121">
+                                    HEAN-2026-000121 - नव मातृभुमि गर्ल्स होस्टेल
+                                </option>
+                                <option value="491">
+                                    HEAN-2026-000491 - नवलपुर व्वाईज होस्टल
+                                </option>
+                                <option value="37">
+                                    HEAN-2026-000037 - नाइस गर्ल्स होस्टेल
+                                </option>
+                                <option value="293">
+                                    HEAN-2026-000293 - निकित व्वाईज होस्टेल
+                                </option>
+                                <option value="492">
+                                    HEAN-2026-000492 - निभा गर्ल्स होस्टल
+                                </option>
+                                <option value="339">
+                                    HEAN-2026-000339 - निरन्जन ब्वाइज होस्टेल
+                                </option>
+                                <option value="142">
+                                    HEAN-2026-000142 - निष्टा ब्वाइज होस्टेल
+                                </option>
+                                <option value="18">
+                                    HEAN-2026-000018 - नीर गर्ल्स होस्टेल
+                                </option>
+                                <option value="147">
+                                    HEAN-2026-000147 - नेक्सा ब्वाइज होस्टेल
+                                </option>
+                                <option value="273">
+                                    HEAN-2026-000273 - नेपाल हाउस गर्ल्स होस्टेल
+                                </option>
+                                <option value="526">
+                                    HEAN-2026-000526 - नेृपथ्य ब्वाइज होस्टल
+                                </option>
+                                <option value="187">
+                                    HEAN-2026-000187 - नोवेल्टी ब्वाइज होस्टेल
+                                </option>
+                                <option value="370">
+                                    HEAN-2026-000370 - न्यु आफ्नो ब्वाइज होस्टेल
+                                </option>
+                                <option value="515">
+                                    HEAN-2026-000515 - न्यु इकोन गर्ल्स हाृस्टल
+                                </option>
+                                <option value="315">
+                                    HEAN-2026-000315 - न्यु एन्जल गर्ल्स होस्टेल
+                                </option>
+                                <option value="512">
+                                    HEAN-2026-000512 - न्यु एबिसि गर्ल्स होस्टल
+                                </option>
+                                <option value="424">
+                                    HEAN-2026-000424 - न्यु ओम गर्ल्स होस्टल
+                                </option>
+                                <option value="407">
+                                    HEAN-2026-000407 - न्यु गन्तव्य व्वाईज
+                                </option>
+                                <option value="39">
+                                    HEAN-2026-000039 - न्यु गर्ल्स होस्टेल
+                                </option>
+                                <option value="353">
+                                    HEAN-2026-000353 - न्यु छहारी गर्ल्स होस्टेल
+                                </option>
+                                <option value="216">
+                                    HEAN-2026-000216 - न्यु जयत्री ब्वाइज होस्टेल
+                                </option>
+                                <option value="77">
+                                    HEAN-2026-000077 - न्यु दर्शन ब्वाइज होस्टेल
+                                </option>
+                                <option value="79">
+                                    HEAN-2026-000079 - न्यु दिम्मस ब्वाइज होस्टेल
+                                </option>
+                                <option value="388">
+                                    HEAN-2026-000388 - न्यु दियो व्वाईज
+                                </option>
+                                <option value="9">
+                                    HEAN-2026-000009 - न्यु नव दुर्गा गर्ल्स होस्टेल
+                                </option>
+                                <option value="249">
+                                    HEAN-2026-000249 - न्यु पाथिभरा ब्वाईज होस्टेल
+                                </option>
+                                <option value="198">
+                                    HEAN-2026-000198 - न्यु पाथीभरा ब्वाइज होस्टेल
+                                </option>
+                                <option value="101">
+                                    HEAN-2026-000101 - न्यु बालाजी गर्ल्स होस्टेल
+                                </option>
+                                <option value="131">
+                                    HEAN-2026-000131 - न्यु बिन्दावासिनी ब्वाइज होस्टेल
+                                </option>
+                                <option value="76">
+                                    HEAN-2026-000076 - न्यु बिराट गर्ल्स होस्टेल
+                                </option>
+                                <option value="128">
+                                    HEAN-2026-000128 - न्यु भिजन गर्ल्स होस्टेल
+                                </option>
+                                <option value="139">
+                                    HEAN-2026-000139 - न्यु मदर्स होम गर्ल्स होस्टेल
+                                </option>
+                                <option value="344">
+                                    HEAN-2026-000344 - न्यु रोयल मिथिला ब्वाइज होस्टेल
+                                </option>
+                                <option value="156">
+                                    HEAN-2026-000156 - न्यु लोटस गर्ल्स होस्टेल
+                                </option>
+                                <option value="390">
+                                    HEAN-2026-000390 - न्यु विनायक व्वाईज
+                                </option>
+                                <option value="172">
+                                    HEAN-2026-000172 - न्यु व्याली गर्ल्स होस्टेल
+                                </option>
+                                <option value="298">
+                                    HEAN-2026-000298 - न्यु सल्युट ब्वाइज होस्टेल
+                                </option>
+                                <option value="418">
+                                    HEAN-2026-000418 - न्यु सिन्ड्रेला गर्ल्स होस्टल
+                                </option>
+                                <option value="146">
+                                    HEAN-2026-000146 - न्यु सुर्येदय गर्ल्स होस्टेल
+                                </option>
+                                <option value="43">
+                                    HEAN-2026-000043 - न्यु स्टार गर्ल्स होस्टेल
+                                </option>
+                                <option value="44">
+                                    HEAN-2026-000044 - न्यु स्टार गर्ल्स होस्टेल
+                                </option>
+                                <option value="15">
+                                    HEAN-2026-000015 - न्यु स्वर्गद्वारी ब्वाइज होस्टेल
+                                </option>
+                                <option value="42">
+                                    HEAN-2026-000042 - न्यु हिल्स ब्वाइज होस्टेल
+                                </option>
+                                <option value="259">
+                                    HEAN-2026-000259 - न्यु हेवन ब्वाइज होस्टेल
+                                </option>
+                                <option value="411">
+                                    HEAN-2026-000411 - न्यु हेव्न गर्ल्स होस्टल
+                                </option>
+                                <option value="207">
+                                    HEAN-2026-000207 - न्यु होमलि ब्वाइज होस्टेल
+                                </option>
+                                <option value="495">
+                                    HEAN-2026-000495 - न्यू अनुग्रह गर्ल्स होस्टल
+                                </option>
+                                <option value="476">
+                                    HEAN-2026-000476 - न्यू एस।एम ९सगरमाथा० व्वाईज होस्टल
+                                </option>
+                                <option value="479">
+                                    HEAN-2026-000479 - न्यू खुसी गर्ल्स होस्टल
+                                </option>
+                                <option value="408">
+                                    HEAN-2026-000408 - न्यू रिद्धी सीद्धी गर्ल्स
+                                </option>
+                                <option value="70">
+                                    HEAN-2026-000070 - न्यू र्आिर्शवाद ब्वाइज होस्टेल
+                                </option>
+                                <option value="423">
+                                    HEAN-2026-000423 - न्यू हाम्रो व्वाईज होस्टल
+                                </option>
+                                <option value="127">
+                                    HEAN-2026-000127 - पञ्च कुमारी गर्ल्स होस्टेल
+                                </option>
+                                <option value="117">
+                                    HEAN-2026-000117 - पदमा गर्ल्स होस्टेल
+                                </option>
+                                <option value="409">
+                                    HEAN-2026-000409 - पफ्मेली गर्ल्स
+                                </option>
+                                <option value="157">
+                                    HEAN-2026-000157 - पफ्लुबारी गर्ल्स होस्टेल
+                                </option>
+                                <option value="400">
+                                    HEAN-2026-000400 - पफ्वो व्वाईज होस्टल
+                                </option>
+                                <option value="59">
+                                    HEAN-2026-000059 - परिबर्तन गर्ल्स होस्टेल
+                                </option>
+                                <option value="98">
+                                    HEAN-2026-000098 - पशुपति ब्वाइज होस्टेल
+                                </option>
+                                <option value="191">
+                                    HEAN-2026-000191 - पाइला गर्ल्स होस्टेल
+                                </option>
+                                <option value="194">
+                                    HEAN-2026-000194 - पाइला ब्वाइज होस्टेल
+                                </option>
+                                <option value="528">
+                                    HEAN-2026-000528 - पाण्डेश्वरी ब्वाइज होस्टल
+                                </option>
+                                <option value="263">
+                                    HEAN-2026-000263 - पाथिभरा ब्वाइज होस्टेल
+                                </option>
+                                <option value="467">
+                                    HEAN-2026-000467 - पाथीभरा व्वाईज होस्टल
+                                </option>
+                                <option value="65">
+                                    HEAN-2026-000065 - पाल्पाली गर्ल्स होस्टेल
+                                </option>
+                                <option value="64">
+                                    HEAN-2026-000064 - पाल्पाली ब्वाइज होस्टेल
+                                </option>
+                                <option value="169">
+                                    HEAN-2026-000169 - पि जी गर्ल्स होस्टेल
+                                </option>
+                                <option value="90">
+                                    HEAN-2026-000090 - पिन्नाकल नेपाल गर्ल्स होस्टेल
+                                </option>
+                                <option value="422">
+                                    HEAN-2026-000422 - पियंका गर्ल्स होस्टल
+                                </option>
+                                <option value="229">
+                                    HEAN-2026-000229 - पिस जोन गर्ल्स होस्टेल
+                                </option>
+                                <option value="490">
+                                    HEAN-2026-000490 - पुजा गर्ल्स होस्टल
+                                </option>
+                                <option value="397">
+                                    HEAN-2026-000397 - पुन्यम ब्वाईज होस्टल
+                                </option>
+                                <option value="366">
+                                    HEAN-2026-000366 - पुर्बेली ब्वाइज होस्टेल
+                                </option>
+                                <option value="319">
+                                    HEAN-2026-000319 - पुर्वोन्चल व्वाईज होस्टल
+                                </option>
+                                <option value="239">
+                                    HEAN-2026-000239 - प्याराडाईज गर्ल्स होस्टेल
+                                </option>
+                                <option value="160">
+                                    HEAN-2026-000160 - प्यारेन्टसियल गर्ल्स होस्टल
+                                </option>
+                                <option value="85">
+                                    HEAN-2026-000085 - प्रज्ञा गर्ल्स होस्टेल
+                                </option>
+                                <option value="406">
+                                    HEAN-2026-000406 - प्रज्वल होस्टल प्रा लि
+                                </option>
+                                <option value="343">
+                                    HEAN-2026-000343 - प्रफ्ेंन्डसिप ब्वाइज होस्टेल
+                                </option>
+                                <option value="57">
+                                    HEAN-2026-000057 - प्रसङ्ग ब्वाइज होस्टेल
+                                </option>
+                                <option value="527">
+                                    HEAN-2026-000527 - प्रसून ब्वाइज हाृस्टल
+                                </option>
+                                <option value="377">
+                                    HEAN-2026-000377 - प्राइम व्वाईज होस्टल
+                                </option>
+                                <option value="53">
+                                    HEAN-2026-000053 - प्रिटोरिया ब्वाइज होस्टेल
+                                </option>
+                                <option value="129">
+                                    HEAN-2026-000129 - प्रिन्स ब्वाइज होस्टेल
+                                </option>
+                                <option value="378">
+                                    HEAN-2026-000378 - प्रियान्स व्वाईज होस्टल
+                                </option>
+                                <option value="118">
+                                    HEAN-2026-000118 - प्रीमियम ब्वाइज होस्टेल
+                                </option>
+                                <option value="386">
+                                    HEAN-2026-000386 - प्रेरणा गर्ल्स होस्टल
+                                </option>
+                                <option value="375">
+                                    HEAN-2026-000375 - प्रेस्टीज व्वाईज होस्टल
+                                </option>
+                                <option value="451">
+                                    HEAN-2026-000451 - प्र्राईम गर्ल्स होस्टल
+                                </option>
+                                <option value="289">
+                                    HEAN-2026-000289 - प्लाटिनम गर्ल्स होस्टेल
+                                </option>
+                                <option value="114">
+                                    HEAN-2026-000114 - फ्यामली गर्ल्स होस्टेल
+                                </option>
+                                <option value="202">
+                                    HEAN-2026-000202 - फ्लाश गर्ल्स होस्टेल
+                                </option>
+                                <option value="52">
+                                    HEAN-2026-000052 - बअशसणडनअरअब्वाइज होस्टेल
+                                </option>
+                                <option value="333">
+                                    HEAN-2026-000333 - बसडडनअणअदअर गर्ल्स होस्टेल
+                                </option>
+                                <option value="521">
+                                    HEAN-2026-000521 - बसाइ गर्ल्स होस्टल
+                                </option>
+                                <option value="514">
+                                    HEAN-2026-000514 - बसेरा गर्ल्स होस्टल
+                                </option>
+                                <option value="236">
+                                    HEAN-2026-000236 - बागेश्वरी ब्वाइज होस्टेल
+                                </option>
+                                <option value="324">
+                                    HEAN-2026-000324 - बालाजी गर्ल्स होस्टल
+                                </option>
+                                <option value="140">
+                                    HEAN-2026-000140 - बालाजी गर्ल्स होस्टेल
+                                </option>
+                                <option value="525">
+                                    HEAN-2026-000525 - बाल्मिकि ब्बाइज होस्टल
+                                </option>
+                                <option value="60">
+                                    HEAN-2026-000060 - बि एन ब्वाइज होस्टेल
+                                </option>
+                                <option value="193">
+                                    HEAN-2026-000193 - बि एम ब्वाइज होस्टेल
+                                </option>
+                                <option value="272">
+                                    HEAN-2026-000272 - बिग ब्वाइज होस्टेल
+                                </option>
+                                <option value="214">
+                                    HEAN-2026-000214 - बिद्या ब्वाइज होस्टेल
+                                </option>
+                                <option value="188">
+                                    HEAN-2026-000188 - बिनायक ब्वाइज होस्टेल
+                                </option>
+                                <option value="17">
+                                    HEAN-2026-000017 - बिन्दावासिनी गर्ल्स होस्टेल
+                                </option>
+                                <option value="233">
+                                    HEAN-2026-000233 - बिबेकसिल ब्वाइज होस्टेल
+                                </option>
+                                <option value="208">
+                                    HEAN-2026-000208 - बिलु एकाइ ब्वाइज होस्टेल
+                                </option>
+                                <option value="505">
+                                    HEAN-2026-000505 - बिस्नु ब्वाइज होस्टल
+                                </option>
+                                <option value="430">
+                                    HEAN-2026-000430 - बेला होम गर्ल्स होस्टल
+                                </option>
+                                <option value="414">
+                                    HEAN-2026-000414 - बोद्रर्श व्वाईज होस्टल
+                                </option>
+                                <option value="283">
+                                    HEAN-2026-000283 - ब्रोजोन ब्वाइज होस्टेल
+                                </option>
+                                <option value="230">
+                                    HEAN-2026-000230 - ब्रोदर्स होस्टेल
+                                </option>
+                                <option value="258">
+                                    HEAN-2026-000258 - ब्लक ए एभेन्जर ब्वाइज होस्टेल
+                                </option>
+                                <option value="257">
+                                    HEAN-2026-000257 - ब्लु बड गर्ल्स होस्टेल
+                                </option>
+                                <option value="271">
+                                    HEAN-2026-000271 - भिजन ब्वाइज होस्टेल
+                                </option>
+                                <option value="71">
+                                    HEAN-2026-000071 - भिमा गर्ल्स होस्टेल
+                                </option>
+                                <option value="307">
+                                    HEAN-2026-000307 - भेनस ब्वाइज होस्टेल
+                                </option>
+                                <option value="61">
+                                    HEAN-2026-000061 - भैरब दर्शन ब्वाइज होस्टेल
+                                </option>
+                                <option value="47">
+                                    HEAN-2026-000047 - भैरवी ब्वाइज होस्टेल
+                                </option>
+                                <option value="177">
+                                    HEAN-2026-000177 - भैस्नवी गर्ल्स होस्टेल
+                                </option>
+                                <option value="48">
+                                    HEAN-2026-000048 - मंजु गर्ल्स होस्टेल
+                                </option>
+                                <option value="416">
+                                    HEAN-2026-000416 - मदर केयर होस्टल
+                                </option>
+                                <option value="261">
+                                    HEAN-2026-000261 - मनकामना गर्ल्स होस्टेल
+                                </option>
+                                <option value="126">
+                                    HEAN-2026-000126 - मनकामना ब्वाइज होस्टेल
+                                </option>
+                                <option value="329">
+                                    HEAN-2026-000329 - महेन्द्र ब्वाइज होस्टेल
+                                </option>
+                                <option value="360">
+                                    HEAN-2026-000360 - मा पाथीभरा व्वाईज होस्टल
+                                </option>
+                                <option value="175">
+                                    HEAN-2026-000175 - माउट एभरेष्ट ब्वाइज होस्टेल
+                                </option>
+                                <option value="217">
+                                    HEAN-2026-000217 - माछापुच्छे ब्वाइज होस्टेल
+                                </option>
+                                <option value="178">
+                                    HEAN-2026-000178 - माता पाथिभरा गर्ल्स होस्टेल
+                                </option>
+                                <option value="130">
+                                    HEAN-2026-000130 - मान्यता ब्वाइज होस्टेल
+                                </option>
+                                <option value="462">
+                                    HEAN-2026-000462 - मान्या गर्ल्स होस्टल
+                                </option>
+                                <option value="317">
+                                    HEAN-2026-000317 - मारिया गर्ल्स होस्टेल
+                                </option>
+                                <option value="267">
+                                    HEAN-2026-000267 - मारुती ब्वाइज होस्टेल
+                                </option>
+                                <option value="410">
+                                    HEAN-2026-000410 - मार्वल ब्वाईज होस्टल
+                                </option>
+                                <option value="470">
+                                    HEAN-2026-000470 - मिथिला गर्ल्स होस्टल
+                                </option>
+                                <option value="441">
+                                    HEAN-2026-000441 - मिथिला नेपाल व्वाईज होस्टल
+                                </option>
+                                <option value="279">
+                                    HEAN-2026-000279 - मिनर्वा गर्ल्स होस्टेल
+                                </option>
+                                <option value="348">
+                                    HEAN-2026-000348 - मिँन्जल ब्वाइज होस्टेल
+                                </option>
+                                <option value="51">
+                                    HEAN-2026-000051 - मिन्निओं ब्वाइज होस्टेल
+                                </option>
+                                <option value="246">
+                                    HEAN-2026-000246 - मिराकल ब्वाइज होस्टेल
+                                </option>
+                                <option value="186">
+                                    HEAN-2026-000186 - मुनसनं गर्ल्स होस्टेल
+                                </option>
+                                <option value="320">
+                                    HEAN-2026-000320 - मेडिलीन गर्ल्स होस्टेल
+                                </option>
+                                <option value="103">
+                                    HEAN-2026-000103 - मेरियट होस्टेल प्रा लि
+                                </option>
+                                <option value="72">
+                                    HEAN-2026-000072 - मेरो गर्ल्स होस्टेल
+                                </option>
+                                <option value="220">
+                                    HEAN-2026-000220 - मेरो घर ब्वाइज होस्टेल
+                                </option>
+                                <option value="8">
+                                    HEAN-2026-000008 - मोक्ष गर्ल्स होस्टेल
+                                </option>
+                                <option value="264">
+                                    HEAN-2026-000264 - यादव आरोही ब्वाइज होस्टेल
+                                </option>
+                                <option value="511">
+                                    HEAN-2026-000511 - यु यम यस गर्ल्स होस्टल
+                                </option>
+                                <option value="508">
+                                    HEAN-2026-000508 - युनिक गर्ल्स होस्टल
+                                </option>
+                                <option value="405">
+                                    HEAN-2026-000405 - युनिक नेपाल व्वाईज होस्टल
+                                </option>
+                                <option value="362">
+                                    HEAN-2026-000362 - युनिटि ब्वाइज होस्टेल
+                                </option>
+                                <option value="201">
+                                    HEAN-2026-000201 - युनिर्भसल व्वाईज होस्टल
+                                </option>
+                                <option value="276">
+                                    HEAN-2026-000276 - युरिका गर्ल्स होस्टेल
+                                </option>
+                                <option value="255">
+                                    HEAN-2026-000255 - युरिका ब्वाइज होस्टेल
+                                </option>
+                                <option value="318">
+                                    HEAN-2026-000318 - युरिजन ब्वाइज होस्टेल
+                                </option>
+                                <option value="399">
+                                    HEAN-2026-000399 - रइका व्वाईज होस्टल
+                                </option>
+                                <option value="395">
+                                    HEAN-2026-000395 - राइज गर्ल्स होस्टल
+                                </option>
+                                <option value="235">
+                                    HEAN-2026-000235 - राज ब्वाइज होस्टेल
+                                </option>
+                                <option value="355">
+                                    HEAN-2026-000355 - राज ब्वाइज होस्टेल
+                                </option>
+                                <option value="500">
+                                    HEAN-2026-000500 - राज ब्वाइज होस्टेल
+                                </option>
+                                <option value="10">
+                                    HEAN-2026-000010 - राज ब्वाइज होस्टेल
+                                </option>
+                                <option value="444">
+                                    HEAN-2026-000444 - राजघराना
+                                </option>
+                                <option value="262">
+                                    HEAN-2026-000262 - राधाश्री गर्ल्स होस्टेल
+                                </option>
+                                <option value="138">
+                                    HEAN-2026-000138 - रानी महल गर्ल्स होस्टेल
+                                </option>
+                                <option value="369">
+                                    HEAN-2026-000369 - रारा ब्वाइज होस्टेल
+                                </option>
+                                <option value="482">
+                                    HEAN-2026-000482 - रिडर्स व्वाईज होस्टल
+                                </option>
+                                <option value="463">
+                                    HEAN-2026-000463 - रिदम व्वाईज होस्टल
+                                </option>
+                                <option value="5">
+                                    HEAN-2026-000005 - रिद्धिसिद्धि गर्ल्स होस्टेल
+                                </option>
+                                <option value="135">
+                                    HEAN-2026-000135 - रिभर साइड ब्वाइज होस्टेल
+                                </option>
+                                <option value="209">
+                                    HEAN-2026-000209 - रुकुम ब्वाइज होस्टेल
+                                </option>
+                                <option value="358">
+                                    HEAN-2026-000358 - रुद्रक्ष्य ब्वाइज होस्टेल
+                                </option>
+                                <option value="195">
+                                    HEAN-2026-000195 - रुसम ब्वाइज होस्टेल
+                                </option>
+                                <option value="154">
+                                    HEAN-2026-000154 - रेनोश ब्वाइज होस्टेल
+                                </option>
+                                <option value="13">
+                                    HEAN-2026-000013 - रोयल राप्ती ब्वाइज होस्टेल
+                                </option>
+                                <option value="290">
+                                    HEAN-2026-000290 - रोहन ब्वाइज होस्टेल
+                                </option>
+                                <option value="516">
+                                    HEAN-2026-000516 - र्संगम व्वाइज होस्टल
+                                </option>
+                                <option value="363">
+                                    HEAN-2026-000363 - लक्ष्मी गर्ल्स होस्टेल
+                                </option>
+                                <option value="268">
+                                    HEAN-2026-000268 - लक्ष्य गर्ल्स होस्टेल
+                                </option>
+                                <option value="36">
+                                    HEAN-2026-000036 - लगनसिलता गर्ल्स होस्टेल
+                                </option>
+                                <option value="12">
+                                    HEAN-2026-000012 - लड बुद्ध गर्ल्स होस्टेल
+                                </option>
+                                <option value="78">
+                                    HEAN-2026-000078 - लाली गुरास गर्ल्स होस्टेल
+                                </option>
+                                <option value="368">
+                                    HEAN-2026-000368 - लिली गर्ल्स होस्टेल
+                                </option>
+                                <option value="182">
+                                    HEAN-2026-000182 - लुम्बिनी गर्ल्स होस्टेल
+                                </option>
+                                <option value="252">
+                                    HEAN-2026-000252 - लुम्बिनी ब्वाइज होस्टेल
+                                </option>
+                                <option value="231">
+                                    HEAN-2026-000231 - लोटस व्वाइएज होस्टल
+                                </option>
+                                <option value="402">
+                                    HEAN-2026-000402 - वि एस टि व्वाईज होस्टल
+                                </option>
+                                <option value="481">
+                                    HEAN-2026-000481 - विकास व्वाईज होस्टल
+                                </option>
+                                <option value="446">
+                                    HEAN-2026-000446 - विन्टर व्वाइज होेस्टेल
+                                </option>
+                                <option value="278">
+                                    HEAN-2026-000278 - विभूति डिलक्स गर्ल्स होस्टेल
+                                </option>
+                                <option value="260">
+                                    HEAN-2026-000260 - विभूति डिल्क्स गर्ल्स होस्टेल
+                                </option>
+                                <option value="158">
+                                    HEAN-2026-000158 - विशेस ब्वाइज होस्टेल
+                                </option>
+                                <option value="143">
+                                    HEAN-2026-000143 - वेल्सपफ्लु गर्ल्स होस्टेल
+                                </option>
+                                <option value="498">
+                                    HEAN-2026-000498 - वोएलकम व्वाईज होस्टल
+                                </option>
+                                <option value="354">
+                                    HEAN-2026-000354 - व्याली ब्वाइज होस्टेल
+                                </option>
+                                <option value="351">
+                                    HEAN-2026-000351 - व्यों गर्ल्स होस्टेल
+                                </option>
+                                <option value="456">
+                                    HEAN-2026-000456 - शंकर व्वाईज होस्टल
+                                </option>
+                                <option value="436">
+                                    HEAN-2026-000436 - शान्त धर व्वाईज होस्टल
+                                </option>
+                                <option value="489">
+                                    HEAN-2026-000489 - शिव व्वाईज होृस्टल
+                                </option>
+                                <option value="197">
+                                    HEAN-2026-000197 - शिवया व्बाईज होस्टल
+                                </option>
+                                <option value="474">
+                                    HEAN-2026-000474 - शिवानी व्वाईज होस्टल
+                                </option>
+                                <option value="379">
+                                    HEAN-2026-000379 - शुभ कन्या छात्रावास
+                                </option>
+                                <option value="501">
+                                    HEAN-2026-000501 - शुभकामना गर्ल्स होस्टल
+                                </option>
+                                <option value="391">
+                                    HEAN-2026-000391 - शुभम गर्ल्स होस्टल
+                                </option>
+                                <option value="445">
+                                    HEAN-2026-000445 - शुभम व्वाईज होस्टल
+                                </option>
+                                <option value="380">
+                                    HEAN-2026-000380 - शैलेश्वरी व्वाईज होस्टल
+                                </option>
+                                <option value="282">
+                                    HEAN-2026-000282 - श्री अन्तु ब्वाइज होस्टेल
+                                </option>
+                                <option value="109">
+                                    HEAN-2026-000109 - श्री कालिका गर्ल्स होस्टेल
+                                </option>
+                                <option value="218">
+                                    HEAN-2026-000218 - श्री कृष्ण ब्वाइज होस्टेल
+                                </option>
+                                <option value="509">
+                                    HEAN-2026-000509 - श्री कृष्ण व्वाइज होस्टल
+                                </option>
+                                <option value="83">
+                                    HEAN-2026-000083 - श्री गढीमाई ब्वाइज होस्टेल
+                                </option>
+                                <option value="496">
+                                    HEAN-2026-000496 - श्री जानवी ब्वाइज होस्टल प्रा. लि.
+                                </option>
+                                <option value="326">
+                                    HEAN-2026-000326 - श्री निवास ब्वाइज होस्टेल
+                                </option>
+                                <option value="499">
+                                    HEAN-2026-000499 - श्री बिनायक व्वाईज होस्टल
+                                </option>
+                                <option value="134">
+                                    HEAN-2026-000134 - श्री बिष्णु ब्वाइज होस्टेल
+                                </option>
+                                <option value="102">
+                                    HEAN-2026-000102 - श्री मदर्सा होम गर्ल्स होस्टेल
+                                </option>
+                                <option value="455">
+                                    HEAN-2026-000455 - श्री रत्न व्वाईज होस्टल
+                                </option>
+                                <option value="167">
+                                    HEAN-2026-000167 - श्री साइ गर्ल्स होस्टल
+                                </option>
+                                <option value="461">
+                                    HEAN-2026-000461 - श्री सिंहबाहिनी गर्ल्स होस्टल
+                                </option>
+                                <option value="170">
+                                    HEAN-2026-000170 - श्रीजा गर्ल्स होस्टेल
+                                </option>
+                                <option value="173">
+                                    HEAN-2026-000173 - श्रीजित गर्ल्स होस्टेल
+                                </option>
+                                <option value="510">
+                                    HEAN-2026-000510 - श्रीजिता गर्ल्स होस्टल
+                                </option>
+                                <option value="89">
+                                    HEAN-2026-000089 - श्रेया गर्ल्स होस्टेल
+                                </option>
+                                <option value="150">
+                                    HEAN-2026-000150 - श्रेष्ठया गर्ल्स होस्टेल
+                                </option>
+                                <option value="28">
+                                    HEAN-2026-000028 - संकल्प ब्वाइज होस्टेल
+                                </option>
+                                <option value="111">
+                                    HEAN-2026-000111 - सक्सेस होम ब्वाइज होस्टेल
+                                </option>
+                                <option value="292">
+                                    HEAN-2026-000292 - सक्सेसपफ्लु गर्ल्स होस्टेल
+                                </option>
+                                <option value="29">
+                                    HEAN-2026-000029 - सगरमाथा ब्वाइज होस्टेल
+                                </option>
+                                <option value="97">
+                                    HEAN-2026-000097 - सगरमाथा ब्वाइज होस्टेल
+                                </option>
+                                <option value="419">
+                                    HEAN-2026-000419 - सगरमाथा व्वाईज होस्टल
+                                </option>
+                                <option value="67">
+                                    HEAN-2026-000067 - संजना गर्ल्स होस्टेल
+                                </option>
+                                <option value="398">
+                                    HEAN-2026-000398 - सजिलो र्व्वाज होस्टल
+                                </option>
+                                <option value="132">
+                                    HEAN-2026-000132 - संजीवनी ब्वाइज होस्टेल
+                                </option>
+                                <option value="30">
+                                    HEAN-2026-000030 - सताक्षी ब्वाइज होस्टेल
+                                </option>
+                                <option value="330">
+                                    HEAN-2026-000330 - सन्तोष ब्वाइज होस्टेल
+                                </option>
+                                <option value="161">
+                                    HEAN-2026-000161 - सन्लाईट ब्वाइज होस्टेल
+                                </option>
+                                <option value="393">
+                                    HEAN-2026-000393 - सपनाको सदन व्वाईज
+                                </option>
+                                <option value="373">
+                                    HEAN-2026-000373 - सपफ्ल व्वाईज होस्टल
+                                </option>
+                                <option value="427">
+                                    HEAN-2026-000427 - समाईरा गर्ल्स होस्टल
+                                </option>
+                                <option value="228">
+                                    HEAN-2026-000228 - सम्पदा ब्वाइज होस्टेल
+                                </option>
+                                <option value="87">
+                                    HEAN-2026-000087 - सरु गर्ल्स होस्टेल
+                                </option>
+                                <option value="396">
+                                    HEAN-2026-000396 - संस्कार आवास गृह गर्ल्स
+                                </option>
+                                <option value="242">
+                                    HEAN-2026-000242 - संस्कार गर्ल्स होस्टेल
+                                </option>
+                                <option value="141">
+                                    HEAN-2026-000141 - सस्कार पफइब स्टार ब्वाइज होस्टेल
+                                </option>
+                                <option value="383">
+                                    HEAN-2026-000383 - संस्कार व्वाईज होस्टल
+                                </option>
+                                <option value="389">
+                                    HEAN-2026-000389 - साइमन व्वाईज
+                                </option>
+                                <option value="359">
+                                    HEAN-2026-000359 - साकुरा गर्ल्स होस्टेल
+                                </option>
+                                <option value="385">
+                                    HEAN-2026-000385 - सागर व्वाईज होस्टल
+                                </option>
+                                <option value="295">
+                                    HEAN-2026-000295 - साथी ब्वाइज होस्टेल
+                                </option>
+                                <option value="26">
+                                    HEAN-2026-000026 - साथीको घर गर्ल्स होस्टेल
+                                </option>
+                                <option value="215">
+                                    HEAN-2026-000215 - सानार्च गर्ल्स होम प्रा लि
+                                </option>
+                                <option value="457">
+                                    HEAN-2026-000457 - सानिमा गर्ल्स होस्टल
+                                </option>
+                                <option value="20">
+                                    HEAN-2026-000020 - सान्भी गर्ल्स होस्टेल
+                                </option>
+                                <option value="241">
+                                    HEAN-2026-000241 - साभफ ब्वाइज होस्टेल
+                                </option>
+                                <option value="331">
+                                    HEAN-2026-000331 - सारा गर्ल्स होस्टेल
+                                </option>
+                                <option value="251">
+                                    HEAN-2026-000251 - सालिन गर्ल्स होस्टेल
+                                </option>
+                                <option value="392">
+                                    HEAN-2026-000392 - सिग्मा र्व्वाईज होस्टल
+                                </option>
+                                <option value="513">
+                                    HEAN-2026-000513 - सिझ्फ्कुा गर्ल्स होस्टल
+                                </option>
+                                <option value="162">
+                                    HEAN-2026-000162 - सिटी डिलक्स ब्वाइज होस्टेल
+                                </option>
+                                <option value="180">
+                                    HEAN-2026-000180 - सिटी स्टे ब्वाइज होस्टेल
+                                </option>
+                                <option value="211">
+                                    HEAN-2026-000211 - सिद्धार्थ ब्वाइज होस्टेल
+                                </option>
+                                <option value="240">
+                                    HEAN-2026-000240 - सिद्धार्थ ब्वाइज होस्टेल
+                                </option>
+                                <option value="316">
+                                    HEAN-2026-000316 - सिद्धार्थ होस्टेल
+                                </option>
+                                <option value="471">
+                                    HEAN-2026-000471 - सिद्धिका गल्सै होस्टल
+                                </option>
+                                <option value="68">
+                                    HEAN-2026-000068 - सिद्धिबाबा ब्वाइज होस्टेल
+                                </option>
+                                <option value="11">
+                                    HEAN-2026-000011 - सिन्ड्रेला गर्ल्स होस्टेल
+                                </option>
+                                <option value="94">
+                                    HEAN-2026-000094 - सिर्जना गर्ल्स होस्टेल
+                                </option>
+                                <option value="200">
+                                    HEAN-2026-000200 - सिर्जना गर्ल्स होस्टेल
+                                </option>
+                                <option value="149">
+                                    HEAN-2026-000149 - सिस्टर्स होम गर्ल्स होस्टेल
+                                </option>
+                                <option value="346">
+                                    HEAN-2026-000346 - सुकेधारा ब्वाइज होस्टेल
+                                </option>
+                                <option value="196">
+                                    HEAN-2026-000196 - सुदूरपश्चिम गर्ल्स होस्टेल
+                                </option>
+                                <option value="183">
+                                    HEAN-2026-000183 - सुनगावा गर्ल्स होस्टेल
+                                </option>
+                                <option value="73">
+                                    HEAN-2026-000073 - सुन्दर सुदूरपश्चिम व्वाईज होस्टेल
+                                </option>
+                                <option value="14">
+                                    HEAN-2026-000014 - सुपा देउराली ब्वाइज होस्टेल
+                                </option>
+                                <option value="24">
+                                    HEAN-2026-000024 - सुबिधा ब्वाइज होस्टेल
+                                </option>
+                                <option value="313">
+                                    HEAN-2026-000313 - सुम्नीमा गर्ल्स होस्टेल प्रा लि
+                                </option>
+                                <option value="92">
+                                    HEAN-2026-000092 - सुरभी गर्ल्स होस्टेल
+                                </option>
+                                <option value="27">
+                                    HEAN-2026-000027 - सुर्ये किरण ब्वाइज होस्टेल
+                                </option>
+                                <option value="277">
+                                    HEAN-2026-000277 - सुविधा ब्वाइज होस्टेल
+                                </option>
+                                <option value="306">
+                                    HEAN-2026-000306 - सृजनसिल ब्वाइज होस्टेल
+                                </option>
+                                <option value="174">
+                                    HEAN-2026-000174 - सेन्ट्रल गर्ल्स होस्टेल
+                                </option>
+                                <option value="256">
+                                    HEAN-2026-000256 - सेन्ट्रल व्याली ब्वाइज होस्टेल
+                                </option>
+                                <option value="507">
+                                    HEAN-2026-000507 - सेपफ् नेस्ट गल्स होस्टल
+                                </option>
+                                <option value="297">
+                                    HEAN-2026-000297 - सेरेना गर्ल्स होस्टेल
+                                </option>
+                                <option value="367">
+                                    HEAN-2026-000367 - सेरेनिटी गर्ल्स होस्टेल
+                                </option>
+                                <option value="322">
+                                    HEAN-2026-000322 - सोपफ् ीगर्ल्स होम प्रा लि
+                                </option>
+                                <option value="3">
+                                    HEAN-2026-000003 - स्काइ गर्ल्स होस्टेल
+                                </option>
+                                <option value="56">
+                                    HEAN-2026-000056 - स्काइ लाइन ब्वाइज होस्टेल
+                                </option>
+                                <option value="302">
+                                    HEAN-2026-000302 - स्टुडेन्ट होस्टेल
+                                </option>
+                                <option value="253">
+                                    HEAN-2026-000253 - स्टेप ब्वाइज होस्टेल
+                                </option>
+                                <option value="81">
+                                    HEAN-2026-000081 - स्पेस गर्ल्स होस्टेल
+                                </option>
+                                <option value="119">
+                                    HEAN-2026-000119 - स्माईकी ब्वाइज होस्टेल
+                                </option>
+                                <option value="34">
+                                    HEAN-2026-000034 - स्वत बिनायक ब्वाइज होस्टेल
+                                </option>
+                                <option value="176">
+                                    HEAN-2026-000176 - स्वरंगा गर्ल्स होस्टेल
+                                </option>
+                                <option value="497">
+                                    HEAN-2026-000497 - स्वश्तीक व्वाईज होस्टेल
+                                </option>
+                                <option value="91">
+                                    HEAN-2026-000091 - हलेशी ब्वाइज होस्टेल
+                                </option>
+                                <option value="285">
+                                    HEAN-2026-000285 - हवेन्यर्द ब्वाइज होस्टेल
+                                </option>
+                                <option value="137">
+                                    HEAN-2026-000137 - हाई होस्टेल
+                                </option>
+                                <option value="244">
+                                    HEAN-2026-000244 - हाम्रो गर्ल्स होस्टेल
+                                </option>
+                                <option value="108">
+                                    HEAN-2026-000108 - हाम्रो घर ब्वाइज होस्टेल
+                                </option>
+                                <option value="86">
+                                    HEAN-2026-000086 - हाम्रो ब्वाइज होस्टेल
+                                </option>
+                                <option value="412">
+                                    HEAN-2026-000412 - हाम्रो मामाघर गर्ल्स होस्टल
+                                </option>
+                                <option value="205">
+                                    HEAN-2026-000205 - हाम्रो लोटस गर्ल्स होस्टेल
+                                </option>
+                                <option value="63">
+                                    HEAN-2026-000063 - हाम्रो स्वर्णिम संसार गर्ल्स होस्टेल
+                                </option>
+                                <option value="238">
+                                    HEAN-2026-000238 - हाम्रो होस्टेल लोटस गर्ल्स
+                                </option>
+                                <option value="38">
+                                    HEAN-2026-000038 - हिमानी गर्ल्स होस्टेल
+                                </option>
+                                <option value="472">
+                                    HEAN-2026-000472 - हिमान्सी गल्सै होस्टल
+                                </option>
+                                <option value="442">
+                                    HEAN-2026-000442 - हिमालयन गल्स होस्टल
+                                </option>
+                                <option value="342">
+                                    HEAN-2026-000342 - हिमालयन हाइब ब्वाइज होस्टेल
+                                </option>
+                                <option value="439">
+                                    HEAN-2026-000439 - हिमालयन हेभन गर्ल्स होस्टल
+                                </option>
+                                <option value="522">
+                                    HEAN-2026-000522 - हिमावारी गर्ल्स र ब्वाइज
+                                </option>
+                                <option value="122">
+                                    HEAN-2026-000122 - हुमन विन गर्ल्स होस्टेल
+                                </option>
+                                <option value="192">
+                                    HEAN-2026-000192 - होमे ब्वाइज होस्टेल
+                                </option>
+                                <option value="338">
+                                    HEAN-2026-000338 - होराइजन ब्वाइज होस्टेल
+                                </option>
+                                <option value="352">
+                                    HEAN-2026-000352 - होली जेम्स गर्ल्स होस्टेल
+                                </option>
+                                <option value="113">
+                                    HEAN-2026-000113 - होसि साइन ब्वाइज होस्टेल
+                                </option>
+                                <option value="506">
+                                    HEAN-2026-000506 - होस्टल इलाइट ब्वाइज
+                                </option>
+                                <option value="296">
+                                    HEAN-2026-000296 - होस्टेल ए स्क्वाएर प्रा लि
+                                </option>
+                                <option value="181">
+                                    HEAN-2026-000181 - होस्टेल पफ्लुबारी ब्वाइज
+                                </option>
+                                <option value="248">
+                                    HEAN-2026-000248 - ह्यापी होम ब्वाइज होस्टेल
+                                </option>
+                                <option value="504">
+                                    HEAN-2026-000504 - िनिकिता ब्वाइज होस्टल
+                                </option>
+                                <option value="503">
+                                    HEAN-2026-000503 - िब्कउष्चभ बलम चष्कभ नष्चकि जयकतभ
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">From
+                                Date</label>
+                            <input type="date" name="date_from" value=""
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">To
+                                Date</label>
+                            <input type="date" name="date_to" value=""
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div
+            style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div style="font-size:0.9rem; color:#64748b;">
+                <i class="fas fa-info-circle"></i>
+                Showing 0–0 of 0 inspections
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections/select" style="display:inline-flex; align-items:center; gap:8px; 
+                  background:linear-gradient(135deg, #8B5CF6, #6366F1); 
+                  color:#fff; padding:10px 24px; border-radius:50px; 
+                  text-decoration:none; font-weight:600; font-size:0.9rem; 
+                  box-shadow:0 4px 15px rgba(139,92,246,0.3); 
+                  transition:0.3s;">
+                    <i class="fas fa-plus-circle"></i> New Inspection
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" style="display:inline-flex; align-items:center; gap:6px; 
+                  background:#e2e8f0; color:#1e293b; padding:8px 18px; 
+                  border-radius:50px; text-decoration:none; font-weight:500; 
+                  font-size:0.85rem; transition:0.3s;">
+                    <i class="fas fa-arrow-left"></i> Back to Registrations
+                </a>
+            </div>
+        </div>
+
+
+        <div style="overflow-x:auto; background:#fff; border-radius:12px; border:1px solid #e2e8f0;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <thead style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                    <tr>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            #</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Registration</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Hostel</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Inspector</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Completed Date</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Status</th>
+                        <th
+                            style="padding:12px 16px; text-align:center; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="7" style="padding:40px 16px; text-align:center; color:#94a3b8;">
+                            <i class="fas fa-clipboard-list"
+                                style="font-size:2rem; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No inspections found.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div
+            style="margin-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <span style="color:#64748b; font-size:0.85rem;">
+                Showing 0 - 0 of 0
+            </span>
+            <div>
+
+            </div>
+        </div>
+
+
+        <footer class="admin-footer">
+            <div class="brand-line">
+                <strong style="color:#0b2b4a;">HEAN</strong>
+                <span style="color:#6a7e96; font-weight:300;">·</span>
+                <span style="color:#4a6a8b;">Management</span>
+            </div>
+            <div class="tech-partner">
+                Technology Partner ·
+                <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                    🏨 HostelHub Nepal
+                </a>
+            </div>
+            <div class="copyright">
+                © 2026 HEAN · All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+            if (toggleBtn && sidebar) {
+                // Ensure sidebar is open by default (no 'closed' class)
+                sidebar.classList.remove('closed');
+
+                toggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('closed');
+
+                    // Toggle icon between bars and times
+                    if (icon) {
+                        if (sidebar.classList.contains('closed')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id="lightbox"
+        style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;">
+        <img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div>
+    <div class="glasp-extension-toaster"
+        style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
+        <template shadowrootmode="open">
+            <div class="glasp-extension" style="font-family: inherit;"></div>
+        </template></div>
+</body>
+<div class="glasp-extension"
+    style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
+    <div class="glasp-extension" style="font-family: inherit;"></div>
+</div>
+
+</html>

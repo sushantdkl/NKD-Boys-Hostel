@@ -1,0 +1,1092 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>Committee - HEAN Admin</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <link rel="modulepreload" as="script"
+        href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js">
+    <link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>
+    <style>
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .pagination-wrapper .pagination {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link {
+            padding: 8px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            color: #1e293b;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link:hover {
+            background: #f1f5f9;
+            border-color: #8B5CF6;
+        }
+
+        .pagination-wrapper .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            border-color: #8B5CF6;
+            color: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item.disabled .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+
+    <style>
+        .dashboard-body {
+            cursor: default !important;
+        }
+
+        .sidebar .nav-item {
+            cursor: pointer;
+        }
+
+        .sidebar .logout button {
+            cursor: pointer;
+        }
+
+        .dashboard-body * {
+            cursor: default;
+        }
+
+        .sidebar .nav-item,
+        .sidebar .logout button,
+        .btn,
+        a,
+        button,
+        [role="button"] {
+            cursor: pointer !important;
+        }
+
+        .admin-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6a7e96;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .admin-footer a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .admin-footer a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+
+        .admin-footer .brand-line {
+            margin-bottom: 4px;
+            color: #0b2b4a;
+            font-weight: 600;
+        }
+
+        .admin-footer .brand-line span {
+            color: #6a7e96;
+            font-weight: 300;
+        }
+
+        .admin-footer .tech-partner {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+
+        .admin-footer .tech-partner a {
+            color: #1e5f8e;
+            font-weight: 600;
+        }
+
+        .admin-footer .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+
+        .admin-footer .copyright {
+            font-size: 0.65rem;
+            color: #b0c4d8;
+            margin-top: 8px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .language-switcher a:hover {
+            opacity: 0.7;
+        }
+
+        .language-switcher .divider {
+            color: #e2e8f0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN" style="height:40px;">
+            </div>
+            <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+
+        <nav id="sidebarNav">
+            <!-- ===== MAIN ===== -->
+            <div class="nav-section">Main</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin" class="nav-item ">
+                <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+            </a>
+
+            <!-- ===== ADMIN-ONLY LINKS ===== -->
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" class="nav-item ">
+                <i class="fas fa-file-alt"></i> <span>Applications</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections" class="nav-item ">
+                <i class="fas fa-clipboard-list"></i> <span>Inspections</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/hostels" class="nav-item ">
+                <i class="fas fa-hotel"></i> <span>Hostels</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee" class="nav-item active">
+                <i class="fas fa-users"></i> <span>Committee</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/notices" class="nav-item ">
+                <i class="fas fa-bullhorn"></i> <span>Notices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/gallery" class="nav-item ">
+                <i class="fas fa-images"></i> <span>Gallery</span>
+            </a>
+
+            <!-- ===== FINANCE ===== -->
+            <div class="nav-section">Finance</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices" class="nav-item ">
+                <i class="fas fa-file-invoice"></i> <span>Invoices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" class="nav-item ">
+                <i class="fas fa-credit-card"></i> <span>Payments</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/receipts" class="nav-item ">
+                <i class="fas fa-receipt"></i> <span>Receipts</span>
+            </a>
+
+            <!-- ===== SETTINGS ===== -->
+            <div class="nav-section">Settings</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/settings" class="nav-item ">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/reports" class="nav-item ">
+                <i class="fas fa-chart-bar"></i> <span>Reports</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" class="nav-item ">
+                <i class="fas fa-certificate"></i> <span>Certificate</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/cms" class="nav-item ">
+                <i class="fas fa-edit"></i> <span>CMS</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/import" class="nav-item ">
+                <i class="fas fa-upload"></i> <span>Import</span>
+            </a>
+
+            <!-- ===== OWNER-ONLY LINKS ===== -->
+
+            <!-- ===== LOGOUT ===== -->
+            <div class="logout">
+                <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST">
+                    <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                        autocomplete="off"> <button type="submit" class="nav-item"
+                        style="background:none; border:none; width:100%; text-align:left; cursor:pointer !important;">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main-content" style="overflow-x: hidden; width: 100%;">
+        <div class="topbar">
+            <div class="left-section">
+                <div class="page-title">Committee - HEAN Admin</div>
+
+
+                <a href="https://hean-production-ahfot4.laravel.cloud" class="btn btn-home"
+                    style="background:#0EA5E9; color:#fff; padding:4px 14px; border-radius:50px; text-decoration:none; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition:0.3s; margin-left:12px;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <div class="language-switcher">
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" style="color:#64748b;">EN</a>
+                    <span class="divider">|</span>
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" style="color:#64748b;">नेपाली</a>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="name">HEAN Admin</span>
+                <span class="role">Admin</span>
+                <div class="avatar">H</div>
+            </div>
+        </div>
+
+
+
+        <div
+            style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px; margin-bottom:24px;">
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#8B5CF6; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-users" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">106</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Total Members</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#22C55E; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-check-circle" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">106</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Published</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#94a3b8; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-eye-slash" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Unpublished</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; margin-bottom:24px;">
+            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee" method="GET" id="filterForm">
+
+                <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;">
+
+                    <div style="flex:2; min-width:200px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">
+                            <i class="fas fa-search" style="color:#8B5CF6;"></i> Search
+                        </label>
+                        <input type="text" name="search" value="" placeholder="Name, position..."
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; transition:0.2s;">
+                    </div>
+
+
+                    <div style="flex:1; min-width:140px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Status</label>
+                        <select name="published"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="">All</option>
+                            <option value="published">Published</option>
+                            <option value="unpublished">Unpublished</option>
+                        </select>
+                    </div>
+
+
+                    <div style="flex:1; min-width:140px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Position</label>
+                        <select name="position"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="">All</option>
+                            <option value="Advisor (Bhaktapur)">Advisor (Bhaktapur)</option>
+                            <option value="Advisor (Former 2079)">Advisor (Former 2079)</option>
+                            <option value="Advisor (Founder)">Advisor (Founder)</option>
+                            <option value="Advisor (Kathmandu)">Advisor (Kathmandu)</option>
+                            <option value="Advisor (Lalitpur)">Advisor (Lalitpur)</option>
+                            <option value="Co Secretary (Bhaktapur)">Co Secretary (Bhaktapur)</option>
+                            <option value="Co Secretary (Kathmandu)">Co Secretary (Kathmandu)</option>
+                            <option value="Co Secretary (Lalitpur)">Co Secretary (Lalitpur)</option>
+                            <option value="Co Secretary (Morang)">Co Secretary (Morang)</option>
+                            <option value="General Secretary (Former 2080)">General Secretary (Former 2080)</option>
+                            <option value="General Secretary (Founder)">General Secretary (Founder)</option>
+                            <option value="Member (Bhaktapur)">Member (Bhaktapur)</option>
+                            <option value="Member (Former 2079)">Member (Former 2079)</option>
+                            <option value="Member (Former 2080)">Member (Former 2080)</option>
+                            <option value="Member (Founder)">Member (Founder)</option>
+                            <option value="Member (Kaski)">Member (Kaski)</option>
+                            <option value="Member (Kathmandu)">Member (Kathmandu)</option>
+                            <option value="Member (Lalitpur)">Member (Lalitpur)</option>
+                            <option value="Member (Morang)">Member (Morang)</option>
+                            <option value="President">President</option>
+                            <option value="President (Bhaktapur)">President (Bhaktapur)</option>
+                            <option value="President (Former 2079)">President (Former 2079)</option>
+                            <option value="President (Former 2080)">President (Former 2080)</option>
+                            <option value="President (Founder)">President (Founder)</option>
+                            <option value="President (Kaski)">President (Kaski)</option>
+                            <option value="President (Kathmandu)">President (Kathmandu)</option>
+                            <option value="President (Lalitpur)">President (Lalitpur)</option>
+                            <option value="President (Morang)">President (Morang)</option>
+                            <option value="Secretary (Bhaktapur)">Secretary (Bhaktapur)</option>
+                            <option value="Secretary (Former 2079)">Secretary (Former 2079)</option>
+                            <option value="Secretary (Former 2080)">Secretary (Former 2080)</option>
+                            <option value="Secretary (Kaski)">Secretary (Kaski)</option>
+                            <option value="Secretary (Kathmandu)">Secretary (Kathmandu)</option>
+                            <option value="Secretary (Lalitpur)">Secretary (Lalitpur)</option>
+                            <option value="Secretary (Morang)">Secretary (Morang)</option>
+                            <option value="Senior Vice President (Former 2079)">Senior Vice President (Former 2079)
+                            </option>
+                            <option value="Senior Vice President (Founder)">Senior Vice President (Founder)</option>
+                            <option value="Treasurer (Bhaktapur)">Treasurer (Bhaktapur)</option>
+                            <option value="Treasurer (Former 2079)">Treasurer (Former 2079)</option>
+                            <option value="Treasurer (Former 2080)">Treasurer (Former 2080)</option>
+                            <option value="Treasurer (Founder)">Treasurer (Founder)</option>
+                            <option value="Treasurer (Kaski)">Treasurer (Kaski)</option>
+                            <option value="Treasurer (Kathmandu)">Treasurer (Kathmandu)</option>
+                            <option value="Treasurer (Lalitpur)">Treasurer (Lalitpur)</option>
+                            <option value="Treasurer (Morang)">Treasurer (Morang)</option>
+                            <option value="Vice President (Bhaktapur)">Vice President (Bhaktapur)</option>
+                            <option value="Vice President (Former 2079)">Vice President (Former 2079)</option>
+                            <option value="Vice President (Former 2080)">Vice President (Former 2080)</option>
+                            <option value="Vice President (Founder)">Vice President (Founder)</option>
+                            <option value="Vice President (Kaski)">Vice President (Kaski)</option>
+                            <option value="Vice President (Kathmandu)">Vice President (Kathmandu)</option>
+                            <option value="Vice President (Lalitpur)">Vice President (Lalitpur)</option>
+                            <option value="Vice President (Morang)">Vice President (Morang)</option>
+                        </select>
+                    </div>
+
+
+                    <div style="flex:1; min-width:130px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Sort
+                            by:</label>
+                        <select name="sort"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="order_asc">Order (Low to High)</option>
+                            <option value="order_desc">Order (High to Low)</option>
+                            <option value="name_asc">Name (A-Z)</option>
+                            <option value="name_desc">Name (Z-A)</option>
+                            <option value="position_asc">Position (A-Z)</option>
+                            <option value="position_desc">Position (Z-A)</option>
+                        </select>
+                    </div>
+
+
+                    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                        <button type="submit"
+                            style="background:linear-gradient(135deg, #8B5CF6, #7C3AED); color:#fff; border:none; padding:10px 22px; border-radius:50px; font-weight:600; font-size:0.85rem; cursor:pointer; transition:0.3s; box-shadow:0 4px 15px rgba(139,92,246,0.25);">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                        <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee"
+                            style="background:#e2e8f0; color:#1e293b; padding:10px 18px; border-radius:50px; text-decoration:none; font-weight:500; font-size:0.85rem; transition:0.2s; display:inline-flex; align-items:center; gap:6px;">
+                            <i class="fas fa-undo"></i> Reset
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div
+            style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div style="font-size:0.9rem; color:#64748b;">
+                <i class="fas fa-info-circle"></i>
+                Showing 1–10 of 106 members
+            </div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/create"
+                style="display:inline-flex; align-items:center; gap:8px; background:#8B5CF6; color:#fff; padding:10px 22px; border-radius:50px; text-decoration:none; font-weight:600; font-size:0.9rem; transition:0.3s; box-shadow:0 4px 15px rgba(139,92,246,0.3);">
+                <i class="fas fa-plus-circle"></i> Add New Member
+            </a>
+        </div>
+
+
+        <div style="overflow-x:auto; background:#fff; border-radius:12px; border:1px solid #e2e8f0;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <thead style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                    <tr>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            #</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Image</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Name</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Position</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Published</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Order</th>
+                        <th
+                            style="padding:12px 16px; text-align:center; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">1</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Nikesh Shrestha</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Member (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/74/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/74" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">2</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Hari Khanal</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Advisor (Kathmandu)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/68/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/68" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">3</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Ganesh Shrestha</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                President (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/69/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/69" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">4</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Anu Sitaula</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Vice President (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/70/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/70" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">5</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Mina Magar</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Secretary (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/71/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/71" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">6</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Sitaram Saiju</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Co Secretary (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/72/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/72" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">7</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Binod Shrestha</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Treasurer (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/73/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/73" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">8</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Sindhu Bam Malla</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                President (Lalitpur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/79/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/79" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">9</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Ramesh Parsad Sitaula</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Advisor (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/78/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/78" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">10</td>
+                        <td style="padding:12px 16px;">
+                            <div
+                                style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">Raj Kumar Mahandhar</td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#f3e8ff; color:#7c3aed; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                Advisor (Bhaktapur)
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px;">
+                            <span
+                                style="background:#dcfce7; color:#166534; padding:2px 12px; border-radius:50px; font-size:0.7rem; font-weight:600;">
+                                <i class="fas fa-check-circle" style="font-size:0.65rem;"></i> Yes
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">0</td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee/77/edit"
+                                style="display:inline-block; padding:6px 14px; background:#F59E0B; color:#fff; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:600; transition:0.2s;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="https://hean-production-ahfot4.laravel.cloud/admin/committee/77" method="POST"
+                                style="display:inline-block;">
+                                <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                                    autocomplete="off"> <input type="hidden" name="_method" value="DELETE"> <button
+                                    type="submit"
+                                    style="padding:6px 14px; background:#EF4444; color:#fff; border:none; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition:0.2s;"
+                                    onclick="return confirm('Are you sure you want to delete this member?')">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div style="margin-top:24px; display:flex; justify-content:center;">
+            <nav role="navigation" aria-label="Pagination Navigation">
+
+                <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                    <span
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                        « Previous
+                    </span>
+
+                    <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=2" rel="next"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                        Next »
+                    </a>
+
+                </div>
+
+                <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+                    <div>
+                        <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                            Showing
+                            <span class="font-medium">1</span>
+                            to
+                            <span class="font-medium">10</span>
+                            of
+                            <span class="font-medium">106</span>
+                            results
+                        </p>
+                    </div>
+
+                    <div>
+                        <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+
+                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                                <span
+                                    class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400"
+                                    aria-hidden="true">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </span>
+
+
+
+
+
+                            <span aria-current="page">
+                                <span
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                            </span>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=2"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 2">
+                                2
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=3"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 3">
+                                3
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=4"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 4">
+                                4
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=5"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 5">
+                                5
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=6"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 6">
+                                6
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=7"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 7">
+                                7
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=8"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 8">
+                                8
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=9"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 9">
+                                9
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=10"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 10">
+                                10
+                            </a>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=11"
+                                class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                aria-label="Go to page 11">
+                                11
+                            </a>
+
+
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee?page=2" rel="next"
+                                class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+                                aria-label="Next &amp;raquo;">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+
+        <footer class="admin-footer">
+            <div class="brand-line">
+                <strong style="color:#0b2b4a;">HEAN</strong>
+                <span style="color:#6a7e96; font-weight:300;">·</span>
+                <span style="color:#4a6a8b;">Management</span>
+            </div>
+            <div class="tech-partner">
+                Technology Partner ·
+                <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                    🏨 HostelHub Nepal
+                </a>
+            </div>
+            <div class="copyright">
+                © 2026 HEAN · All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+            if (toggleBtn && sidebar) {
+                // Ensure sidebar is open by default (no 'closed' class)
+                sidebar.classList.remove('closed');
+
+                toggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('closed');
+
+                    // Toggle icon between bars and times
+                    if (icon) {
+                        if (sidebar.classList.contains('closed')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id="lightbox"
+        style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;">
+        <img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div>
+    <div class="glasp-extension-toaster"
+        style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
+        <template shadowrootmode="open">
+            <div class="glasp-extension" style="font-family: inherit;"></div>
+        </template></div>
+</body>
+<div class="glasp-extension"
+    style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
+    <div class="glasp-extension" style="font-family: inherit;"></div>
+</div>
+
+</html>

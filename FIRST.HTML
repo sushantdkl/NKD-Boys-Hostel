@@ -1,0 +1,797 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>Dashboard - HEAN Admin</title>
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css"><link rel="modulepreload" as="script" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"><link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css"><script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>    <style>
+    .stat-card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08) !important;
+        transition: 0.2s ease;
+    }
+    .stat-card-hover {
+        transition: 0.2s ease;
+    }
+    @media (max-width: 768px) {
+        .dashboard-charts-grid {
+            grid-template-columns: 1fr !important;
+        }
+        .dashboard-recents-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    /* Dashboard responsive fixes */
+@media (min-width: 640px) {
+    .dashboard-recents-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+@media (min-width: 1024px) {
+    .dashboard-recents-grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+    }
+}
+</style>
+
+    <style>
+        .dashboard-body { cursor: default !important; }
+        .sidebar .nav-item { cursor: pointer; }
+        .sidebar .logout button { cursor: pointer; }
+        .dashboard-body * { cursor: default; }
+        .sidebar .nav-item,
+        .sidebar .logout button,
+        .btn,
+        a,
+        button,
+        [role="button"] { cursor: pointer !important; }
+
+        .admin-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6a7e96;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+        .admin-footer a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .admin-footer a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+        .admin-footer .brand-line {
+            margin-bottom: 4px;
+            color: #0b2b4a;
+            font-weight: 600;
+        }
+        .admin-footer .brand-line span {
+            color: #6a7e96;
+            font-weight: 300;
+        }
+        .admin-footer .tech-partner {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+        .admin-footer .tech-partner a {
+            color: #1e5f8e;
+            font-weight: 600;
+        }
+        .admin-footer .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+        .admin-footer .copyright {
+            font-size: 0.65rem;
+            color: #b0c4d8;
+            margin-top: 8px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .language-switcher a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .language-switcher a:hover {
+            opacity: 0.7;
+        }
+        .language-switcher .divider {
+            color: #e2e8f0;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .topbar .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    
+    <div class="sidebar" id="sidebar">
+        
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN" style="height:40px;">
+            </div>
+            <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        
+        <nav id="sidebarNav">
+            <!-- ===== MAIN ===== -->
+            <div class="nav-section">Main</div>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin" class="nav-item active">
+                    <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+                </a>
+            
+            <!-- ===== ADMIN-ONLY LINKS ===== -->
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" class="nav-item ">
+                    <i class="fas fa-file-alt"></i> <span>Applications</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections" class="nav-item ">
+                    <i class="fas fa-clipboard-list"></i> <span>Inspections</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/hostels" class="nav-item ">
+                    <i class="fas fa-hotel"></i> <span>Hostels</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee" class="nav-item ">
+                    <i class="fas fa-users"></i> <span>Committee</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/notices" class="nav-item ">
+                    <i class="fas fa-bullhorn"></i> <span>Notices</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/gallery" class="nav-item ">
+                    <i class="fas fa-images"></i> <span>Gallery</span>
+                </a>
+
+                <!-- ===== FINANCE ===== -->
+                <div class="nav-section">Finance</div>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices" class="nav-item ">
+                    <i class="fas fa-file-invoice"></i> <span>Invoices</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" class="nav-item ">
+                    <i class="fas fa-credit-card"></i> <span>Payments</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/receipts" class="nav-item ">
+                    <i class="fas fa-receipt"></i> <span>Receipts</span>
+                </a>
+
+                <!-- ===== SETTINGS ===== -->
+                <div class="nav-section">Settings</div>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/settings" class="nav-item ">
+                    <i class="fas fa-cog"></i> <span>Settings</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/reports" class="nav-item ">
+                    <i class="fas fa-chart-bar"></i> <span>Reports</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" class="nav-item ">
+                    <i class="fas fa-certificate"></i> <span>Certificate</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/cms" class="nav-item ">
+                    <i class="fas fa-edit"></i> <span>CMS</span>
+                </a>
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/import" class="nav-item ">
+                    <i class="fas fa-upload"></i> <span>Import</span>
+                </a>
+            
+            <!-- ===== OWNER-ONLY LINKS ===== -->
+            
+            <!-- ===== LOGOUT ===== -->
+            <div class="logout">
+                <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST">
+                    <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL" autocomplete="off">                    <button type="submit" class="nav-item" style="background:none; border:none; width:100%; text-align:left; cursor:pointer !important;">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    
+    <div class="main-content" style="overflow-x: hidden; width: 100%;">
+        <div class="topbar">
+    <div class="left-section">
+        <div class="page-title">Dashboard - HEAN Admin</div>
+
+        
+        <a href="https://hean-production-ahfot4.laravel.cloud" class="btn btn-home" style="background:#0EA5E9; color:#fff; padding:4px 14px; border-radius:50px; text-decoration:none; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition:0.3s; margin-left:12px;">
+    <i class="fas fa-home"></i> 
+    <span>Home</span>
+</a>
+
+        <div class="language-switcher">
+            <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" style="color:#64748b;">EN</a>
+            <span class="divider">|</span>
+            <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" style="color:#64748b;">नेपाली</a>
+        </div>
+    </div>
+    <div class="user-info">
+                <span class="name">HEAN Admin</span>
+                <span class="role">Admin</span>
+                <div class="avatar">H</div>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:14px; margin-bottom:18px;">
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#0EA5E9; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-hotel" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">536</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Total Hostels</div>
+        </div>
+    </div>
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#F59E0B; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-clock" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">3</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Pending Registrations</div>
+        </div>
+    </div>
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#8B5CF6; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-clipboard-list" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">3</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Inspections Pending</div>
+        </div>
+    </div>
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#10B981; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-users" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">4</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Members</div>
+        </div>
+    </div>
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#22C55E; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-money-bill-wave" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">NPR 1,000</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Total Revenue</div>
+        </div>
+    </div>
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:12px;">
+        <div style="background:#EC4899; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff;">
+            <i class="fas fa-certificate" style="font-size:1rem;"></i>
+        </div>
+        <div>
+            <div style="font-size:1.4rem; font-weight:700; color:#0f172a;">2</div>
+            <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;">Certificates</div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:10px; margin-bottom:18px;">
+    <div style="background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; border:1px solid #e2e8f0;">
+        <div style="font-size:0.6rem; color:#64748b; text-transform:uppercase;">Today</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#0f172a;">5</div>
+    </div>
+    <div style="background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; border:1px solid #e2e8f0;">
+        <div style="font-size:0.6rem; color:#64748b; text-transform:uppercase;">This Week</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#0f172a;">5</div>
+    </div>
+    <div style="background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; border:1px solid #e2e8f0;">
+        <div style="font-size:0.6rem; color:#64748b; text-transform:uppercase;">This Month</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#0f172a;">539</div>
+    </div>
+    <div style="background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; border:1px solid #e2e8f0;">
+        <div style="font-size:0.6rem; color:#64748b; text-transform:uppercase;">Active Hostels</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#0f172a;">536</div>
+    </div>
+    <div style="background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; border:1px solid #e2e8f0;">
+        <div style="font-size:0.6rem; color:#64748b; text-transform:uppercase;">Expired</div>
+        <div style="font-size:1.2rem; font-weight:700; color:#dc2626;">0</div>
+    </div>
+</div>
+
+
+<div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px;">
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations?status=pending" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, #F59E0B, #D97706); color:#fff; padding:10px 22px; border-radius:50px; text-decoration:none; font-weight:600; font-size:0.85rem; box-shadow:0 4px 15px rgba(245,158,11,0.3); transition:0.3s;">
+            <i class="fas fa-check-circle"></i> Approve Pending
+            <span style="background:rgba(255,255,255,0.2); padding:2px 10px; border-radius:50px; font-size:0.75rem;">3</span>
+        </a>
+    </div>
+
+
+<div style="display:grid; grid-template-columns:2fr 1fr; gap:18px; margin-bottom:18px;">
+    <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 12px 0; font-size:0.9rem; font-weight:600; color:#0f172a;">
+            <i class="fas fa-chart-line" style="color:#0EA5E9; margin-right:8px;"></i>
+            Monthly Registrations
+        </h4>
+                    <div style="position:relative; height:180px;">
+                <canvas id="monthlyRegistrationsChart" style="height: 180px; width: 1621px; display: block; box-sizing: border-box;" width="3242" height="360"></canvas>
+            </div>
+            </div>
+    <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 12px 0; font-size:0.9rem; font-weight:600; color:#0f172a;">
+            <i class="fas fa-chart-pie" style="color:#8B5CF6; margin-right:8px;"></i>
+            Hostel Types
+        </h4>
+                    <div style="position:relative; height:180px;">
+                <canvas id="typeDistributionChart" style="height: 180px; width: 791px; display: block; box-sizing: border-box;" width="1582" height="360"></canvas>
+            </div>
+            </div>
+</div>
+
+
+<div style="display:grid; grid-template-columns:2fr 1fr; gap:18px; margin-bottom:18px;">
+    <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 12px 0; font-size:0.9rem; font-weight:600; color:#0f172a;">
+            <i class="fas fa-chart-bar" style="color:#F59E0B; margin-right:8px;"></i>
+            Registration Status
+        </h4>
+                    <div style="position:relative; height:180px;">
+                <canvas id="statusDistributionChart" style="height: 180px; width: 1621px; display: block; box-sizing: border-box;" width="3242" height="360"></canvas>
+            </div>
+            </div>
+    <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 12px 0; font-size:0.9rem; font-weight:600; color:#0f172a;">
+            <i class="fas fa-money-bill-wave" style="color:#22C55E; margin-right:8px;"></i>
+            Monthly Revenue
+        </h4>
+                    <div style="position:relative; height:180px;">
+                <canvas id="monthlyRevenueChart" style="height: 180px; width: 791px; display: block; box-sizing: border-box;" width="1582" height="360"></canvas>
+            </div>
+            </div>
+</div>
+
+
+<div class="dashboard-recents-grid" style="display:grid; grid-template-columns:1fr; gap:18px; margin-bottom:18px;">
+        <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 10px 0; font-size:0.8rem; font-weight:600; color:#0f172a; display:flex; align-items:center; gap:6px;">
+            <i class="fas fa-file-alt" style="color:#0EA5E9;"></i>
+            Recent Registrations
+            <span style="margin-left:auto; font-size:0.65rem; font-weight:400; color:#94a3b8;">
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" style="color:#0EA5E9; text-decoration:none;">View All</a>
+            </span>
+        </h4>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">TEst</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">55 minutes ago</div>
+                </div>
+                <span style="font-size:0.6rem; padding:1px 8px; border-radius:50px; font-weight:500; background:
+                     #dbeafe; color:#1e40af;
+                    ">
+                    Active
+                </span>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">Suchana Hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">1 hour ago</div>
+                </div>
+                <span style="font-size:0.6rem; padding:1px 8px; border-radius:50px; font-weight:500; background:
+                     #dbeafe; color:#1e40af;
+                    ">
+                    Active
+                </span>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">Suchana Hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">1 hour ago</div>
+                </div>
+                <span style="font-size:0.6rem; padding:1px 8px; border-radius:50px; font-weight:500; background:
+                     #fef3c7; color:#92400e;
+                    ">
+                    Pending
+                </span>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">Suchana Hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">1 hour ago</div>
+                </div>
+                <span style="font-size:0.6rem; padding:1px 8px; border-radius:50px; font-weight:500; background:
+                     #fef3c7; color:#92400e;
+                    ">
+                    Pending
+                </span>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">Suchana Hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">1 hour ago</div>
+                </div>
+                <span style="font-size:0.6rem; padding:1px 8px; border-radius:50px; font-weight:500; background:
+                     #fef3c7; color:#92400e;
+                    ">
+                    Pending
+                </span>
+            </div>
+            </div>
+
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 10px 0; font-size:0.8rem; font-weight:600; color:#0f172a; display:flex; align-items:center; gap:6px;">
+            <i class="fas fa-credit-card" style="color:#22C55E;"></i>
+            Recent Payments
+            <span style="margin-left:auto; font-size:0.65rem; font-weight:400; color:#94a3b8;">
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" style="color:#0EA5E9; text-decoration:none;">View All</a>
+            </span>
+        </h4>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">TEst</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">2026-07-24</div>
+                </div>
+                <div style="font-weight:600; color:#22C55E; font-size:0.78rem;">NPR 500</div>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">Suchana Hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">2026-07-24</div>
+                </div>
+                <div style="font-weight:600; color:#22C55E; font-size:0.78rem;">NPR 500</div>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">पाण्डेश्वरी ब्वाइज होस्टल</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">2026-07-15</div>
+                </div>
+                <div style="font-weight:600; color:#22C55E; font-size:0.78rem;">NPR 0</div>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">RN New Dreams girls hostel</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">2026-07-15</div>
+                </div>
+                <div style="font-weight:600; color:#22C55E; font-size:0.78rem;">NPR 0</div>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">प्रसून ब्वाइज हाृस्टल</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">2026-07-15</div>
+                </div>
+                <div style="font-weight:600; color:#22C55E; font-size:0.78rem;">NPR 0</div>
+            </div>
+            </div>
+
+    <div style="background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e2e8f0;">
+        <h4 style="margin:0 0 10px 0; font-size:0.8rem; font-weight:600; color:#0f172a; display:flex; align-items:center; gap:6px;">
+            <i class="fas fa-certificate" style="color:#8B5CF6;"></i>
+            Recent Certificates
+            <span style="margin-left:auto; font-size:0.65rem; font-weight:400; color:#94a3b8;">
+                <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" style="color:#0EA5E9; text-decoration:none;">View All</a>
+            </span>
+        </h4>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">HEAN-2026-00002</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">
+                        2026-07-23
+                    </div>
+                </div>
+                <span style="font-size:0.6rem; background:#eef2ff; color:#4338ca; padding:1px 8px; border-radius:50px; font-weight:500;">
+                    Generated
+                </span>
+            </div>
+                    <div style="padding:6px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:500; font-size:0.78rem; color:#0f172a;">HEAN-2026-00001</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">
+                        2026-07-23
+                    </div>
+                </div>
+                <span style="font-size:0.6rem; background:#eef2ff; color:#4338ca; padding:1px 8px; border-radius:50px; font-weight:500;">
+                    Generated
+                </span>
+            </div>
+            </div>
+</div>
+
+
+        <footer class="admin-footer">
+            <div class="brand-line">
+                <strong style="color:#0b2b4a;">HEAN</strong>
+                <span style="color:#6a7e96; font-weight:300;">·</span>
+                <span style="color:#4a6a8b;">Management</span>
+            </div>
+            <div class="tech-partner">
+                Technology Partner ·
+                <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                    🏨 HostelHub Nepal
+                </a>
+            </div>
+            <div class="copyright">
+                © 2026 HEAN · All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Helper: safe monthly data
+    function safeMonthly(data, labelKey, valueKey, defaultLabels, defaultValues) {
+        if (!data || !Array.isArray(data) || data.length === 0) {
+            return { labels: defaultLabels, values: defaultValues };
+        }
+        return {
+            labels: data.map(item => item[labelKey] || 'N/A'),
+            values: data.map(item => item[valueKey] || 0)
+        };
+    }
+
+    // =============================================================
+    // 1. MONTHLY REGISTRATIONS (Line Chart)
+    // =============================================================
+        const monthlyData = [{"label":"Aug 2025","count":0},{"label":"Sep 2025","count":0},{"label":"Oct 2025","count":0},{"label":"Nov 2025","count":0},{"label":"Dec 2025","count":0},{"label":"Jan 2026","count":0},{"label":"Feb 2026","count":0},{"label":"Mar 2026","count":0},{"label":"Apr 2026","count":0},{"label":"May 2026","count":0},{"label":"Jun 2026","count":0},{"label":"Jul 2026","count":539}];
+    const monthlyDefaultLabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const monthlyDefaultValues = Array(12).fill(0);
+    const monthly = safeMonthly(monthlyData, 'label', 'count', monthlyDefaultLabels, monthlyDefaultValues);
+    const monthlyCtx = document.getElementById('monthlyRegistrationsChart');
+    if (monthlyCtx) {
+        new Chart(monthlyCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: monthly.labels.length ? monthly.labels : monthlyDefaultLabels,
+                datasets: [{
+                    label: 'Registrations',
+                    data: monthly.values.length ? monthly.values : monthlyDefaultValues,
+                    borderColor: '#0EA5E9',
+                    backgroundColor: 'rgba(14,165,233,0.08)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#0EA5E9',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    borderWidth: 2.5,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+            }
+        });
+    }
+    
+    // =============================================================
+    // 2. HOSTEL TYPES (Doughnut Chart) - FIXED!
+    // =============================================================
+        const typeData = {"girls":230,"boys":279,"co-ed":27};
+    const typeKeys = Object.keys(typeData);
+    const typeValues = Object.values(typeData);
+    const typeLabels = typeKeys.map(k => k.charAt(0).toUpperCase() + k.slice(1));
+    const typeColorsMap = {
+        'boys': '#3B82F6',
+        'girls': '#EC4899',
+        'co-ed': '#8B5CF6'
+    };
+    const typeColors = typeKeys.map(key => typeColorsMap[key] || '#94a3b8');
+    const typeCtx = document.getElementById('typeDistributionChart');
+    if (typeCtx) {
+        new Chart(typeCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: typeLabels,
+                datasets: [{
+                    data: typeValues,
+                    backgroundColor: typeColors,
+                    borderWidth: 2.5,
+                    borderColor: '#fff',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            padding: 12, 
+                            usePointStyle: true, 
+                            pointStyle: 'circle', 
+                            font: { size: 11, weight: '500' },
+                            color: '#0f172a'
+                        } 
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+    }
+    
+    // =============================================================
+    // 3. REGISTRATION STATUS (Bar Chart) - FIXED!
+    // =============================================================
+        const statusData = {"active":536,"pending":3};
+    const statusKeys = Object.keys(statusData);
+    const statusValues = Object.values(statusData);
+    
+    // 🔥 FIX: Clean labels - remove any extra leading characters
+    const statusLabels = statusKeys.map(k => {
+        let clean = k;
+        if (k.length > 1 && k[0] === k[1]) {
+            clean = k.substring(1); // Remove first duplicate character
+        }
+        return clean.charAt(0).toUpperCase() + clean.slice(1);
+    });
+    
+    const statusColorsMap = {
+        'pending': '#F59E0B',
+        'approved': '#22C55E',
+        'active': '#3B82F6',
+        'rejected': '#EF4444',
+        'duplicate': '#8B5CF6',
+        'awaiting_payment': '#F59E0B',
+        'inspection': '#8B5CF6',
+        'completed': '#10B981',
+        'scheduled': '#F59E0B',
+        'cancelled': '#EF4444'
+    };
+    
+    const statusColors = statusKeys.map(key => {
+        let cleanKey = key;
+        if (key.length > 1 && key[0] === key[1]) {
+            cleanKey = key.substring(1);
+        }
+        return statusColorsMap[cleanKey] || '#94a3b8';
+    });
+    
+    const statusCtx = document.getElementById('statusDistributionChart');
+    if (statusCtx) {
+        new Chart(statusCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: statusLabels,
+                datasets: [{
+                    label: 'Registrations',
+                    data: statusValues,
+                    backgroundColor: statusColors,
+                    borderRadius: 6,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + ' registrations';
+                            }
+                        }
+                    }
+                },
+                scales: { 
+                    y: { 
+                        beginAtZero: true, 
+                        ticks: { stepSize: 1 },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    }
+    
+    // =============================================================
+    // 4. MONTHLY REVENUE (Line Chart)
+    // =============================================================
+        const revenueData = [{"label":"Feb 2026","total":0},{"label":"Mar 2026","total":0},{"label":"Apr 2026","total":0},{"label":"May 2026","total":0},{"label":"Jun 2026","total":0},{"label":"Jul 2026","total":1000}];
+    const revenueDefaultLabels = ['Jan','Feb','Mar','Apr','May','Jun'];
+    const revenueDefaultValues = [0, 0, 0, 0, 0, 0];
+    const revenue = safeMonthly(revenueData, 'label', 'total', revenueDefaultLabels, revenueDefaultValues);
+    const revenueCtx = document.getElementById('monthlyRevenueChart');
+    if (revenueCtx) {
+        new Chart(revenueCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: revenue.labels.length ? revenue.labels : revenueDefaultLabels,
+                datasets: [{
+                    label: 'Revenue (NPR)',
+                    data: revenue.values.length ? revenue.values : revenueDefaultValues,
+                    borderColor: '#22C55E',
+                    backgroundColor: 'rgba(34,197,94,0.08)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#22C55E',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    borderWidth: 2.5,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: function(value) { return 'NPR ' + value.toLocaleString(); } }
+                    }
+                }
+            }
+        });
+    }
+    
+});
+</script>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+            if (toggleBtn && sidebar) {
+                // Ensure sidebar is open by default (no 'closed' class)
+                sidebar.classList.remove('closed');
+
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('closed');
+
+                    // Toggle icon between bars and times
+                    if (icon) {
+                        if (sidebar.classList.contains('closed')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+<div id="lightbox" style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;"><img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div><div class="glasp-extension-toaster" style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: inherit;"></div></template></div></body><div class="glasp-extension" style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;"><div class="glasp-extension" style="font-family: inherit;"></div></div></html>

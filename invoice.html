@@ -1,0 +1,1261 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>Invoices - HEAN Admin</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <link rel="modulepreload" as="script"
+        href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js">
+    <link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>
+    <style>
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .pagination-wrapper .pagination {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link {
+            padding: 8px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            color: #1e293b;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item .page-link:hover {
+            background: #f1f5f9;
+            border-color: #0EA5E9;
+        }
+
+        .pagination-wrapper .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, #0EA5E9, #3B82F6);
+            border-color: #0EA5E9;
+            color: #fff;
+        }
+
+        .pagination-wrapper .pagination .page-item.disabled .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+
+    <style>
+        .dashboard-body {
+            cursor: default !important;
+        }
+
+        .sidebar .nav-item {
+            cursor: pointer;
+        }
+
+        .sidebar .logout button {
+            cursor: pointer;
+        }
+
+        .dashboard-body * {
+            cursor: default;
+        }
+
+        .sidebar .nav-item,
+        .sidebar .logout button,
+        .btn,
+        a,
+        button,
+        [role="button"] {
+            cursor: pointer !important;
+        }
+
+        .admin-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6a7e96;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .admin-footer a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .admin-footer a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+
+        .admin-footer .brand-line {
+            margin-bottom: 4px;
+            color: #0b2b4a;
+            font-weight: 600;
+        }
+
+        .admin-footer .brand-line span {
+            color: #6a7e96;
+            font-weight: 300;
+        }
+
+        .admin-footer .tech-partner {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+
+        .admin-footer .tech-partner a {
+            color: #1e5f8e;
+            font-weight: 600;
+        }
+
+        .admin-footer .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+
+        .admin-footer .copyright {
+            font-size: 0.65rem;
+            color: #b0c4d8;
+            margin-top: 8px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .language-switcher a:hover {
+            opacity: 0.7;
+        }
+
+        .language-switcher .divider {
+            color: #e2e8f0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN" style="height:40px;">
+            </div>
+            <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+
+        <nav id="sidebarNav">
+            <!-- ===== MAIN ===== -->
+            <div class="nav-section">Main</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin" class="nav-item ">
+                <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+            </a>
+
+            <!-- ===== ADMIN-ONLY LINKS ===== -->
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" class="nav-item ">
+                <i class="fas fa-file-alt"></i> <span>Applications</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections" class="nav-item ">
+                <i class="fas fa-clipboard-list"></i> <span>Inspections</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/hostels" class="nav-item ">
+                <i class="fas fa-hotel"></i> <span>Hostels</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee" class="nav-item ">
+                <i class="fas fa-users"></i> <span>Committee</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/notices" class="nav-item ">
+                <i class="fas fa-bullhorn"></i> <span>Notices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/gallery" class="nav-item ">
+                <i class="fas fa-images"></i> <span>Gallery</span>
+            </a>
+
+            <!-- ===== FINANCE ===== -->
+            <div class="nav-section">Finance</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices" class="nav-item active">
+                <i class="fas fa-file-invoice"></i> <span>Invoices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" class="nav-item ">
+                <i class="fas fa-credit-card"></i> <span>Payments</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/receipts" class="nav-item ">
+                <i class="fas fa-receipt"></i> <span>Receipts</span>
+            </a>
+
+            <!-- ===== SETTINGS ===== -->
+            <div class="nav-section">Settings</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/settings" class="nav-item ">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/reports" class="nav-item ">
+                <i class="fas fa-chart-bar"></i> <span>Reports</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" class="nav-item ">
+                <i class="fas fa-certificate"></i> <span>Certificate</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/cms" class="nav-item ">
+                <i class="fas fa-edit"></i> <span>CMS</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/import" class="nav-item ">
+                <i class="fas fa-upload"></i> <span>Import</span>
+            </a>
+
+            <!-- ===== OWNER-ONLY LINKS ===== -->
+
+            <!-- ===== LOGOUT ===== -->
+            <div class="logout">
+                <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST">
+                    <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                        autocomplete="off"> <button type="submit" class="nav-item"
+                        style="background:none; border:none; width:100%; text-align:left; cursor:pointer !important;">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main-content" style="overflow-x: hidden; width: 100%;">
+        <div class="topbar">
+            <div class="left-section">
+                <div class="page-title">Invoices - HEAN Admin</div>
+
+
+                <a href="https://hean-production-ahfot4.laravel.cloud" class="btn btn-home"
+                    style="background:#0EA5E9; color:#fff; padding:4px 14px; border-radius:50px; text-decoration:none; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition:0.3s; margin-left:12px;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <div class="language-switcher">
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" style="color:#64748b;">EN</a>
+                    <span class="divider">|</span>
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" style="color:#64748b;">नेपाली</a>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="name">HEAN Admin</span>
+                <span class="role">Admin</span>
+                <div class="avatar">H</div>
+            </div>
+        </div>
+
+
+
+        <div
+            style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px; margin-bottom:24px;">
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#0EA5E9; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-file-invoice" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">538</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Total Invoices</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#22C55E; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-check-circle" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">538</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">Paid
+                    </div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#F59E0B; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-clock" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Pending</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#EF4444; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-exclamation-triangle" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Overdue</div>
+                </div>
+            </div>
+            <div
+                style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+                <div
+                    style="background:#8B5CF6; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff;">
+                    <i class="fas fa-hand-holding-usd" style="font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-size:1.5rem; font-weight:700; color:#0f172a;">0</div>
+                    <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:0.03em;">
+                        Partial</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid #e2e8f0; margin-bottom:24px;">
+            <form action="https://hean-production-ahfot4.laravel.cloud/admin/invoices" method="GET" id="filterForm">
+
+                <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;">
+
+                    <div style="flex:2; min-width:200px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">
+                            <i class="fas fa-search" style="color:#0EA5E9;"></i> Search
+                        </label>
+                        <input type="text" name="search" value="" placeholder="इनभ्वाइस नं., होस्टल नाम, दर्ता नम्बर..."
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; transition:0.2s;">
+                    </div>
+
+
+                    <div style="flex:1; min-width:140px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Status</label>
+                        <select name="status"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="paid">Paid</option>
+                            <option value="overdue">Overdue</option>
+                            <option value="partial">Partial</option>
+                        </select>
+                    </div>
+
+
+                    <div style="flex:1; min-width:140px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Invoice
+                            Type</label>
+                        <select name="invoice_type"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="">All</option>
+                            <option value="membership_fee">Membership Fee</option>
+                            <option value="multi">messages.invoice_type_multi</option>
+                            <option value="renewal">Renewal</option>
+                        </select>
+                    </div>
+
+
+                    <div style="flex:1; min-width:130px;">
+                        <label
+                            style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Sort
+                            by:</label>
+                        <select name="sort"
+                            style="width:100%; padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc; cursor:pointer;">
+                            <option value="latest">Latest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="amount_asc">Amount (Low to High)</option>
+                            <option value="amount_desc">Amount (High to Low)</option>
+                            <option value="status_asc">Status (A-Z)</option>
+                            <option value="status_desc">Status (Z-A)</option>
+                        </select>
+                    </div>
+
+
+                    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                        <button type="submit"
+                            style="background:linear-gradient(135deg, #0EA5E9, #3B82F6); color:#fff; border:none; padding:10px 22px; border-radius:50px; font-weight:600; font-size:0.85rem; cursor:pointer; transition:0.3s; box-shadow:0 4px 15px rgba(14,165,233,0.25);">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                        <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices"
+                            style="background:#e2e8f0; color:#1e293b; padding:10px 18px; border-radius:50px; text-decoration:none; font-weight:500; font-size:0.85rem; transition:0.2s; display:inline-flex; align-items:center; gap:6px;">
+                            <i class="fas fa-undo"></i> Reset
+                        </a>
+                        <button type="button"
+                            onclick="document.getElementById('advancedFilters').style.display = (document.getElementById('advancedFilters').style.display === 'none' ? 'block' : 'none')"
+                            style="background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; padding:10px 16px; border-radius:50px; font-weight:500; font-size:0.85rem; cursor:pointer; transition:0.2s;">
+                            <i class="fas fa-sliders-h"></i> Advanced
+                        </button>
+                    </div>
+                </div>
+
+
+                <div id="advancedFilters"
+                    style="display: none; margin-top:16px; padding-top:16px; border-top:1px solid #e2e8f0;">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:12px;">
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Min
+                                Amount</label>
+                            <input type="number" name="amount_min" value="" placeholder="Min" min="0" step="0.01"
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">Max
+                                Amount</label>
+                            <input type="number" name="amount_max" value="" placeholder="Max" min="0" step="0.01"
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">From
+                                Date</label>
+                            <input type="date" name="date_from" value=""
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+
+
+                        <div>
+                            <label
+                                style="font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase; display:block; margin-bottom:4px;">To
+                                Date</label>
+                            <input type="date" name="date_to" value=""
+                                style="width:100%; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.9rem; background:#f8fafc;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div style="overflow-x:auto; background:#fff; border-radius:12px; border:1px solid #e2e8f0;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <thead style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                    <tr>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            #</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Invoice No.</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Registration</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Amount</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Issued Date</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Due Date</th>
+                        <th
+                            style="padding:12px 16px; text-align:left; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Status</th>
+                        <th
+                            style="padding:12px 16px; text-align:center; font-weight:600; color:#475569; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.03em;">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">1</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000538</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/551"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000547
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">TEst</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 500.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-24</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-08-23</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/557"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/557/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">2</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000537</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/550"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000546
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">Suchana Hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 500.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-24</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-08-23</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/556"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/556/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">3</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000536</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/525"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000525
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">बाल्मिकि ब्बाइज होस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 1,500.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-08-14</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/536"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/536/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">4</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000535</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/524"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000524
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">RN New Dreams girls hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 1,500.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-08-14</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/535"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/535/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">5</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000525</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/525"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000525
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">बाल्मिकि ब्बाइज होस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/525"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/525/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">6</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000524</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/524"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000524
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">RN New Dreams girls hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/524"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/524/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">7</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000528</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/528"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000528
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">पाण्डेश्वरी ब्वाइज होस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/528"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/528/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">8</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000534</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/534"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000534
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">SAPPHIRE GIRLS HOSTEL</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/534"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/534/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">9</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000527</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/527"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000527
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">प्रसून ब्वाइज हाृस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/527"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/527/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">10</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000526</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/526"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000526
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">नेृपथ्य ब्वाइज होस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/526"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/526/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">11</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000529</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/529"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000529
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">Rudra Boys Hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/529"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/529/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">12</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000530</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/530"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000530
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">the comfort cove girls</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/530"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/530/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">13</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000533</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/533"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000533
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">GNG boys hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/533"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/533/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">14</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000531</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/531"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000531
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">the hangout boys hostel</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/531"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/531/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0; transition:background 0.15s;" class="hover:bg-gray-50">
+                        <td style="padding:12px 16px; font-weight:500; color:#0f172a;">15</td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">INV-2026-000523</td>
+                        <td style="padding:12px 16px;">
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations/523"
+                                style="color:#0EA5E9; text-decoration:none; font-weight:500;">
+                                HEAN-2026-000523
+                            </a>
+                            <br><span style="font-size:0.7rem; color:#94a3b8;">देउती ब्वाइज होस्टल</span>
+                        </td>
+                        <td style="padding:12px 16px; font-weight:600; color:#0f172a;">NPR 0.00</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px; color:#64748b;">2026-07-15</td>
+                        <td style="padding:12px 16px;">
+                            <span style="padding:4px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; 
+                         background:#dcfce7; color:#166534;
+                        ">
+                                Paid
+                            </span>
+                        </td>
+                        <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                            <div style="display:flex; justify-content:center; gap:8px;">
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/523"
+                                    style="display:inline-block; padding:6px 10px; background:#0EA5E9; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices/523/download"
+                                    style="display:inline-block; padding:6px 10px; background:#22C55E; color:#fff; border-radius:6px; font-size:0.75rem; font-weight:600; text-decoration:none;"
+                                    title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div
+            style="margin-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <span style="color:#64748b; font-size:0.85rem;">
+                Showing 1 - 15 of 538
+            </span>
+            <div>
+                <nav role="navigation" aria-label="Pagination Navigation">
+
+                    <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                        <span
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                            « Previous
+                        </span>
+
+                        <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=2" rel="next"
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                            Next »
+                        </a>
+
+                    </div>
+
+                    <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                                Showing
+                                <span class="font-medium">1</span>
+                                to
+                                <span class="font-medium">15</span>
+                                of
+                                <span class="font-medium">538</span>
+                                results
+                            </p>
+                        </div>
+
+                        <div>
+                            <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+
+                                <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                                    <span
+                                        class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400"
+                                        aria-hidden="true">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+
+
+
+
+
+                                <span aria-current="page">
+                                    <span
+                                        class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                                </span>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=2"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 2">
+                                    2
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=3"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 3">
+                                    3
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=4"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 4">
+                                    4
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=5"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 5">
+                                    5
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=6"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 6">
+                                    6
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=7"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 7">
+                                    7
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=8"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 8">
+                                    8
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=9"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 9">
+                                    9
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=10"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 10">
+                                    10
+                                </a>
+
+                                <span aria-disabled="true">
+                                    <span
+                                        class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 cursor-default leading-5 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">...</span>
+                                </span>
+
+
+
+
+
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=35"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 35">
+                                    35
+                                </a>
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=36"
+                                    class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                    aria-label="Go to page 36">
+                                    36
+                                </a>
+
+
+                                <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices?page=2" rel="next"
+                                    class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+                                    aria-label="Next &amp;raquo;">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+
+        <footer class="admin-footer">
+            <div class="brand-line">
+                <strong style="color:#0b2b4a;">HEAN</strong>
+                <span style="color:#6a7e96; font-weight:300;">·</span>
+                <span style="color:#4a6a8b;">Management</span>
+            </div>
+            <div class="tech-partner">
+                Technology Partner ·
+                <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                    🏨 HostelHub Nepal
+                </a>
+            </div>
+            <div class="copyright">
+                © 2026 HEAN · All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+            if (toggleBtn && sidebar) {
+                // Ensure sidebar is open by default (no 'closed' class)
+                sidebar.classList.remove('closed');
+
+                toggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('closed');
+
+                    // Toggle icon between bars and times
+                    if (icon) {
+                        if (sidebar.classList.contains('closed')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id="lightbox"
+        style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;">
+        <img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div>
+    <div class="glasp-extension-toaster"
+        style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
+        <template shadowrootmode="open">
+            <div class="glasp-extension" style="font-family: inherit;"></div>
+        </template></div>
+</body>
+<div class="glasp-extension"
+    style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
+    <div class="glasp-extension" style="font-family: inherit;"></div>
+</div>
+
+</html>

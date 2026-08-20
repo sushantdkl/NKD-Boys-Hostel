@@ -1,0 +1,576 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL">
+    <title>Content Management - HEAN Admin</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://hean-production-ahfot4.laravel.cloud/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://hean-production-ahfot4.laravel.cloud/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="https://hean-production-ahfot4.laravel.cloud/favicon.svg">
+    <link rel="shortcut icon" href="https://hean-production-ahfot4.laravel.cloud/favicon.ico">
+    <link rel="manifest" href="https://hean-production-ahfot4.laravel.cloud/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" as="style" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <link rel="modulepreload" as="script"
+        href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js">
+    <link rel="stylesheet" href="https://hean-production-ahfot4.laravel.cloud/build/assets/app-BiHYB7jY.css">
+    <script type="module" src="https://hean-production-ahfot4.laravel.cloud/build/assets/app-6IfFY6EQ.js"></script>
+    <style>
+        .dashboard-body {
+            cursor: default !important;
+        }
+
+        .sidebar .nav-item {
+            cursor: pointer;
+        }
+
+        .sidebar .logout button {
+            cursor: pointer;
+        }
+
+        .dashboard-body * {
+            cursor: default;
+        }
+
+        .sidebar .nav-item,
+        .sidebar .logout button,
+        .btn,
+        a,
+        button,
+        [role="button"] {
+            cursor: pointer !important;
+        }
+
+        .admin-footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6a7e96;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .admin-footer a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .admin-footer a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+
+        .admin-footer .brand-line {
+            margin-bottom: 4px;
+            color: #0b2b4a;
+            font-weight: 600;
+        }
+
+        .admin-footer .brand-line span {
+            color: #6a7e96;
+            font-weight: 300;
+        }
+
+        .admin-footer .tech-partner {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+
+        .admin-footer .tech-partner a {
+            color: #1e5f8e;
+            font-weight: 600;
+        }
+
+        .admin-footer .tech-partner a:hover {
+            color: #0EA5E9;
+        }
+
+        .admin-footer .copyright {
+            font-size: 0.65rem;
+            color: #b0c4d8;
+            margin-top: 8px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .language-switcher a:hover {
+            opacity: 0.7;
+        }
+
+        .language-switcher .divider {
+            color: #e2e8f0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="https://hean-production-ahfot4.laravel.cloud/images/logo.png" alt="HEAN" style="height:40px;">
+            </div>
+            <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+
+        <nav id="sidebarNav">
+            <!-- ===== MAIN ===== -->
+            <div class="nav-section">Main</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin" class="nav-item ">
+                <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+            </a>
+
+            <!-- ===== ADMIN-ONLY LINKS ===== -->
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/registrations" class="nav-item ">
+                <i class="fas fa-file-alt"></i> <span>Applications</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/inspections" class="nav-item ">
+                <i class="fas fa-clipboard-list"></i> <span>Inspections</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/hostels" class="nav-item ">
+                <i class="fas fa-hotel"></i> <span>Hostels</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/committee" class="nav-item ">
+                <i class="fas fa-users"></i> <span>Committee</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/notices" class="nav-item ">
+                <i class="fas fa-bullhorn"></i> <span>Notices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/gallery" class="nav-item ">
+                <i class="fas fa-images"></i> <span>Gallery</span>
+            </a>
+
+            <!-- ===== FINANCE ===== -->
+            <div class="nav-section">Finance</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/invoices" class="nav-item ">
+                <i class="fas fa-file-invoice"></i> <span>Invoices</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/payments" class="nav-item ">
+                <i class="fas fa-credit-card"></i> <span>Payments</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/receipts" class="nav-item ">
+                <i class="fas fa-receipt"></i> <span>Receipts</span>
+            </a>
+
+            <!-- ===== SETTINGS ===== -->
+            <div class="nav-section">Settings</div>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/settings" class="nav-item ">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/reports" class="nav-item ">
+                <i class="fas fa-chart-bar"></i> <span>Reports</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/certificate" class="nav-item ">
+                <i class="fas fa-certificate"></i> <span>Certificate</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/cms" class="nav-item active">
+                <i class="fas fa-edit"></i> <span>CMS</span>
+            </a>
+            <a href="https://hean-production-ahfot4.laravel.cloud/admin/import" class="nav-item ">
+                <i class="fas fa-upload"></i> <span>Import</span>
+            </a>
+
+            <!-- ===== OWNER-ONLY LINKS ===== -->
+
+            <!-- ===== LOGOUT ===== -->
+            <div class="logout">
+                <form action="https://hean-production-ahfot4.laravel.cloud/logout" method="POST">
+                    <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                        autocomplete="off"> <button type="submit" class="nav-item"
+                        style="background:none; border:none; width:100%; text-align:left; cursor:pointer !important;">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main-content" style="overflow-x: hidden; width: 100%;">
+        <div class="topbar">
+            <div class="left-section">
+                <div class="page-title">Content Management - HEAN Admin</div>
+
+
+                <a href="https://hean-production-ahfot4.laravel.cloud" class="btn btn-home"
+                    style="background:#0EA5E9; color:#fff; padding:4px 14px; border-radius:50px; text-decoration:none; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition:0.3s; margin-left:12px;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <div class="language-switcher">
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/en" style="color:#64748b;">EN</a>
+                    <span class="divider">|</span>
+                    <a href="https://hean-production-ahfot4.laravel.cloud/lang/ne" style="color:#64748b;">नेपाली</a>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="name">HEAN Admin</span>
+                <span class="role">Admin</span>
+                <div class="avatar">H</div>
+            </div>
+        </div>
+
+        <div class="container-fluid py-4">
+
+            <!-- Header -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                <h1 class="display-6 fw-bold mb-0" style="color: #0f172a;">
+                    <i class="fas fa-edit text-primary me-2" style="color: #0EA5E9 !important;"></i>
+                    Content Management
+                </h1>
+                <span class="text-muted">
+                    <i class="far fa-clock me-1"></i>
+                    Last updated: Jul 24, 2026 09:02
+                </span>
+            </div>
+
+            <!-- Flash Messages -->
+
+            <!-- Main Form -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header py-3"
+                    style="background: linear-gradient(135deg, #0EA5E9, #3B82F6) !important; color: white;">
+                    <i class="fas fa-sliders-h me-2"></i> Homepage Content Settings
+                </div>
+                <div class="card-body">
+                    <form action="https://hean-production-ahfot4.laravel.cloud/admin/cms" method="POST">
+                        <input type="hidden" name="_token" value="7hXPoQebcyHaglWuS6sQvGyQLtQMJWovR76YDHvL"
+                            autocomplete="off">
+                        <!-- ===== Hero Section ===== -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3" style="color: #0EA5E9;">
+                                <i class="fas fa-star me-2"></i> Hero Section
+                            </h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="hero_title"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-heading me-1"></i> Hero Title
+                                        </label>
+                                        <input type="text" class="form-control form-control-lg" id="hero_title"
+                                            name="hero_title" value=""
+                                            placeholder="e.g. Empowering Nepal's Hostel Ecosystem">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="hero_badge"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-tag me-1"></i> Hero Badge
+                                        </label>
+                                        <input type="text" class="form-control form-control-lg" id="hero_badge"
+                                            name="hero_badge" value="" placeholder="e.g. Welcome to HEAN">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="hero_subtitle"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-align-left me-1"></i> Hero Subtitle
+                                        </label>
+                                        <textarea class="form-control" id="hero_subtitle" name="hero_subtitle" rows="3"
+                                            placeholder="Describe the mission or tagline"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 border-2 opacity-25" style="border-color: #0EA5E9;">
+
+                        <!-- ===== About Section ===== -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3" style="color: #22C55E;">
+                                <i class="fas fa-info-circle me-2"></i> About Section
+                            </h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="about_title"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-heading me-1"></i> About Title
+                                        </label>
+                                        <input type="text" class="form-control form-control-lg" id="about_title"
+                                            name="about_title" value="" placeholder="e.g. Who We Are">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="about_content"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-align-left me-1"></i> About Content
+                                        </label>
+                                        <textarea class="form-control" id="about_content" name="about_content" rows="5"
+                                            placeholder="Tell visitors about HEAN"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 border-2 opacity-25" style="border-color: #22C55E;">
+
+                        <!-- ===== CTA Section ===== -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3" style="color: #8B5CF6;">
+                                <i class="fas fa-bullhorn me-2"></i> Call to Action
+                            </h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cta_title"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-heading me-1"></i> CTA Title
+                                        </label>
+                                        <input type="text" class="form-control form-control-lg" id="cta_title"
+                                            name="cta_title" value="" placeholder="e.g. Ready to Join HEAN?">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="cta_content"
+                                            class="form-label fw-semibold text-muted text-uppercase small">
+                                            <i class="fas fa-align-left me-1"></i> CTA Content
+                                        </label>
+                                        <textarea class="form-control" id="cta_content" name="cta_content" rows="3"
+                                            placeholder="Supporting text for the call to action"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Submit Button -->
+                        <div class="d-flex gap-3 flex-wrap">
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fs-6"
+                                style="background: linear-gradient(135deg, #0EA5E9, #3B82F6); border: none; box-shadow: 0 4px 15px rgba(14,165,233,0.3); transition: 0.3s;">
+                                <i class="fas fa-save me-2"></i> Save Changes
+                            </button>
+                            <a href="https://hean-production-ahfot4.laravel.cloud/admin"
+                                class="btn btn-outline-secondary rounded-pill px-4">
+                                <i class="fas fa-times me-2"></i> Cancel
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tip Box -->
+            <div class="card border-0 shadow-sm mt-4 bg-light">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-lightbulb text-warning fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">💡 Quick Tip</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                                These settings control the main content on the homepage. Changes will appear immediately
+                                after saving.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Inline Styles for CMS -->
+        <style>
+            .card {
+                border-radius: 16px;
+                overflow: hidden;
+                transition: transform 0.2s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-2px);
+            }
+
+            .card-header {
+                border-bottom: none;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+            }
+
+            .card-body {
+                background: #ffffff;
+            }
+
+            .form-control {
+                border: 1.5px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 0.75rem 1rem;
+                transition: 0.3s;
+                background-color: #f8fafc;
+            }
+
+            .form-control:focus {
+                border-color: #0EA5E9;
+                box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+                background-color: #ffffff;
+            }
+
+            .form-control-lg {
+                font-size: 1.1rem;
+            }
+
+            textarea.form-control {
+                min-height: 100px;
+            }
+
+            .btn-primary {
+                transition: all 0.2s ease;
+            }
+
+            .btn-primary:hover {
+                transform: scale(1.02);
+                box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4) !important;
+            }
+
+            .btn-outline-secondary:hover {
+                background: #f1f5f9;
+                border-color: #94a3b8;
+            }
+
+            .form-label {
+                font-size: 0.8rem;
+                letter-spacing: 0.5px;
+                color: #475569;
+                margin-bottom: 4px;
+            }
+
+            hr {
+                opacity: 0.3;
+                margin: 1.5rem 0;
+            }
+
+            .bg-light {
+                background-color: #f8fafc !important;
+            }
+
+            .alert {
+                border-radius: 12px;
+                padding: 1rem 1.5rem;
+            }
+
+            .alert-success {
+                background-color: #d1fae5;
+                border-color: #10b981;
+                color: #065f46;
+            }
+
+            .alert-success .btn-close {
+                filter: brightness(0.5);
+            }
+        </style>
+
+        <footer class="admin-footer">
+            <div class="brand-line">
+                <strong style="color:#0b2b4a;">HEAN</strong>
+                <span style="color:#6a7e96; font-weight:300;">·</span>
+                <span style="color:#4a6a8b;">Management</span>
+            </div>
+            <div class="tech-partner">
+                Technology Partner ·
+                <a href="https://www.hostelhubnepal.com" target="_blank" rel="noopener">
+                    🏨 HostelHub Nepal
+                </a>
+            </div>
+            <div class="copyright">
+                © 2026 HEAN · All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+            if (toggleBtn && sidebar) {
+                // Ensure sidebar is open by default (no 'closed' class)
+                sidebar.classList.remove('closed');
+
+                toggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('closed');
+
+                    // Toggle icon between bars and times
+                    if (icon) {
+                        if (sidebar.classList.contains('closed')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id="lightbox"
+        style="position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 99999; cursor: pointer;">
+        <img style="max-width: 90%; max-height: 90%; border-radius: 12px;"></div>
+    <div class="glasp-extension-toaster"
+        style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
+        <template shadowrootmode="open">
+            <div class="glasp-extension" style="font-family: inherit;"></div>
+        </template></div>
+</body>
+<div class="glasp-extension"
+    style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
+    <div class="glasp-extension" style="font-family: inherit;"></div>
+</div>
+
+</html>
